@@ -1,2 +1,6 @@
 /* src\main\webapp\css\input.css */
 @import "tailwindcss";
+/* @import "tailwindcss/forms";
+@import "tailwindcss/typography"; */
+
+/* npx @tailwindcss/cli -i ./src/main/webapp/css/input.css -o ./src/main/webapp/css/output.css --watch */

@@ -13,8 +13,7 @@
 
             <!-- Header Section -->
             <div class="text-center">
-                <img src="/images/SwiftMart.png" alt="SwiftMart Logo" class="mx-auto shadow-xl"
-                    style="height: 80px; border-radius: 25%;" />
+                <img src="/images/SwiftMart.png" alt="SwiftMart Logo" class="h-20 rounded-2xl mx-auto shadow-xl" />
                 <h1 class="text-3xl font-bold text-blue-700 mt-3">Register as Customer</h1>
                 <p class="text-sm text-gray-500 mt-1">Create your customer account and start shopping</p>
                 <a href="customer_login" class="text-sm text-blue-600 hover:underline mt-2 inline-block">← Return to

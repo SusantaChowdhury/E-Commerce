@@ -14,7 +14,7 @@
                     <% Customer c=(Customer)session.getAttribute("customer"); int custid=c.getId(); String
                         custname=c.getName(); %>
 
-                        <body class=text-gray-800" style="background-image: linear-gradient(to top, purple, cyan);">
+                        <body class="bg-gradient-to-b from-cyan-600 to-purple-900 text-gray-800">
                             <!-- navbar -->
                             <nav class="bg-gray-900 w-full text-gray-100 px-4">
                                 <div class="flex flex-wrap justify-between items-center my-2">
@@ -75,7 +75,7 @@
                             </nav>
 
                             <!-- Greeting -->
-                            <div class="text-center m-4 text-2xl font-semibold text-gray-800">
+                            <div class="text-3xl font-bold my-6 text-center text-gray-100">
                                 Welcome to SwiftMart, <%= custname %>
                             </div>
 
@@ -96,7 +96,7 @@
 
                                                     <!-- Product Card -->
                                                     <div
-                                                        class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+                                                        class="bg-white rounded-xl mb-4 shadow-md hover:shadow-xl hover:bg-gray-300 transition-all duration-300 overflow-hidden">
                                                         <img src="<%= path %>" alt="Product <%= pd %>"
                                                             class="w-full h-auto object-cover">
                                                         <div class="p-4 space-y-2">

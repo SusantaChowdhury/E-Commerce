@@ -16,7 +16,8 @@
                             <% Customer c=(Customer)session.getAttribute("customer"); int custid=c.getId(); String
                                 custname=c.getName(); %>
 
-                                <body class="bg-gray-100 min-h-screen" style="background-image: linear-gradient(to top, purple, cyan);">
+                                <body class="min-h-screen"
+                                    style="background-image: linear-gradient(to top, rgb(81, 3, 81), rgb(37, 197, 197));">
 
                                     <!-- Navbar -->
                                     <nav class="bg-gray-900 text-gray-100 px-4 rounded-b-lg shadow">
@@ -71,12 +72,20 @@
 
                                     <!-- Cart Section -->
                                     <div class="py-6">
-                                        <h2 class="m-4 text-2xl font-semibold mb-4">Products in your cart</h2>
+                                        <h2 class="text-3xl font-bold my-6 text-center text-gray-100">Products in your
+                                            cart</h2>
 
                                         <% List<Orderprod> op = (List<Orderprod>) request.getAttribute("cartprods"); %>
                                                 <% if (op.isEmpty()) { %>
-                                                    <div class="m-4 text-center text-lg text-red-600 font-semibold mt-10">No
-                                                        products in your cart right now.</div>
+                                                    <div
+                                                        class="flex flex-col items-center bg-gray-100 m-4 rounded-lg text-center text-lg text-red-600 font-semibold mt-10">
+                                                        <img src="/images/empty-cart.svg" alt="Empty Cart" class="mb-2"
+                                                            style="width: 300px;">
+                                                        <p class="mb-4 p-2 ">No products in your cart right now.</p>
+                                                        <a type="button" href="customerhome"
+                                                            class="bg-blue-600 m-4 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md shadow">
+                                                            Keep Shopping</a>
+                                                    </div>
                                                     <% } else { %>
 
                                                         <!-- Table -->
@@ -150,7 +159,8 @@
                                                                                     </form>
                                                                                     <input type="text"
                                                                                         value="<%= bqty %>" readonly
-                                                                                        class="text-center text-sm" style="width: 25px; height: 25px;"/>
+                                                                                        class="text-center text-sm"
+                                                                                        style="width: 25px; height: 25px;" />
                                                                                     <form action="Addprodcartval"
                                                                                         method="post">
                                                                                         <input type="hidden"
@@ -262,9 +272,9 @@
                                             }
                                         });
 
-                                        // setInterval(function () {
-                                        //     location.reload();
-                                        // }, 5000);
+                                        setInterval(function () {
+                                            location.reload();
+                                        }, 5000);
                                     </script>
                                 </body>
 

@@ -14,8 +14,7 @@
 
             <!-- Header -->
             <div class="text-center">
-                <img src="/images/SwiftMart.png" alt="SwiftMart Logo" class="mx-auto shadow"
-                    style="height: 80px; border-radius: 25%;" />
+                <img src="/images/SwiftMart.png" alt="SwiftMart Logo" class="h-20 rounded-2xl mx-auto shadow-xl" />
                 <h2 class="text-2xl font-bold text-blue-700 mt-3">Be an Authorized Seller</h2>
                 <p class="text-sm text-gray-500">Register to start selling on SwiftMart</p>
                 <a href="seller_login" class="text-sm text-blue-600 hover:underline inline-block mt-2">
@@ -31,7 +30,7 @@
                     <label for="pdfFile" class="block text-sm font-medium text-gray-700 mb-1">Upload Business Document
                         (PDF)</label>
                     <input type="file" name="pdfFile" accept="application/pdf" required
-                        class="block p-2 w-full text-sm text-gray-600 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer shadow file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:bg-blue-600 file:text-white hover:file:bg-blue-700 transition" />
+                        class="block p-2 w-full text-sm text-gray-600 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer shadow file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:bg-gray-600 file:text-white hover:file:bg-gray-700 transition" />
                 </div>
 
                 <!-- Name -->

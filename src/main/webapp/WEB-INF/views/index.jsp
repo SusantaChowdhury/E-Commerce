@@ -5,44 +5,40 @@
     <head>
         <meta charset="UTF-8">
         <title>Welcome to SwiftMart™</title>
-        <link rel="stylesheet" href="css/output.css" />
+        <link rel="stylesheet" href="/css/output.css" />
     </head>
 
-    <body class="min-h-screen flex flex-col bg-cover items-center" style="background-image: url(/images/shop.jpg);">
+    <body class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen flex flex-col bg-cover items-center">
         <!-- navbar -->
-        <section class="bg-gray-900 w-full text-gray-100 px-4">
+        <nav class="bg-gray-900 w-full text-gray-100 px-4">
 
             <div class="flex flex-wrap justify-between items-center my-2">
                 <a href="/" class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
-                    <img src="/images/SwiftMart.png" class="h-14 rounded-xl" alt="SwiftMart Logo" />
+                    <img src="/images/SwiftMart.png" class="h-16 rounded-2xl" alt="SwiftMart Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
                 </a>
-                <div class="flex justify-center items-center gap-4">
-                    <a href="/" class="bg-gray-600 border shadow px-6 py-3 rounded font-medium">Home</a>
-                    <a href="aboutus"
-                        class="bg-gray-800 shadow px-6 py-3 rounded hover:bg-gray-700 font-medium">About</a>
-                    <a href="contactus"
-                        class="bg-gray-800 shadow px-6 py-3 rounded hover:bg-gray-700 font-medium">Contact
+                <div class="flex justify-center items-center text-lg font-medium gap-3">
+                    <a href="/" class="px-2 text-cyan-500">Home</a>
+                    <a href="aboutus" class="px-2 hover:text-cyan-500">About</a>
+                    <a href="contactus" class="px-2 hover:text-cyan-500">Contact
                         Us</a>
-                    <a href="Adminpage"
-                        class="bg-gray-800 shadow px-6 py-3 rounded hover:bg-gray-700 font-medium">Admin</a>
+                    <a href="Adminpage" class="px-2 hover:text-cyan-500">Admin</a>
                 </div>
             </div>
-        </section>
+        </nav>
+        <div class="flex flex-col items-center justify-center mt-8">
+            <h1 class="text-4xl font-semibold text-white mb-4 font-mono">Welcome to <span
+                    class="text-orange-400 font-sans font-bold">SwiftMart™</span></h1>
+            <p class="text-lg text-gray-200 mb-6">Your one-stop shop for everything you need!</p>
+
+        </div>
 
         <!-- Hero Section -->
-        <section class="bg-gray-300 text-center rounded-lg py-16 px-6 mt-4" style="width: 80vw;">
-            <h1 class="opacity-0 text-2xl font-bold m-4">
-                Welcome to <span class="text-blue-600">SwiftMart</span>
-            </h1>
-            <p class="text-lg max-w-2xl mx-auto mb-2">
-                The smart and secure way to buy and sell products. Simplified for you.
-            </p>
+        <section class="w-[90vw] backdrop-blur-lg bg-[url(/images/shop.jpg)] bg-cover text-center rounded-lg mt-6">
             <!-- Login Cards -->
-            <div class="p-6 mb-4 text-center">
-
-                <div class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 justify-items-center">
-
+            <div class="py-10 mb-4 text-center">
+                <div
+                    class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-16 justify-around justify-items-center">
                     <!-- Seller Login -->
                     <div
                         class="bg-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl p-4 w-full max-w-sm text-center">
@@ -50,7 +46,8 @@
                             <img src="/images/seller.svg" class="">
                         </div>
                         <h2 class="text-2xl font-semibold text-gray-800 mb-2">Wanna Sell?</h2>
-                        <p class="text-sm text-gray-500 mb-6">Manage inventory, track orders, and grow your business.
+                        <p class="text-sm text-gray-500 mb-6">Manage inventory, track orders, and grow your
+                            business.
                         </p>
                         <button onclick="location.href='seller_login'"
                             class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition">
@@ -60,22 +57,22 @@
 
                     <!-- Customer Login -->
                     <div
-                        class="bg-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl p-4 w-full max-w-sm text-center">
-                        <div class="mx-auto mt-4 mb-6 text-center">
-                            <img src="/images/customer.svg" style="position: relative; top: 30px;">
+                        class="bg-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl p-4 max-w-sm text-center">
+                        <div class="mx-auto lg:mt-4 md:mt-6 mb-6 text-center">
+                            <img src="/images/customer.svg" class="mt-14">
                         </div>
-                        <div style="position: relative; top: 53px;">
-                            <h2 class="text-2xl font-semibold text-gray-800 mt-10 mb-2">Wanna Buy?</h2>
-                            <p class="text-sm text-gray-500 mb-6">Browse thousands of products, add to cart, and
-                                checkout
-                                easily.</p>
-                            <button onclick="location.href='customer_login'"
-                                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition">
-                                Login as Customer
-                            </button>
-                        </div>
-                    </div>
 
+                        <h2 class="text-2xl font-semibold text-gray-800 mt-12">Wanna Buy?</h2>
+                        <p class="text-sm text-gray-500 mt-3">Browse thousands of products, add to
+                            cart,
+                            and
+                            checkout
+                            easily.</p>
+                        <button onclick="location.href='customer_login'"
+                            class="w-full bg-blue-600 mt-5 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition">
+                            Login as Customer
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
