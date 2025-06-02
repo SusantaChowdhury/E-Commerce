@@ -13,68 +13,71 @@
                 <% Admin admi=(Admin)session.getAttribute("admin"); %>
 
                     <body class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
-                        <!-- navbar -->
-                        <nav class="bg-gray-900 w-full text-gray-100 px-4">
 
-                            <div class="flex flex-wrap justify-between items-center my-2">
-                                <a href="adminhome.jsp" class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
-                                    <img src="/images/SwiftMart.png" class="h-16 rounded-2xl" alt="SwiftMart Logo" />
-                                    <span
-                                        class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                        <!-- Navbar -->
+                        <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
+                            <div class="flex flex-wrap justify-between items-center py-4">
+                                <a href="adminhome.jsp" class="flex items-center space-x-3">
+                                    <img src="/images/SwiftMart.png" class="h-14 rounded-2xl" alt="SwiftMart Logo" />
+                                    <span class="text-2xl font-bold text-white">SwiftMart™</span>
                                 </a>
-                                <div class="flex justify-center items-center text-lg font-medium gap-3 mb-2">
-                                    <a href="adminhome" class="px-2 text-cyan-500">Active Sellers</a>
-                                    <a href="passivesellers" class="px-2 hover:text-cyan-500">Pending Sellers</a>
-                                    <a href="customerlist" class="px-2 hover:text-cyan-500">Customers</a>
-                                    <a href="productlist" class="px-2 hover:text-cyan-500">Products</a>
-                                    <a href="orderslist" class="px-2 hover:text-cyan-500">Orders</a>
+                                <div class="flex flex-wrap justify-center gap-4 text-base font-medium mt-4 md:mt-0">
+                                    <a href="adminhome" class="text-cyan-400 border-b-2">Active
+                                        Sellers</a>
+                                    <a href="passivesellers" class="hover:text-cyan-400 transition">Pending Sellers</a>
+                                    <a href="customerlist" class="hover:text-cyan-400 transition">Customers</a>
+                                    <a href="productlist" class="hover:text-cyan-400 transition">Products</a>
+                                    <a href="orderslist" class="hover:text-cyan-400 transition">Orders</a>
                                 </div>
                             </div>
                         </nav>
 
                         <!-- Welcome Header -->
-                        <div class="text-center py-6">
+                        <header class="text-center py-8 px-4">
                             <h2 class="text-3xl font-semibold">Welcome, Admin <%= admi.getUsername() %> 👋</h2>
                             <p class="text-lg text-gray-200 mt-2">Here are your active sellers:</p>
-                        </div>
+                        </header>
 
-                        <!-- Seller List Section -->
-                        <div class="max-w-7xl mx-auto px-4 pb-12">
+                        <!-- Seller Grid -->
+                        <main class="max-w-7xl mx-auto px-4 pb-16">
                             <% List<Seller> perm_pd = (List<Seller>) request.getAttribute("perm_seller");
                                     if (perm_pd == null || perm_pd.isEmpty()) {
                                     %>
-                                    <div class="text-center text-xl text-gray-100">No active sellers found.</div>
+                                    <div class="text-center text-xl text-white font-medium mt-8">
+                                        No active sellers found.
+                                    </div>
                                     <% } else { %>
                                         <div
-                                            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                            class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                                             <% for (Seller x : perm_pd) { String p_name=x.getName(); String
                                                 p_id=String.valueOf(x.getId()); String p_mail=x.getEmail(); %>
                                                 <div
-                                                    class="bg-white rounded-xl shadow-lg p-5 text-gray-800 flex flex-col justify-between">
+                                                    class="bg-gray-800/50 backdrop:blur-xl border-b-4 border-gray-800 rounded-xl shadow-xl p-6 flex flex-col justify-between text-gray-200 hover:shadow-2xl hover:-translate-y-1 transition">
                                                     <div>
                                                         <h3 class="text-xl font-semibold mb-1">
                                                             <%= p_name %>
                                                         </h3>
-                                                        <p class="text-sm text-gray-600 mb-2">
+                                                        <p class="text-sm text-gray-300 mb-2">
                                                             <%= p_mail %>
                                                         </p>
                                                         <span
-                                                            class="text-xs font-medium bg-cyan-100 text-cyan-800 px-2 py-1 rounded">Seller
-                                                            ID: <%= p_id %></span>
+                                                            class="inline-block bg-cyan-100 text-cyan-800 text-xs font-semibold px-3 py-1 rounded-full">
+                                                            Seller ID: <%= p_id %>
+                                                        </span>
                                                     </div>
-                                                    <div class="mt-4 flex gap-2">
-                                                        <form action="seller_det" method="post">
+                                                    <div class="mt-4 flex flex-col gap-2">
+                                                        <form action="seller_det" method="post" class="w-full">
                                                             <input type="hidden" name="sellr_id" value="<%= p_id %>">
                                                             <input type="hidden" name="page" value="adminhome">
                                                             <button type="submit"
-                                                                class="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-1.5 px-3 rounded transition duration-200">
-                                                                Details
+                                                                class="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded-lg transition">
+                                                                View Details
                                                             </button>
                                                         </form>
-                                                        <form action="Remsellerperm" method="post">
+                                                        <form action="Remsellerperm" method="post" class="w-full">
                                                             <input type="hidden" name="sellr_id" value="<%= p_id %>">
                                                             <button type="submit"
-                                                                class="w-full bg-red-600 hover:bg-red-700 text-white py-1.5 px-3 rounded transition duration-200">
+                                                                class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition">
                                                                 Unapprove
                                                             </button>
                                                         </form>
@@ -83,22 +86,45 @@
                                                 <% } %>
                                         </div>
                                         <% } %>
-                        </div>
+                        </main>
+
+                        <!-- footer -->
+                        <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
+                            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                                <div class="sm:flex sm:items-center sm:justify-between">
+                                    <a href="/sellerhome"
+                                        class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                                        <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
+                                        <span
+                                            class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                    </a>
+                                    <ul
+                                        class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                                        <li>
+                                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="hover:underline">Contact</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                                <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023
+                                    <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>. All
+                                    Rights Reserved.</span>
+                            </div>
+                        </footer>
 
                         <script>
-                            function toggleDropdown() {
-                                const menu = document.getElementById('dropdownMenu');
-                                menu.classList.toggle('hidden');
-                            }
-
-                            // Close dropdown if clicked outside
-                            window.addEventListener('click', function (e) {
-                                const dropdownButton = document.getElementById('dropdownButton');
-                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                if (!dropdownButton.contains(e.target)) {
-                                    dropdownMenu.classList.add('hidden');
-                                }
-                            });                           
+                            setInterval(function () {
+                                location.reload();
+                            }, 5000);
                         </script>
                     </body>
 
