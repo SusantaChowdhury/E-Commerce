@@ -28,7 +28,8 @@
         </nav>
         <div class="flex flex-col items-center justify-center mt-8">
             <h1 class="text-4xl font-semibold text-white mb-4 font-mono">Welcome to <span
-                    class="text-orange-400 font-sans font-bold">SwiftMart™</span></h1>
+                    class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-transparent font-sans font-bold">SwiftMart™</span>
+            </h1>
             <p class="text-lg text-gray-200 mb-6">Your one-stop shop for everything you need!</p>
 
         </div>
@@ -41,35 +42,35 @@
                     class="max-w-xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-16 justify-around justify-items-center">
                     <!-- Seller Login -->
                     <div
-                        class="bg-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl p-4 w-full max-w-sm text-center">
+                        class="bg-gray-900/40 backdrop-blur-sm border border-gray-200 shadow-xl hover:bg-gray-900/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl p-4 w-full max-w-sm text-center">
                         <div class="mx-auto mb-6 text-center">
                             <img src="/images/seller.svg" class="">
                         </div>
-                        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Wanna Sell?</h2>
-                        <p class="text-sm text-gray-500 mb-6">Manage inventory, track orders, and grow your
+                        <h2 class="text-2xl font-semibold text-white mb-2">Wanna Sell?</h2>
+                        <p class="text-sm text-gray-200 mb-6">Manage inventory, track orders, and grow your
                             business.
                         </p>
                         <button onclick="location.href='seller_login'"
-                            class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition">
+                            class="w-full border bg-blue-700 hover:bg-blue-600 text-white py-2 rounded-lg font-medium transition">
                             Login as Seller
                         </button>
                     </div>
 
                     <!-- Customer Login -->
                     <div
-                        class="bg-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl p-4 max-w-sm text-center">
+                        class="bg-gray-900/40 backdrop-blur-sm border border-gray-200 shadow-xl hover:bg-gray-900/50 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 rounded-xl p-4 w-full max-w-sm text-center">
                         <div class="mx-auto lg:mt-4 md:mt-6 mb-6 text-center">
                             <img src="/images/customer.svg" class="mt-14">
                         </div>
 
-                        <h2 class="text-2xl font-semibold text-gray-800 mt-12">Wanna Buy?</h2>
-                        <p class="text-sm text-gray-500 mt-3">Browse thousands of products, add to
+                        <h2 class="text-2xl font-semibold text-white mt-12">Wanna Buy?</h2>
+                        <p class="text-sm text-gray-200 mt-3">Browse thousands of products, add to
                             cart,
                             and
                             checkout
                             easily.</p>
                         <button onclick="location.href='customer_login'"
-                            class="w-full bg-blue-600 mt-5 hover:bg-blue-700 text-white py-2 rounded-lg font-medium transition">
+                            class="w-full border bg-blue-700 mt-5 hover:bg-blue-600 text-white py-2 rounded-lg font-medium transition">
                             Login as Customer
                         </button>
                     </div>

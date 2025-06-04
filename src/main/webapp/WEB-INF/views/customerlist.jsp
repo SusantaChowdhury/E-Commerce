@@ -47,7 +47,7 @@
                                             <% for(Customer x : customers) { String name=x.getName(); String
                                                 id=String.valueOf(x.getId()); String email=x.getEmail(); %>
                                                 <div
-                                                    class="bg-gray-800/50 backdrop:blur-xl border-b-4 border-gray-800 rounded-xl p-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition duration-300">
+                                                    class="bg-gray-800/50 backdrop-blur-lg border-b-4 border-gray-800 rounded-xl p-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition duration-300">
                                                     <h3 class="text-xl font-semibold text-white mb-2">
                                                         <%=name%>
                                                     </h3>
@@ -71,7 +71,7 @@
                         </div>
 
                         <!-- footer -->
-                        <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
+                        <footer class="rounded-lg shadow-sm bg-gray-900/70 backdrop-blur-xl m-4">
                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                 <div class="sm:flex sm:items-center sm:justify-between">
                                     <a href="/sellerhome"

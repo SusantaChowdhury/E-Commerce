@@ -9,17 +9,18 @@
                     <head>
                         <meta charset="UTF-8">
                         <title>Welcome to SwiftKart™</title>
+                        <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                         <link rel="stylesheet" href="/css/output.css" />
                     </head>
                     <% Customer c=(Customer)session.getAttribute("customer"); int custid=c.getId(); String
                         custname=c.getName(); %>
 
-                        <body class="bg-gradient-to-b from-cyan-600 to-purple-900 text-gray-800">
-                            <!-- navbar -->
-                            <nav class="bg-gray-900 w-full text-gray-100 px-4">
-                                <div class="flex flex-wrap justify-between items-center my-2">
+                        <body class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
+                            <!-- Navbar -->
+                            <nav class="bg-gray-900 text-gray-100 px-4 shadow">
+                                <div class="flex flex-wrap justify-between items-center py-2">
                                     <!-- Logo -->
-                                    <a href="/" class="flex m-4 items-center space-x-3">
+                                    <a href="/" class="flex m-2 items-center space-x-3">
                                         <img src="/images/SwiftMart.png" class="h-14 rounded-xl shadow-lg"
                                             alt="SwiftMart Logo" />
                                         <span class="text-2xl font-semibold text-white">SwiftMart™</span>
@@ -28,46 +29,36 @@
                                     <!-- Navigation Links -->
                                     <div class="flex gap-4 items-center text-sm sm:text-base">
                                         <a href="customerhome"
-                                            class="bg-gray-600 shadow px-4 py-2 rounded hover:bg-gray-700 font-medium">Products</a>
+                                            class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Products</a>
                                         <a href="custcart"
-                                            class="bg-gray-800 shadow px-4 py-2 rounded hover:bg-gray-700 font-medium">Cart</a>
+                                            class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Cart</a>
                                         <a href="custordrhist"
-                                            class="bg-gray-800 shadow px-4 py-2 rounded hover:bg-gray-700 font-medium">Orders</a>
+                                            class="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Orders</a>
 
                                         <!-- User Dropdown -->
-                                        <div class="relative inline-block text-left">
+                                        <div class="relative inline-block text-left mr-2">
                                             <button id="dropdownButton" onclick="toggleDropdown()"
                                                 class="h-12 w-12 flex items-center gap-2 px-4 py-2">
-                                                <% String[] nameParts=custname.trim().split(" "); 
-                        String initials = "";
-                        for (String part : nameParts) {
-                            if (!part.isEmpty()) initials += part.charAt(0);
-                        }
-                        initials = initials.toUpperCase();
-                    %>
-                    <div class=" flex items-center justify-center text-gray-700 font-semibold text-2xl shadow"
-                                                    style="width: 50px; height: 50px; border-radius: 50%; background-color: rgb(32, 220, 220); border: 3px solid white;">
+                                                <% String[] nameParts=custname.trim().split(" "); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
+                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3 bg-cyan-400 text-gray-700 font-semibold text-2xl shadow">
                                                     <%= initials %>
                                         </div>
-                                        <span class="hidden sm:inline text-white font-medium">
+                                        <!-- <span class="hidden text-white font-medium">
                                             <%= custname %>
-                                        </span>
-                                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        </span> -->
+                                        <!-- <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
                                             stroke-width="2" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7">
                                             </path>
-                                        </svg>
+                                        </svg> -->
                                         </button>
-
-                                        <!-- Dropdown Menu -->
+                                        <!-- Dropdown -->
                                         <div id="dropdownMenu"
-                                            class="absolute right-0 mt-2 w-40 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
-                                            <div class="py-1 text-gray-700">
-                                                <form action="Logout" method="post" class="inline-block">
-                                                    <button type="submit"
-                                                        class="block px-4 py-2 text-sm hover:bg-gray-100">Logout</button>
-                                                </form>
-                                            </div>
+                                            class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                            <form action="Logout" method="post" class="py-1 text-gray-700">
+                                                <button type="submit"
+                                                    class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +161,8 @@
                                         </ul>
                                     </div>
                                     <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                                    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023
+                                    <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
+                                        2023
                                         <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>. All
                                         Rights Reserved.</span>
                                 </div>
@@ -190,9 +182,9 @@
                                     }
                                 });
 
-                                setInterval(function () {
-                                    location.reload();
-                                }, 5000);
+                                // setInterval(function () {
+                                //     location.reload();
+                                // }, 5000);
                             </script>
                         </body>
 

@@ -46,7 +46,7 @@
                                             <% for (Seller x : perm_pd) { String p_name=x.getName(); String
                                                 p_id=String.valueOf(x.getId()); String p_mail=x.getEmail(); %>
                                                 <div
-                                                    class="bg-gray-800/50 backdrop:blur-xl border-b-4 border-gray-800 rounded-xl shadow-lg p-5 text-gray-200 flex flex-col justify-between">
+                                                    class="bg-gray-800/50 backdrop-blur-xl border-b-4 border-gray-800 rounded-xl shadow-lg p-5 text-gray-200 flex flex-col justify-between">
                                                     <div>
                                                         <h3 class="text-xl font-semibold mb-1">
                                                             <%= p_name %>
