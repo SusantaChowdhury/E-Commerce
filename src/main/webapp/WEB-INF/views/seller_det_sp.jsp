@@ -9,6 +9,7 @@
                     <head>
                         <meta charset="UTF-8">
                         <title>Seller Details</title>
+                        <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                         <link rel="stylesheet" href="/css/output.css" />
                     </head>
                     <% Admin admi=(Admin)session.getAttribute("admin"); String
@@ -41,7 +42,7 @@
                                     </div>
                                 </nav>
 
-                                
+
                                 <div class="max-w-7xl mx-auto mt-6 px-4">
 
                                     <!-- seller Details -->
@@ -75,12 +76,14 @@
                                                 <p class="mb-1 text-gray-400">Permission Status:</p>
                                                 <p class="text-white font-medium">
                                                     <%if(s.getPerm().equals("YES")){%>
-                                                        <span class="text-green-700 bg-green-200 border-green-400 border-2 px-2 py-1 rounded-full">
+                                                        <span
+                                                            class="text-green-700 bg-green-200 border-green-400 border-2 px-2 py-1 rounded-full">
                                                             Approved</span>
-                                                    <%}else{%>
-                                                    <span class="text-red-700 bg-red-200 border-red-400 border-2 px-2 py-1 rounded-full">
-                                                            Unapproved</span>
-                                                    <%}%>
+                                                        <%}else{%>
+                                                            <span
+                                                                class="text-red-700 bg-red-200 border-red-400 border-2 px-2 py-1 rounded-full">
+                                                                Unapproved</span>
+                                                            <%}%>
                                                 </p>
                                             </div>
                                             <div class="md:col-span-2">

@@ -8,6 +8,7 @@
                 <head>
                     <meta charset="UTF-8">
                     <title>Customers List</title>
+                    <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                     <link rel="stylesheet" href="/css/output.css" />
                 </head>
                 <% Admin admi=(Admin)session.getAttribute("admin"); %>
@@ -21,7 +22,7 @@
                                     <span
                                         class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
-                                <div class="flex flex-wrap justify-center gap-4 text-base font-medium mt-4 md:mt-0">
+                                <div class="flex flex-wrap justify-center sm:gap-12 items-center lg:gap-6 text-base font-medium mt-4 md:mt-0">
                                     <a href="adminhome" class="hover:text-cyan-500 transition">Active
                                         Sellers</a>
                                     <a href="passivesellers" class="hover:text-cyan-400 transition">Pending
@@ -29,13 +30,36 @@
                                     <a href="customerlist" class="hover:text-cyan-400 transition">Customers</a>
                                     <a href="productlist" class="hover:text-cyan-400 transition">Products</a>
                                     <a href="orderslist" class="text-cyan-400 border-b-2">Orders</a>
+                                    <!-- User Dropdown -->
+                                    <div class="relative inline-block text-left mr-2">
+                                        <button id="dropdownButton" onclick="toggleDropdown()"
+                                            class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                            <% String[] nameParts=admi.getUsername().trim().split("",2); String
+                                                initials="" ; for (String part : nameParts) { if (!part.isEmpty())
+                                                initials +=part.charAt(0); } initials=initials.toUpperCase(); %>
+                                                <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                                        bg-cyan-400 text-gray-700 font-semibold
+                                                                        text-2xl">
+                                                    <%= initials %>
+                                                </div>
+
+                                        </button>
+                                        <!-- Dropdown -->
+                                        <div id="dropdownMenu"
+                                            class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                            <form action="Logout" method="post" class="py-1 text-gray-700">
+                                                <button type="submit"
+                                                    class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </nav>
 
                         <div class="max-w-7xl mx-auto mt-8 px-4">
-                            <h2 class="text-2xl font-semibold text-white mb-6">Welcome to SwiftMart, Admin
-                                <%=admi.getUsername()%>
+                            <h2 class="text-2xl font-semibold text-white mb-6 text-center">Here are all the orders
+                                placed by customers
                             </h2>
 
                             <% List<Orderhist> op = (List<Orderhist>)request.getAttribute("allordhist");
@@ -44,105 +68,111 @@
                                     <% } else { %>
 
                                         <!-- Orders Section -->
-                                        <section class="grid lg:grid-cols-1 gap-6 p-6 md:grid-cols-2">
-                                            <% for(Orderhist x: op) { int oid=x.getId(); String
+                                        <section class="grid lg:grid-cols-1 md:grid-cols-2 gap-6 p-6">
+                                            <% for(Orderhist x : op) { int oid=x.getId(); String
                                                 p_name=x.getProductname(); String p_pd=x.getProductdesc(); Double
                                                 p_price=x.getProductprice(); int p_id=x.getProdid(); int
                                                 bqty=x.getBqty(); int c_id=x.getCustid(); int s_id=x.getSelrid(); String
                                                 c_name=x.getCustname(); String s_name=x.getSellername(); Double
                                                 cost=p_price * bqty; String dt=x.getDatetime(); Double
                                                 taken=x.getTaken(); Double ref=x.getRefunded(); String
-                                                statusw=x.getOrderstatus(); String statusmessage="" ;
-                                                if(statusw.equals("completed")){ statusmessage=ref> 0.0 ? "Refunded" :
+                                                statusw=x.getOrderstatus(); String statusmessage="" ; if
+                                                (statusw.equals("completed")) { statusmessage=ref> 0.0 ? "Refunded" :
                                                 "Transaction done";
-                                                } else if(statusw.equals("cancelled")){
+                                                } else if (statusw.equals("cancelled")) {
                                                 statusmessage = "Cancelled";
-                                                } else if(statusw.equals("tfailed") && ref > 0){
+                                                } else if (statusw.equals("tfailed") && ref > 0) {
                                                 statusmessage = "Transaction failed";
-                                                } else if(statusw.equals("ongoing")){
+                                                } else if (statusw.equals("ongoing")) {
                                                 statusmessage = "Ongoing";
                                                 }
                                                 %>
 
                                                 <div
-                                                    class="flex lg:h-[35vh] bg-gray-800/50 backdrop:blur-2xl border-b-4 border-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-                                                    <div class="w-1/3">
-                                                        <img src="<%=x.getOimg()%>" alt="Product <%=oid%>"
-                                                            class="object-cover h-auto lg:w-68 sm:w-full sm:h-68">
+                                                    class="bg-gray-800/50 backdrop-blur-md border-b-4 border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col sm:flex-row">
+                                                    <!-- Product Image -->
+                                                    <div class="w-full sm:w-1/3">
+                                                        <img src="<%= x.getOimg() %>" alt="Product <%= oid %>"
+                                                            class="w-full h-auto object-cover sm:h-full">
                                                     </div>
 
-                                                    <div class="w-2/3 p-4 flex flex-col justify-between">
-                                                        <div>
-                                                            <h2 class="text-xl font-semibold text-white mb-1">
-                                                                <%=p_name%>
+                                                    <!-- Order Details -->
+                                                    <div class="w-full sm:w-2/3 p-4 flex flex-col justify-between">
+                                                        <div class="space-y-4">
+                                                            <h2 class="text-lg md:text-xl font-semibold text-white">
+                                                                <%= p_name %>
                                                             </h2>
-                                                            <p class="text-sm text-gray-300 mb-2">
-                                                                <%=p_pd%>
+                                                            <p class="text-sm text-gray-300">
+                                                                <%= p_pd %>
                                                             </p>
 
-                                                            <div class="text-sm text-gray-400 space-y-1 mb-2">
+                                                            <div class="text-sm text-gray-300 mt-2 space-y-3">
                                                                 <p><span
-                                                                        class="font-medium text-gray-200">Seller:</span>
-                                                                    <%=s_name%> (ID: <%=s_id%>)
+                                                                        class="font-semibold text-gray-200">Seller:</span>
+                                                                    <%= s_name %> (ID: <%= s_id %>)
                                                                 </p>
                                                                 <p><span
-                                                                        class="font-medium text-gray-200">Customer:</span>
-                                                                    <%=c_name%> (ID: <%=c_id%>)
+                                                                        class="font-semibold text-gray-200">Customer:</span>
+                                                                    <%= c_name %> (ID: <%= c_id %>)
                                                                 </p>
-                                                                <p><span class="font-medium text-gray-200">Product
+                                                                <p><span class="font-semibold text-gray-200">Product
                                                                         ID:</span>
-                                                                    <%=p_id%>
+                                                                    <%= p_id %>
+                                                                </p>
+                                                                <p>
+                                                                    <span
+                                                                        class="font-semibold text-gray-200">Quantity:</span>
+                                                                    <%= bqty %> |
+                                                                        <span class="font-semibold">Unit Price:</span> ₹
+                                                                        <%= p_price %>
+                                                                </p>
+                                                                <p><span class="font-semibold text-gray-200">Total
+                                                                        Cost:</span> ₹<%= cost %>
                                                                 </p>
                                                                 <p><span
-                                                                        class="font-medium text-gray-200">Quantity:</span>
-                                                                    <%=bqty%> |
-                                                                        <span class="font-medium">Unit Price:</span> ₹
-                                                                        <%=p_price%>
-                                                                </p>
-                                                                <p><span class="font-medium text-gray-200">Total
-                                                                        Cost:</span> ₹<%=cost%>
-                                                                </p>
-                                                                <p><span class="font-medium text-gray-200">Date:</span>
-                                                                    <%=dt%>
+                                                                        class="font-semibold text-gray-200">Date:</span>
+                                                                    <%= dt %>
                                                                 </p>
                                                             </div>
                                                         </div>
 
-                                                        <div class="mt-2">
-                                                            <% if(statusw.equals("appeal")) { %>
-                                                                <div class="flex gap-2">
+                                                        <!-- Action Section -->
+                                                        <div class="mt-4">
+                                                            <% if (statusw.equals("appeal")) { %>
+                                                                <div class="flex flex-wrap gap-2">
                                                                     <form action="acceptcancel" method="post">
                                                                         <input type="hidden" name="orderhist_id"
-                                                                            value="<%=oid%>">
+                                                                            value="<%= oid %>">
                                                                         <button type="submit"
-                                                                            class="px-3 py-1 bg-green-600 hover:bg-green-700 text-white text-sm rounded-md transition">
+                                                                            class="px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white text-sm rounded-md transition">
                                                                             Accept
                                                                         </button>
                                                                     </form>
                                                                     <form action="rejectcancel" method="post">
                                                                         <input type="hidden" name="orderhist_id"
-                                                                            value="<%=oid%>">
+                                                                            value="<%= oid %>">
                                                                         <button type="submit"
-                                                                            class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-md transition">
+                                                                            class="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm rounded-md transition">
                                                                             Reject
                                                                         </button>
                                                                     </form>
                                                                 </div>
-                                                                <% } else if(statusw.equals("cnc")) { %>
+                                                                <% } else if (statusw.equals("cnc")) { %>
                                                                     <p
                                                                         class="text-yellow-400 text-sm font-semibold mb-1">
                                                                         Can't be cancelled</p>
                                                                     <form action="rejectcancel" method="post">
                                                                         <input type="hidden" name="orderhist_id"
-                                                                            value="<%=oid%>">
+                                                                            value="<%= oid %>">
                                                                         <button type="submit"
-                                                                            class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white text-sm rounded-md transition">
+                                                                            class="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm rounded-md transition">
                                                                             Reject
                                                                         </button>
                                                                     </form>
                                                                     <% } else { %>
-                                                                        <p class="text-sm font-semibold text-cyan-400">
-                                                                            <%=statusmessage%>
+                                                                        <p
+                                                                            class="text-md w-fit border-cyan-400 border rounded p-2 font-semibold text-cyan-400">
+                                                                            <%= statusmessage %>
                                                                         </p>
                                                                         <% } %>
                                                         </div>
@@ -151,6 +181,7 @@
 
                                                 <% } %>
                                         </section>
+
 
 
                                         <% } %>

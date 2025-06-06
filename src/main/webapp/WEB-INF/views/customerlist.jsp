@@ -21,15 +21,37 @@
                                     <span
                                         class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
-                                <div class="flex flex-wrap justify-center gap-4 text-base font-medium mt-4 md:mt-0">
+                                <div class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-12 text-base font-medium mt-4 md:mt-0">
                                     <a href="adminhome" class="hover:text-cyan-500 transition">Active
                                         Sellers</a>
                                     <a href="passivesellers" class="hover:text-cyan-400 transition">Pending Sellers</a>
                                     <a href="customerlist" class="text-cyan-400 border-b-2">Customers</a>
                                     <a href="productlist" class="hover:text-cyan-400 transition">Products</a>
                                     <a href="orderslist" class="hover:text-cyan-400 transition">Orders</a>
+                                    <!-- User Dropdown -->
+                                    <div class="relative inline-block text-left mr-2">
+                                        <button id="dropdownButton" onclick="toggleDropdown()"
+                                            class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                            <% String[] nameParts=admi.getUsername().trim().split("",2); String
+                                                initials="" ; for (String part : nameParts) { if (!part.isEmpty())
+                                                initials +=part.charAt(0); } initials=initials.toUpperCase(); %>
+                                                <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                                        bg-cyan-400 text-gray-700 font-semibold
+                                                                        text-2xl">
+                                                    <%= initials %>
+                                                </div>
+
+                                        </button>
+                                        <!-- Dropdown -->
+                                        <div id="dropdownMenu"
+                                            class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                            <form action="Logout" method="post" class="py-1 text-gray-700">
+                                                <button type="submit"
+                                                    class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                         </nav>
 
                         <!-- Message -->

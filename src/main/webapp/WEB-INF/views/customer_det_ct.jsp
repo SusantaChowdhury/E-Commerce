@@ -12,53 +12,106 @@
                                 <head>
                                     <meta charset="UTF-8">
                                     <title>Customer Details</title>
-                                    <link rel="stylesheet" href="stylecart.css" />
+                                    <link rel="stylesheet" href="/css/output.css" />
                                 </head>
                                 <% Admin admi=(Admin)session.getAttribute("admin"); Customer
                                     s=(Customer)session.getAttribute("custinfo"); List<Orderprod> op=(List<Orderprod>
                                         )request.getAttribute("cartofcust");
                                         %>
 
-                                        <body style="background-image: url(images/shop.jpg)">
-                                            <div style="display: inline-block; justify-content: center; text-align: center; 
-            border-top-left-radius: 20px; background-color: white; flex-direction: column; 
-            border-top-right-radius: 20px; margin-left: auto; margin-right: auto; margin-bottom: auto; width: 1214px;">
-                                                <h2>Welcome to SwiftMart, Admin <%=admi.getUsername()%>
-                                                </h2>
-                                            </div>
-                                            <div style="display: inline-block; justify-content: center; align-items: center; font-size: 22px; 
-             background-color: white; flex-direction: column; 
-             margin-left: auto; margin-right: auto; margin-bottom: auto; width: 1214px">
-                                                <table
-                                                    style="margin-right: auto; margin-top: auto; border-spacing: 0px">
-                                                    <tr>
-                                                        <th style="justify-content: center; text-align: justify; padding: 5px; background-color: cyan; 
-                border-top-left-radius: 20px; border-top-right-radius: 20px; border: 1px solid black">
+                                        <body
+                                            class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
+                                            <!-- Navbar -->
+                                            <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
+                                                <div class="flex flex-wrap justify-between items-center py-4">
+                                                    <a href="adminhome" class="flex items-center space-x-3">
+                                                        <img src="/images/SwiftMart.png" class="h-14 rounded-2xl"
+                                                            alt="SwiftMart Logo" />
+                                                        <span
+                                                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
+                                                    </a>
+                                                    <div class="flex justify-around gap-[10vw] text-base font-medium">
+                                                        <div class="flex flex-row justify-center items-center ">
                                                             <a href="customerlist"
-                                                                style="color: black; text-decoration: none;">
-                                                                <b>
-                                                                    <=< /b>
+                                                                class="hover:text-cyan-400 transition">←
+                                                                Back to
+                                                                Customers
                                                             </a>
-                                                        </th>
-                                                        <th style="justify-content: center;text-align: justify;padding: 5px; background-color: #c0c0c0; 
-                border-top-left-radius: 20px; border-top-right-radius: 20px; border: 1px solid black">
+                                                        </div>
+                                                        <div class="flex flex-row justify-center items-center gap-4">
                                                             <a href="customer_det_oh"
-                                                                style="color: black; text-decoration: none;">
-                                                                <b>Order History</b>
-                                                            </a>
-                                                        </th>
-                                                        <th style="justify-content: center;text-align: justify;padding: 5px; background-color: black; 
-                border-top-left-radius: 20px; border-top-right-radius: 20px; border: 1px solid black">
+                                                                class="hover:text-cyan-400 transition">Orders</a>
                                                             <a href="customer_det_ct"
-                                                                style="color: yellow; text-decoration: none;">
-                                                                <b>Cart</b>
-                                                            </a>
-                                                        </th>
-                                                    </tr>
-                                                </table>
-                                                <div style="margin-bottom: auto; justify-content: center;text-align: justify;padding: 5px;
-                 background-color: black; color: yellow; width: 1204px ">
-                                                    <section class="cart-items">
+                                                                class="text-cyan-400 border-b-2">Cart</a>
+                                                            <!-- User Dropdown -->
+                                                            <div class="relative inline-block text-left mr-2">
+                                                                <button id="dropdownButton" onclick="toggleDropdown()"
+                                                                    class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                                                    <% String[]
+                                                                        nameParts=admi.getUsername().trim().split("",2); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
+                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                                        bg-cyan-400 text-gray-700 font-semibold
+                                                                        text-2xl">
+                                                                        <%= initials %>
+                                                            </div>
+                                                            
+                                                            </button>
+                                                            <!-- Dropdown -->
+                                                            <div id="dropdownMenu"
+                                                                class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                                                <form action="Logout" method="post"
+                                                                    class="py-1 text-gray-700">
+                                                                    <button type="submit"
+                                                                        class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </nav>
+
+                                            <!-- customer Details -->
+                                            <div
+                                                class="bg-gray-900 rounded-2xl shadow-lg p-6 mt-6 text-gray-100 w-full max-w-3xl mx-auto">
+                                                <h3
+                                                    class="text-2xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
+                                                    <img src="/images/user.svg" alt="Seller Icon"
+                                                        class="h-14 w-14 inline-block shadow-gray-500 rounded-full shadow-md m-2">
+                                                    Customer Information
+                                                </h3>
+
+                                                <div
+                                                    class="grid grid-cols-1  md:grid-cols-2 gap-6 text-sm sm:text-base">
+                                                    <div>
+                                                        <p class="mb-1 text-gray-400">Name:</p>
+                                                        <p class="text-white font-medium">
+                                                            <%= s.getName() %>
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-1 text-gray-400">Email:</p>
+                                                        <p class="text-white font-medium">
+                                                            <%= s.getEmail() %>
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-1 text-gray-400">Customer ID:</p>
+                                                        <p class="text-white font-medium">#<%= s.getId() %>
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <h2
+                                                class="text-2xl font-bold text-cyan-400 mb-6 border-b border-cyan-500 pb-2">
+                                                Cart of <%= s.getName()%>
+                                            </h2>
+
+                                            <div class="">
+                                                <div class="">
+                                                    <section class="">
                                                         <% if(op.isEmpty()){ %>
                                                             No objects present now
                                                             <% }else{ double total=0.0; int nobuy=0; for(Orderprod x:
@@ -147,6 +200,20 @@
                                                 </div>
                                             </div>
                                             <script>
+                                                function toggleDropdown() {
+                                                    const menu = document.getElementById('dropdownMenu');
+                                                    menu.classList.toggle('hidden');
+                                                }
+
+                                                // Close dropdown if clicked outside
+                                                window.addEventListener('click', function (e) {
+                                                    const dropdownButton = document.getElementById('dropdownButton');
+                                                    const dropdownMenu = document.getElementById('dropdownMenu');
+                                                    if (!dropdownButton.contains(e.target)) {
+                                                        dropdownMenu.classList.add('hidden');
+                                                    }
+                                                });
+
                                                 setInterval(function () {
                                                     location.reload();
                                                 }, 5000);
