@@ -10,6 +10,7 @@
 
                             <head>
                                 <meta charset="UTF-8">
+                                <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                                 <title>Your Cart</title>
                                 <link rel="stylesheet" href="css/output.css" />
                             </head>
@@ -20,42 +21,42 @@
                                     style="background-image: linear-gradient(to top, rgb(81, 3, 81), rgb(37, 197, 197));">
 
                                     <!-- Navbar -->
-                                    <nav class="bg-gray-900 text-gray-100 px-4 rounded-b-lg shadow">
+                                    <nav class="bg-gray-900 text-gray-100 px-4 shadow">
                                         <div class="flex flex-wrap justify-between items-center py-2">
                                             <!-- Logo -->
-                                            <a href="/" class="flex m-2 items-center space-x-3">
+                                            <a href="customerhome" class="flex m-2 items-center space-x-3">
                                                 <img src="/images/SwiftMart.png" class="h-14 rounded-xl shadow-lg"
                                                     alt="SwiftMart Logo" />
-                                                <span class="text-2xl font-semibold text-white">SwiftMart™</span>
+                                                <span
+                                                    class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                             </a>
 
                                             <!-- Navigation Links -->
                                             <div class="flex gap-4 items-center text-sm sm:text-base">
                                                 <a href="customerhome"
-                                                    class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Products</a>
-                                                <a href="custcart"
-                                                    class="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Cart</a>
+                                                    class="hover:text-cyan-400 font-medium">Products</a>
+                                                <a href="custcart" class="text-cyan-400 border-b-2">Cart</a>
                                                 <a href="custordrhist"
-                                                    class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Orders</a>
+                                                    class="py-1 hover:text-cyan-400 font-medium">Orders</a>
 
                                                 <!-- User Dropdown -->
-                                                <div class="relative inline-block text-left">
+                                                <div class="relative inline-block text-left mr-2">
                                                     <button id="dropdownButton" onclick="toggleDropdown()"
                                                         class="h-12 w-12 flex items-center gap-2 px-4 py-2">
                                                         <% String[]
                                                             nameParts=custname.trim().split(" "); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
-                            <div class=" flex items-center justify-center text-gray-700 font-semibold text-2xl shadow"
-                                                            style="width: 50px; height: 50px; border-radius: 50%; background-color: rgb(32, 220, 220); border: 3px solid white;">
+                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                            bg-cyan-400 text-gray-700 font-semibold text-2xl shadow">
                                                             <%= initials %>
                                                 </div>
-                                                <span class="hidden sm:inline text-white font-medium">
-                                                    <%= custname %>
-                                                </span>
-                                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M19 9l-7 7-7-7"></path>
-                                                </svg>
+                                                <!-- <span class="hidden text-white font-medium">
+                                            <%= custname %>
+                                        </span> -->
+                                                <!-- <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7">
+                                            </path>
+                                        </svg> -->
                                                 </button>
                                                 <!-- Dropdown -->
                                                 <div id="dropdownMenu"
@@ -78,22 +79,22 @@
                                         <% List<Orderprod> op = (List<Orderprod>) request.getAttribute("cartprods"); %>
                                                 <% if (op.isEmpty()) { %>
                                                     <div
-                                                        class="flex flex-col items-center bg-gray-100 m-4 rounded-lg text-center text-lg text-red-600 font-semibold mt-10">
-                                                        <img src="/images/empty-cart.svg" alt="Empty Cart" class="mb-2"
-                                                            style="width: 300px;">
+                                                        class="w-[55vw] mx-auto flex flex-col items-center bg-gray-800/40 backdrop-blur-lg border-gray-800 border-b-4 m-10 rounded-xl shadow-xl text-center text-lg text-amber-400 font-semibold mt-1">
+                                                        <img src="/images/empty-cart.svg" alt="Empty Cart"
+                                                            class="lg:w-[35vw] h-auto">
                                                         <p class="mb-4 p-2 ">No products in your cart right now.</p>
                                                         <a type="button" href="customerhome"
-                                                            class="bg-blue-600 m-4 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md shadow">
+                                                            class="bg-blue-600 m-4 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md shadow-md">
                                                             Keep Shopping</a>
                                                     </div>
                                                     <% } else { %>
 
                                                         <!-- Table -->
-                                                        <div class="mt-6 m-4 rounded-lg shadow border"
-                                                            style="overflow-x: auto;">
-                                                            <table class="min-w-full bg-white text-sm sm:text-base">
+                                                        <div
+                                                            class="mt-6 m-8 rounded-lg overflow-x-auto">
+                                                            <table class="min-w-full rounded-lg text-md sm:text-base">
                                                                 <thead
-                                                                    class="bg-gray-100 text-gray-700 text-base font-semibold">
+                                                                    class="bg-slate-800 rounded text-gray-100 text-base font-semibold">
                                                                     <tr class="text-center">
                                                                         <th class="px-6 py-4">Image</th>
                                                                         <th class="px-6 py-4">Product</th>
@@ -124,29 +125,30 @@
                                                                         disableBuy = true; }
                                                                         %>
                                                                         <tr
-                                                                            class="border-t text-center hover:bg-gray-50 align-middle">
+                                                                            class="bg-gray-800/50 backdrop-blur-xl border-gray-300 border-t text-gray-200 text-center hover:bg-gray-800/60 transition-all ">
                                                                             <td class="py-3 px-4">
                                                                                 <img src="<%= path %>"
                                                                                     alt="Order <%= oid %>"
-                                                                                    class="object-cover rounded shadow-md mx-auto"
-                                                                                    style="width: 120px; height: 120px;" />
+                                                                                    class="w-full h-auto object-cover rounded shadow-md mx-auto" />
                                                                             </td>
                                                                             <td
-                                                                                class="px-6 py-4 font-semibold whitespace-nowrap">
+                                                                                class="px-4 py-4 font-semibold max-w-xs truncate">
                                                                                 <%= p_name %>
                                                                             </td>
-                                                                            <td class="px-6 py-4 text-sm max-w-xs">
+                                                                            <td
+                                                                                class="px-4 py-4 text-sm max-w-xs truncate">
                                                                                 <%= p_pd %>
                                                                             </td>
-                                                                            <td class="px-6 py-4 text-sm">
+                                                                            <td class="px-4 py-4 text-sm">
                                                                                 <%= s_name %>
                                                                             </td>
-                                                                            <td class="px-6 py-4">
+                                                                            <td class="px-4 py-4">
                                                                                 <%= avlqty %>
                                                                             </td>
-                                                                            <td class="px-6 py-4">₹<%= p_price %>
+                                                                            <td class="px-4 py-4 font-semibold">₹<%=
+                                                                                    p_price %>
                                                                             </td>
-                                                                            <td class="px-6 py-4">
+                                                                            <td class="px-4 py-4">
                                                                                 <div
                                                                                     class="flex border rounded-lg overflow-hidden justify-center items-center gap-2">
                                                                                     <form action="Subprodcartval"
@@ -155,7 +157,7 @@
                                                                                             name="order_id"
                                                                                             value="<%= oid %>">
                                                                                         <button
-                                                                                            class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-2 py-1 rounded-l text-md">−</button>
+                                                                                            class="bg-gray-500 hover:bg-gray-600 text-gray-100 px-2 py-1 rounded-l text-md">−</button>
                                                                                     </form>
                                                                                     <input type="text"
                                                                                         value="<%= bqty %>" readonly
@@ -167,20 +169,20 @@
                                                                                             name="order_id"
                                                                                             value="<%= oid %>">
                                                                                         <button
-                                                                                            class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-2 py-1 rounded-r text-md">+</button>
+                                                                                            class="bg-gray-500 hover:bg-gray-600 text-gray-100 px-2 py-1 rounded-r text-md">+</button>
                                                                                     </form>
                                                                                 </div>
                                                                             </td>
-                                                                            <td class="px-6 py-4 font-medium">₹<%= cost
-                                                                                    %>
+                                                                            <td
+                                                                                class="px-4 py-4 text-green-400 font-medium">
+                                                                                ₹<%= cost %>
                                                                             </td>
-                                                                            <td class="px-6 py-4">
+                                                                            <td class="px-4 py-4">
                                                                                 <form action="Delcart" method="post">
                                                                                     <input type="hidden" name="order_id"
                                                                                         value="<%= oid %>">
                                                                                     <button type="submit"
-                                                                                        class="flex items-center justify-center gap-1 px-4 py-2 rounded-md font-semibold text-md"
-                                                                                        style="background-color: #ef5461;">
+                                                                                        class="bg-red-500 hover:bg-red-600 border-gray-100 border text-white flex items-center justify-center gap-1 px-4 py-2 rounded-lg font-semibold text-md">
                                                                                         <img src="/images/bin.png"
                                                                                             alt="Delete"
                                                                                             class="h-4 w-4" />
@@ -203,7 +205,7 @@
                                                         <% if (nobuy==0) { %>
                                                             <!-- Total and Buy Now -->
                                                             <div
-                                                                class="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4">
+                                                                class="flex flex-col sm:flex-row justify-center items-center mt-6 gap-4">
                                                                 <p class="text-xl font-semibold text-green-500">Total: ₹
                                                                     <%= total %>
                                                                 </p>

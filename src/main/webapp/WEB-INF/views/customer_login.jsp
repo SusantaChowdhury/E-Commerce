@@ -14,7 +14,7 @@
             <!-- Brand Header -->
             <div class="text-center">
                 <img src="/images/SwiftMart.png" alt="SwiftMart Logo" class="h-20 mx-auto rounded-2xl shadow-xl" />
-                <h1 class="text-3xl font-bold text-blue-700 mt-3">Welcome to SwiftMart</h1>
+                <h1 class="text-3xl font-bold text-blue-700 mt-3">Login as Customer</h1>
                 <p class="text-sm text-gray-500 mt-1">Login to continue shopping with us</p>
                 <a href="/" class="text-sm text-blue-600 hover:underline mt-2 inline-block">← Return to Home Page</a>
             </div>

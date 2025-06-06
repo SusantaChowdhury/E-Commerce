@@ -12,6 +12,7 @@
                                 <head>
                                     <meta charset="UTF-8">
                                     <title>Customer Cart</title>
+                                    <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                                     <link rel="stylesheet" href="/css/output.css" />
                                 </head>
                                 <% Customer c=(Customer)session.getAttribute("customer"); int custid=c.getId(); String
@@ -21,42 +22,43 @@
                                         style="background-image: linear-gradient(to top, rgb(81, 3, 81), rgb(37, 197, 197));">
 
                                         <!-- Navbar -->
-                                        <nav class="bg-gray-900 text-gray-100 px-4 rounded-b-lg shadow">
+                                        <nav class="bg-gray-900 text-gray-100 px-4 shadow">
                                             <div class="flex flex-wrap justify-between items-center py-2">
                                                 <!-- Logo -->
-                                                <a href="/" class="flex m-2 items-center space-x-3">
+                                                <a href="customerhome" class="flex m-2 items-center space-x-3">
                                                     <img src="/images/SwiftMart.png" class="h-14 rounded-xl shadow-lg"
                                                         alt="SwiftMart Logo" />
-                                                    <span class="text-2xl font-semibold text-white">SwiftMart™</span>
+                                                    <span
+                                                        class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                                 </a>
 
                                                 <!-- Navigation Links -->
                                                 <div class="flex gap-4 items-center text-sm sm:text-base">
                                                     <a href="customerhome"
-                                                        class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Products</a>
+                                                        class="py-1 hover:text-cyan-400 font-medium">Products</a>
                                                     <a href="custcart"
-                                                        class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Cart</a>
-                                                    <a href="custordrhist"
-                                                        class="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Orders</a>
+                                                        class="py-1 hover:text-cyan-400 font-medium">Cart</a>
+                                                    <a href="custordrhist" class="text-cyan-400 border-b-3">Orders</a>
 
                                                     <!-- User Dropdown -->
-                                                    <div class="relative inline-block text-left">
+                                                    <div class="relative inline-block text-left mr-2">
                                                         <button id="dropdownButton" onclick="toggleDropdown()"
                                                             class="h-12 w-12 flex items-center gap-2 px-4 py-2">
                                                             <% String[]
                                                                 nameParts=custname.trim().split(" "); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
-                            <div class=" flex items-center justify-center text-gray-700 font-semibold text-2xl shadow"
-                                                                style="width: 50px; height: 50px; border-radius: 50%; background-color: rgb(32, 220, 220); border: 3px solid white;">
+                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                                bg-cyan-400 text-gray-700 font-semibold text-2xl
+                                                                shadow">
                                                                 <%= initials %>
                                                     </div>
-                                                    <span class="hidden sm:inline text-white font-medium">
-                                                        <%= custname %>
-                                                    </span>
-                                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
-                                                        stroke-width="2" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M19 9l-7 7-7-7"></path>
-                                                    </svg>
+                                                    <!-- <span class="hidden text-white font-medium">
+                                            <%= custname %>
+                                        </span> -->
+                                                    <!-- <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                            stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7">
+                                            </path>
+                                        </svg> -->
                                                     </button>
                                                     <!-- Dropdown -->
                                                     <div id="dropdownMenu"
@@ -78,30 +80,37 @@
                                             <% List<Orderhist> op = (List<Orderhist>) request.getAttribute("ordhist");
                                                     if(op == null || op.isEmpty()) {
                                                     %>
-                                                    <p class="text-center text-gray-600 text-lg">No orders available.
-                                                    </p>
+                                                    <div
+                                                        class="w-[55vw] mx-auto flex flex-col items-center bg-gray-800/40 backdrop-blur-lg border-gray-800 border-b-4 m-10 rounded-xl shadow-xl text-center text-lg text-amber-400 font-semibold mt-1">
+                                                        <img src="/images/empty-box.svg" alt="Empty Cart"
+                                                            class="lg:w-[35vw] h-auto">
+                                                        <p class="p-2 ">You haven't ordered anything yet.</p>
+
+                                                        <a type="button" href="customerhome"
+                                                            class="bg-blue-600 m-4 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md shadow-md">
+                                                            Start shopping now!</a>
+                                                    </div>
                                                     <% } else { %>
 
-                                                        <div class="rounded" style="overflow-x: auto;">
+                                                        <div class="w-full rounded overflow-x-auto">
                                                             <table
-                                                                class="min-w-full m-4 rounded-lg bg-white shadow-md overflow-hidden"
-                                                                style="border-radius: 8px;">
+                                                                class="min-w-full rounded-lg bg-gray-800/50 backdrop-blur-xl shadow-md">
                                                                 <thead
-                                                                    class="bg-blue-600 text-lg font-semibold text-white">
-                                                                    <tr>
-                                                                        <th class="py-3 px-4 text-left">Image</th>
-                                                                        <th class="py-3 px-4 text-left">Product</th>
-                                                                        <th class="py-3 px-4 text-left">Details</th>
-                                                                        <th class="py-3 px-4 text-left">Seller</th>
-                                                                        <th class="py-3 px-4 text-left">Qty</th>
-                                                                        <th class="py-3 px-4 text-left">Price</th>
-                                                                        <th class="py-3 px-4 text-left">Subtotal</th>
-                                                                        <th class="py-3 px-4 text-left">Date & Time</th>
-                                                                        <th class="py-3 px-4 text-left">Status</th>
-                                                                        <th class="py-3 px-4 text-left">Action</th>
+                                                                    class="bg-slate-800 text-base font-semibold text-white">
+                                                                    <tr class="text-center">
+                                                                        <th class="py-3 px-4 ">Image</th>
+                                                                        <th class="py-3 px-4 ">Product</th>
+                                                                        <th class="py-3 px-4 ">Details</th>
+                                                                        <th class="py-3 px-4 ">Seller</th>
+                                                                        <th class="py-3 px-4 ">Qty</th>
+                                                                        <th class="py-3 px-4 ">Price</th>
+                                                                        <th class="py-3 px-4 ">Subtotal</th>
+                                                                        <th class="py-3 px-4 ">Date & Time</th>
+                                                                        <th class="py-3 px-4 ">Status</th>
+                                                                        <th class="py-3 px-4 ">Action</th>
                                                                     </tr>
                                                                 </thead>
-                                                                <tbody class="divide-y divide-gray-200">
+                                                                <tbody>
                                                                     <% for(Orderhist x : op) { int oid=x.getId(); String
                                                                         p_name=x.getProductname(); String
                                                                         p_pd=x.getProductdesc(); Double
@@ -126,17 +135,19 @@
                                                                         statusmessage = "Ongoing";
                                                                         }
                                                                         %>
-                                                                        <tr>
+                                                                        <tr
+                                                                            class="hover:bg-gray-800/50 transition border-gray-400 border-t-1 duration-200 text-gray-200 text-center">
                                                                             <td class="py-3 px-4">
                                                                                 <img src="<%= x.getOimg() %>"
                                                                                     alt="Order <%= oid %>"
-                                                                                    class="object-cover rounded"
-                                                                                    style="width: 300px;" />
+                                                                                    class="w-full h-auto object-cover rounded" />
                                                                             </td>
-                                                                            <td class="py-3 px-4 font-semibold">
+                                                                            <td
+                                                                                class="py-3 px-4 font-semibold max-w-xs truncate">
                                                                                 <%= p_name %>
                                                                             </td>
-                                                                            <td class="py-3 px-4 text-sm text-gray-600">
+                                                                            <td
+                                                                                class="py-3 px-4 text-sm text-gray-300 max-w-xs truncate">
                                                                                 <%= p_pd %>
                                                                             </td>
                                                                             <td class="py-3 px-4">
@@ -148,7 +159,7 @@
                                                                             <td class="py-3 px-4">₹<%= p_price %>
                                                                             </td>
                                                                             <td
-                                                                                class="py-3 px-4 font-semibold text-green-700">
+                                                                                class="py-3 px-4 font-semibold text-green-400">
                                                                                 ₹<%= cost %>
                                                                             </td>
                                                                             <td class="py-3 px-4 text-sm">
@@ -156,13 +167,13 @@
                                                                             </td>
                                                                             <% String statusColor="Ongoing"
                                                                                 .equals(statusmessage)
-                                                                                ? "text-yellow-600" : "text-blue-700" ;
+                                                                                ? "text-yellow-600" : "text-green-400" ;
                                                                                 %>
                                                                                 <td
                                                                                     class="py-3 px-4 font-medium <%= statusColor %>">
                                                                                     <%= statusmessage %>
                                                                                 </td>
-                                                                                <td class="py-3 px-4">
+                                                                                <td class="py-3 px-4 text-center">
                                                                                     <% if("ongoing".equals(statusw)) {
                                                                                         %>
                                                                                         <form action="cancelord"
@@ -175,7 +186,7 @@
                                                                                         </form>
                                                                                         <% } else { %>
                                                                                             <span
-                                                                                                class="text-gray-500 text-sm">-</span>
+                                                                                                class="text-gray-300 text-sm">Non-cancellable</span>
                                                                                             <% } %>
                                                                                 </td>
                                                                         </tr>

@@ -1,5 +1,6 @@
 package com.example.ecom.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,35 +11,37 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Product {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@ManyToOne(optional = false) 
+
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "seller_id", nullable = false)
-    private Seller seller;
-	
+	private Seller seller;
+
+	@Column(length = 1000)
 	private String name;
-	
+
 	private String imgp;
-	
+
 	private double price;
-	
+
 	private int quantity;
-	
+
+	@Column(length = 1000)
 	private String pd;
-	
+
 	private String perm;
-	
+
 	public Product() {
 	}
-	
+
 	public Product(Seller P_seller, String name, double price, String pd, int quantity) {
-		this.seller=P_seller;
-		this.name=name;
-		this.price=price;
-		this.pd=pd;		
-		this.perm="NO";
-		this.quantity=quantity;
+		this.seller = P_seller;
+		this.name = name;
+		this.price = price;
+		this.pd = pd;
+		this.perm = "NO";
+		this.quantity = quantity;
 	}
 
 	public int getId() {
@@ -96,5 +99,5 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	    
+
 }

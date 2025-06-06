@@ -22,31 +22,28 @@
                                 <!-- Navbar -->
                                 <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
                                     <div class="flex flex-wrap justify-between items-center py-4">
-                                        <a href="adminhome.jsp" class="flex items-center space-x-3">
+                                        <a href="adminhome" class="flex items-center space-x-3">
                                             <img src="/images/SwiftMart.png" class="h-14 rounded-2xl"
                                                 alt="SwiftMart Logo" />
-                                            <span class="text-2xl font-bold text-white">SwiftMart™</span>
+                                            <span
+                                                class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                         </a>
                                         <div
                                             class="flex flex-wrap justify-center gap-4 text-base font-medium mt-4 md:mt-0">
                                             <a href="adminhome" class="hover:text-cyan-500 transition">Active
                                                 Sellers</a>
-                                            <a href="passivesellers" class="hover:text-cyan-400 transition">Pending
+                                            <a href="passivesellers" class="text-cyan-400 border-b-2">Pending
                                                 Sellers</a>
                                             <a href="customerlist" class="hover:text-cyan-400 transition">Customers</a>
-                                            <a href="productlist" class="text-cyan-400 border-b-2">Products</a>
+                                            <a href="productlist" class="hover:text-cyan-400 transition">Products</a>
                                             <a href="orderslist" class="hover:text-cyan-400 transition">Orders</a>
                                         </div>
                                     </div>
                                 </nav>
 
 
-                                <!-- Welcome Header -->
-                                <div class="max-w-7xl mx-auto mt-6 px-4">
-                                    <h2 class="text-xl md:text-2xl font-semibold text-white mb-4">
-                                        Welcome Admin, <%= admi.getUsername() %>
-                                    </h2>
 
+                                <div class="max-w-7xl mx-auto mt-6 px-4">
 
                                     <!-- seller Details -->
                                     <div
@@ -60,30 +57,38 @@
 
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm sm:text-base">
                                             <div>
-                                                <p class="mb-1 text-gray-400">Name</p>
+                                                <p class="mb-1 text-gray-400">Name:</p>
                                                 <p class="text-white font-medium">
                                                     <%= s.getName() %>
                                                 </p>
                                             </div>
                                             <div>
-                                                <p class="mb-1 text-gray-400">Email</p>
+                                                <p class="mb-1 text-gray-400">Email:</p>
                                                 <p class="text-white font-medium">
                                                     <%= s.getEmail() %>
                                                 </p>
                                             </div>
                                             <div>
-                                                <p class="mb-1 text-gray-400">Seller ID</p>
+                                                <p class="mb-1 text-gray-400">Seller ID:</p>
                                                 <p class="text-white font-medium">#<%= s.getId() %>
                                                 </p>
                                             </div>
                                             <div>
-                                                <p class="mb-1 text-gray-400">Permission Status</p>
+                                                <p class="mb-1 text-gray-400">Permission Status:</p>
                                                 <p class="text-white font-medium">
-                                                    <%= s.getPerm() %>
+                                                    <%if(s.getPerm().equals("YES")){%>
+                                                        <span
+                                                            class="text-green-700 bg-green-200 border-green-400 border-2 px-2 py-1 rounded-full">
+                                                            Approved</span>
+                                                        <%}else{%>
+                                                            <span
+                                                                class="text-red-700 bg-red-200 border-red-400 border-2 px-2 py-1 rounded-full">
+                                                                Unapproved</span>
+                                                            <%}%>
                                                 </p>
                                             </div>
                                             <div class="md:col-span-2">
-                                                <p class="mb-1 text-gray-400">Documents</p>
+                                                <p class="mb-1 text-gray-400">Documents:</p>
                                                 <a href="<%= s.getDocs() %>" target="_blank"
                                                     class="inline-block text-cyan-400 font-semibold hover:underline hover:text-cyan-300 transition">
                                                     <img src="/images/documents.svg"
@@ -114,8 +119,15 @@
                                             Pending Products for Approval</h2>
 
                                         <% if(plist.isEmpty()) { %>
-                                            <div class="text-center text-lg text-gray-300 mt-10">
-                                                No products pending permission at the moment.
+                                            <div class="text-center text-lg text-gray-300">
+                                                <div
+                                                    class="flex flex-col justify-center items-center bg-gray-800/40 backdrop-blur-md rounded-lg m-4">
+                                                    <img src="/images/empty-box.svg" class="h-auto w-fit mx-auto"
+                                                        alt="No Products">
+                                                    <p class="text-lg text-amber-300">No products pending permission at
+                                                        the moment.</p>
+                                                    <p class="text-md text-gray-300 m-2">Please check back later.</p>
+                                                </div>
                                             </div>
                                             <% } else { %>
 
@@ -127,9 +139,9 @@
 
                                                         <!-- Single Product Card -->
                                                         <div
-                                                            class="bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
-                                                            <img src="<%= path %>" alt="Product <%= p_id %>"
-                                                                class="w-fit h-auto object-cover rounded-t-xl border-b border-gray-700" />
+                                                            class="bg-gray-800/40 backdrop-blur-lg rounded-xl border-gray-800 border-b-4 shadow-md overflow-hidden hover:shadow-xl hover:bg-gray-800/50 hover:-translate-y-1 transition-all">
+                                                            <img src="<%= path %>" alt="Product"
+                                                                class="w-full h-auto object-cover rounded-lg p-4" />
 
                                                             <div class="p-4 flex flex-col gap-2">
                                                                 <h3
@@ -152,7 +164,7 @@
                                                                         value="<%= p_id %>">
                                                                     <button type="submit"
                                                                         class="w-full bg-cyan-600 hover:bg-cyan-500 text-white py-2 px-4 rounded-md font-semibold transition">
-                                                                        ✅ Approve Product
+                                                                        Approve Product
                                                                     </button>
                                                                 </form>
                                                             </div>

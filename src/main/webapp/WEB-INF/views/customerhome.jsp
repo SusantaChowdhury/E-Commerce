@@ -20,27 +20,26 @@
                             <nav class="bg-gray-900 text-gray-100 px-4 shadow">
                                 <div class="flex flex-wrap justify-between items-center py-2">
                                     <!-- Logo -->
-                                    <a href="/" class="flex m-2 items-center space-x-3">
+                                    <a href="customerhome" class="flex m-2 items-center space-x-3">
                                         <img src="/images/SwiftMart.png" class="h-14 rounded-xl shadow-lg"
                                             alt="SwiftMart Logo" />
-                                        <span class="text-2xl font-semibold text-white">SwiftMart™</span>
+                                        <span class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                     </a>
 
                                     <!-- Navigation Links -->
                                     <div class="flex gap-4 items-center text-sm sm:text-base">
                                         <a href="customerhome"
-                                            class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Products</a>
-                                        <a href="custcart"
-                                            class="bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Cart</a>
-                                        <a href="custordrhist"
-                                            class="bg-gray-600 px-4 py-2 rounded hover:bg-gray-700 font-medium shadow">Orders</a>
+                                            class="text-cyan-400 border-b-2 font-medium transition">Products</a>
+                                        <a href="custcart" class=" hover:text-cyan-400 font-medium transition">Cart</a>
+                                        <a href="custordrhist" class=" hover:text-cyan-400 font-medium transition">Orders</a>
 
                                         <!-- User Dropdown -->
                                         <div class="relative inline-block text-left mr-2">
                                             <button id="dropdownButton" onclick="toggleDropdown()"
                                                 class="h-12 w-12 flex items-center gap-2 px-4 py-2">
                                                 <% String[] nameParts=custname.trim().split(" "); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
-                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3 bg-cyan-400 text-gray-700 font-semibold text-2xl shadow">
+                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                    bg-cyan-400 text-gray-700 font-semibold text-2xl">
                                                     <%= initials %>
                                         </div>
                                         <!-- <span class="hidden text-white font-medium">
@@ -67,7 +66,8 @@
 
                             <!-- Greeting -->
                             <div class="text-3xl font-bold my-6 text-center text-gray-100">
-                                Welcome to SwiftMart, <%= custname %>
+                                <h1>Welcome, <%= custname %>!</h1>
+                                <p class="text-lg text-gray-300">Explore our products and enjoy shopping!</p>
                             </div>
 
                             <!-- Products Grid -->
@@ -78,7 +78,7 @@
                                             available right now.</div>
                                         <% } else { %>
                                             <section
-                                                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                                class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
                                                 <% for (Product x : perm_p) { int pd=x.getId(); int
                                                     sd=x.getSeller().getId(); String p_name=x.getName(); String
                                                     p_pd=x.getPd(); Double p_price=x.getPrice(); int
@@ -87,25 +87,25 @@
 
                                                     <!-- Product Card -->
                                                     <div
-                                                        class="bg-white rounded-xl mb-4 shadow-md hover:shadow-xl hover:bg-gray-300 transition-all duration-300 overflow-hidden">
+                                                        class="bg-gray-800/50 backdrop:blur-xl border-gray-800 border-b-4 mb-0 rounded-xl shadow-xl hover:shadow-2xl hover:-translate-y-1 hover:bg-gray-800/60 transition-all duration-300 overflow-hidden">
                                                         <img src="<%= path %>" alt="Product <%= pd %>"
-                                                            class="w-full h-auto object-cover">
+                                                            class="w-full h-auto object-cover p-4">
                                                         <div class="p-4 space-y-2">
-                                                            <h3 class="text-lg font-semibold text-gray-800">
+                                                            <h3 class="text-lg font-semibold text-gray-100">
                                                                 <%= p_name %>
                                                             </h3>
-                                                            <p class="text-gray-600 text-sm">
+                                                            <p class="text-gray-400 text-sm">
                                                                 <%= p_pd %>
                                                             </p>
-                                                            <p class="text-gray-500 text-sm">Remaining: <%= qty %>
+                                                            <p class="text-gray-300 text-sm">Remaining: <%= qty %>
                                                             </p>
-                                                            <p class="text-gray-500 text-sm">Seller: <%= s_name %>
+                                                            <p class="text-gray-300 text-sm">Seller: <%= s_name %>
                                                             </p>
-                                                            <p class="text-xl font-bold text-green-600">₹<%= p_price %>
+                                                            <p class="text-xl font-bold text-amber-400">₹<%= p_price %>
                                                             </p>
 
-                                                            <div class="w-full flex gap-2 mt-4">
-                                                                <form action="Addcart" method="post" class="">
+                                                            <div class="w-full flex gap-4 mt-2 justify-center">
+                                                                <form action="Addcart" method="post">
                                                                     <input type="hidden" name="product_id"
                                                                         value="<%= pd %>">
                                                                     <button type="submit"
@@ -182,9 +182,9 @@
                                     }
                                 });
 
-                                // setInterval(function () {
-                                //     location.reload();
-                                // }, 5000);
+                                setInterval(function () {
+                                    location.reload();
+                                }, 5000);
                             </script>
                         </body>
 

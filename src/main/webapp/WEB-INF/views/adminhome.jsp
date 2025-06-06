@@ -17,9 +17,10 @@
                         <!-- Navbar -->
                         <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
                             <div class="flex flex-wrap justify-between items-center py-4">
-                                <a href="adminhome.jsp" class="flex items-center space-x-3">
+                                <a href="adminhome" class="flex items-center space-x-3">
                                     <img src="/images/SwiftMart.png" class="h-14 rounded-2xl" alt="SwiftMart Logo" />
-                                    <span class="text-2xl font-bold text-white">SwiftMart™</span>
+                                    <span
+                                        class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
                                 <div class="flex flex-wrap justify-center gap-4 text-base font-medium mt-4 md:mt-0">
                                     <a href="adminhome" class="text-cyan-400 border-b-2">Active
@@ -52,7 +53,7 @@
                                             <% for (Seller x : perm_pd) { String p_name=x.getName(); String
                                                 p_id=String.valueOf(x.getId()); String p_mail=x.getEmail(); %>
                                                 <div
-                                                    class="bg-gray-800/50 backdrop:blur-xl border-b-4 border-gray-800 rounded-xl shadow-xl p-6 flex flex-col justify-between text-gray-200 hover:shadow-2xl hover:-translate-y-1 transition">
+                                                    class="bg-gray-800/50 backdrop:blur-xl border-b-4 border-gray-800 rounded-xl shadow-xl p-6 flex flex-col justify-between text-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200">
                                                     <div>
                                                         <h3 class="text-xl font-semibold mb-1">
                                                             <%= p_name %>

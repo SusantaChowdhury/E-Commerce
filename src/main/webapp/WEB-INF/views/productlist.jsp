@@ -18,10 +18,11 @@
                             <!-- Navbar -->
                             <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
                                 <div class="flex flex-wrap justify-between items-center py-4">
-                                    <a href="adminhome.jsp" class="flex items-center space-x-3">
+                                    <a href="adminhome" class="flex items-center space-x-3">
                                         <img src="/images/SwiftMart.png" class="h-14 rounded-2xl"
                                             alt="SwiftMart Logo" />
-                                        <span class="text-2xl font-bold text-white">SwiftMart™</span>
+                                        <span
+                                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                     </a>
                                     <div class="flex flex-wrap justify-center gap-4 text-base font-medium mt-4 md:mt-0">
                                         <a href="adminhome" class="hover:text-cyan-500 transition">Active

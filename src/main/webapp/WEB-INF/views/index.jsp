@@ -5,6 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Welcome to SwiftMart™</title>
+        <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/css/output.css" />
     </head>
 
@@ -15,17 +16,19 @@
             <div class="flex flex-wrap justify-between items-center my-2">
                 <a href="/" class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
                     <img src="/images/SwiftMart.png" class="h-16 rounded-2xl" alt="SwiftMart Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                    <span
+                        class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                 </a>
                 <div class="flex justify-center items-center text-lg font-medium gap-3">
-                    <a href="/" class="px-2 text-cyan-500">Home</a>
-                    <a href="aboutus" class="px-2 hover:text-cyan-500">About</a>
-                    <a href="contactus" class="px-2 hover:text-cyan-500">Contact
+                    <a href="/" class="px-1 border-b-2 text-cyan-500">Home</a>
+                    <a href="aboutus" class="px-1 hover:text-cyan-500 transition">About</a>
+                    <a href="contactus" class="px-1 hover:text-cyan-500 transition">Contact
                         Us</a>
-                    <a href="Adminpage" class="px-2 hover:text-cyan-500">Admin</a>
+                    <a href="Adminpage" class="px-1 hover:text-cyan-500 transition">Admin</a>
                 </div>
             </div>
         </nav>
+
         <div class="flex flex-col items-center justify-center mt-8">
             <h1 class="text-4xl font-semibold text-white mb-4 font-mono">Welcome to <span
                     class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-transparent font-sans font-bold">SwiftMart™</span>
@@ -77,8 +80,6 @@
                 </div>
             </div>
         </section>
-
-
 
         <!-- footer -->
         <footer class="rounded-lg shadow-sm bg-gray-900 m-4" style="width: 96vw;">
