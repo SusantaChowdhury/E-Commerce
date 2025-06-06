@@ -7,7 +7,7 @@
 
                 <head>
                     <meta charset="UTF-8">
-                    <title>SelrPrdQntChng</title>
+                    <title>Edit Quantity</title>
                     <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                     <link rel="stylesheet" href="/css/output.css" />
 
