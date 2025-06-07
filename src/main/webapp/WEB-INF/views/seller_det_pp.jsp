@@ -9,6 +9,7 @@
                     <head>
                         <meta charset="UTF-8">
                         <title>Seller Details</title>
+                        <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                         <link rel="stylesheet" href="/css/output.css" />
                     </head>
                     <% Admin admi=(Admin)session.getAttribute("admin"); String

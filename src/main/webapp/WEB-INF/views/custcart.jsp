@@ -17,8 +17,8 @@
                             <% Customer c=(Customer)session.getAttribute("customer"); int custid=c.getId(); String
                                 custname=c.getName(); %>
 
-                                <body class="min-h-screen"
-                                    style="background-image: linear-gradient(to top, rgb(81, 3, 81), rgb(37, 197, 197));">
+                                <body
+                                    class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
 
                                     <!-- Navbar -->
                                     <nav class="bg-gray-900 text-gray-100 px-4 shadow">
@@ -90,8 +90,7 @@
                                                     <% } else { %>
 
                                                         <!-- Table -->
-                                                        <div
-                                                            class="mt-6 m-8 rounded-lg overflow-x-auto">
+                                                        <div class="mt-6 m-8 rounded-lg overflow-x-auto">
                                                             <table class="min-w-full rounded-lg text-md sm:text-base">
                                                                 <thead
                                                                     class="bg-slate-800 rounded text-gray-100 text-base font-semibold">
@@ -145,8 +144,9 @@
                                                                             <td class="px-4 py-4">
                                                                                 <%= avlqty %>
                                                                             </td>
-                                                                            <td class="px-4 py-4 font-semibold">₹<%=
-                                                                                    p_price %>
+                                                                            <td
+                                                                                class="px-4 py-4 font-semibold text-yellow-500">
+                                                                                ₹<%= p_price %>
                                                                             </td>
                                                                             <td class="px-4 py-4">
                                                                                 <div

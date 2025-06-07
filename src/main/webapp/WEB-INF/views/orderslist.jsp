@@ -7,7 +7,7 @@
 
                 <head>
                     <meta charset="UTF-8">
-                    <title>Customers List</title>
+                    <title>Orders</title>
                     <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                     <link rel="stylesheet" href="/css/output.css" />
                 </head>
@@ -22,7 +22,8 @@
                                     <span
                                         class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
-                                <div class="flex flex-wrap justify-center sm:gap-12 items-center lg:gap-6 text-base font-medium mt-4 md:mt-0">
+                                <div
+                                    class="flex flex-wrap justify-center sm:gap-12 items-center lg:gap-6 text-base font-medium mt-4 md:mt-0">
                                     <a href="adminhome" class="hover:text-cyan-500 transition">Active
                                         Sellers</a>
                                     <a href="passivesellers" class="hover:text-cyan-400 transition">Pending
@@ -57,134 +58,213 @@
                             </div>
                         </nav>
                         <!-- Message -->
-                            <div class="text-center py-8 px-4">
-                                <h2 class="text-2xl font-semibold py-2 border-b">The Orders Placed by Customers</h2>
-                            </div>
+                        <div class="text-center py-8 px-4">
+                            <h2 class="text-2xl font-semibold py-2 border-b">The Orders Placed by Customers</h2>
+                        </div>
 
-                        <div class="max-w-7xl mx-auto px-4">                            
+                        <div class="max-w-7xl mx-auto px-4">
 
                             <% List<Orderhist> op = (List<Orderhist>)request.getAttribute("allordhist");
                                     if(op.isEmpty()){ %>
                                     <div class="text-white text-lg">No orders present now.</div>
                                     <% } else { %>
 
-                                        <!-- Orders Section -->
-                                        <section class="grid lg:grid-cols-1 md:grid-cols-2 gap-6 p-6">
-                                            <% for(Orderhist x : op) { int oid=x.getId(); String
-                                                p_name=x.getProductname(); String p_pd=x.getProductdesc(); Double
-                                                p_price=x.getProductprice(); int p_id=x.getProdid(); int
-                                                bqty=x.getBqty(); int c_id=x.getCustid(); int s_id=x.getSelrid(); String
-                                                c_name=x.getCustname(); String s_name=x.getSellername(); Double
-                                                cost=p_price * bqty; String dt=x.getDatetime(); Double
-                                                taken=x.getTaken(); Double ref=x.getRefunded(); String
-                                                statusw=x.getOrderstatus(); String statusmessage="" ; if
-                                                (statusw.equals("completed")) { statusmessage=ref> 0.0 ? "Refunded" :
-                                                "Transaction done";
-                                                } else if (statusw.equals("cancelled")) {
-                                                statusmessage = "Cancelled";
-                                                } else if (statusw.equals("tfailed") && ref > 0) {
-                                                statusmessage = "Transaction failed";
-                                                } else if (statusw.equals("ongoing")) {
-                                                statusmessage = "Ongoing";
-                                                }
-                                                %>
-
-                                                <div
-                                                    class="bg-gray-800/50 backdrop-blur-md border-b-4 border-gray-800 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col sm:flex-row">
-                                                    <!-- Product Image -->
-                                                    <div class="w-full sm:w-1/3">
-                                                        <img src="<%= x.getOimg() %>" alt="Product <%= oid %>"
-                                                            class="w-full h-auto object-cover sm:h-full">
-                                                    </div>
-
-                                                    <!-- Order Details -->
-                                                    <div class="w-full sm:w-2/3 p-4 flex flex-col justify-between">
-                                                        <div class="space-y-4">
-                                                            <h2 class="text-lg md:text-xl font-semibold text-white">
-                                                                <%= p_name %>
-                                                            </h2>
-                                                            <p class="text-sm text-gray-300">
-                                                                <%= p_pd %>
-                                                            </p>
-
-                                                            <div class="text-sm text-gray-300 mt-2 space-y-3">
-                                                                <p><span
-                                                                        class="font-semibold text-gray-200">Seller:</span>
-                                                                    <%= s_name %> (ID: <%= s_id %>)
-                                                                </p>
-                                                                <p><span
-                                                                        class="font-semibold text-gray-200">Customer:</span>
-                                                                    <%= c_name %> (ID: <%= c_id %>)
-                                                                </p>
-                                                                <p><span class="font-semibold text-gray-200">Product
-                                                                        ID:</span>
-                                                                    <%= p_id %>
-                                                                </p>
-                                                                <p>
-                                                                    <span
-                                                                        class="font-semibold text-gray-200">Quantity:</span>
-                                                                    <%= bqty %> |
-                                                                        <span class="font-semibold">Unit Price:</span> ₹
-                                                                        <%= p_price %>
-                                                                </p>
-                                                                <p><span class="font-semibold text-gray-200">Total
-                                                                        Cost:</span> ₹<%= cost %>
-                                                                </p>
-                                                                <p><span
-                                                                        class="font-semibold text-gray-200">Date:</span>
-                                                                    <%= dt %>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-
-                                                        <!-- Action Section -->
-                                                        <div class="mt-4">
-                                                            <% if (statusw.equals("appeal")) { %>
-                                                                <div class="flex flex-wrap gap-2">
-                                                                    <form action="acceptcancel" method="post">
-                                                                        <input type="hidden" name="orderhist_id"
-                                                                            value="<%= oid %>">
-                                                                        <button type="submit"
-                                                                            class="px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white text-sm rounded-md transition">
-                                                                            Accept
-                                                                        </button>
-                                                                    </form>
-                                                                    <form action="rejectcancel" method="post">
-                                                                        <input type="hidden" name="orderhist_id"
-                                                                            value="<%= oid %>">
-                                                                        <button type="submit"
-                                                                            class="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm rounded-md transition">
-                                                                            Reject
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                                <% } else if (statusw.equals("cnc")) { %>
-                                                                    <p
-                                                                        class="text-yellow-400 text-sm font-semibold mb-1">
-                                                                        Can't be cancelled</p>
-                                                                    <form action="rejectcancel" method="post">
-                                                                        <input type="hidden" name="orderhist_id"
-                                                                            value="<%= oid %>">
-                                                                        <button type="submit"
-                                                                            class="px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white text-sm rounded-md transition">
-                                                                            Reject
-                                                                        </button>
-                                                                    </form>
-                                                                    <% } else { %>
-                                                                        <p
-                                                                            class="text-md w-fit border-cyan-400 border rounded p-2 font-semibold text-cyan-400">
-                                                                            <%= statusmessage %>
-                                                                        </p>
-                                                                        <% } %>
-                                                        </div>
-                                                    </div>
+                                        <!-- Admin View: All Customer Orders -->
+                                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+                                            <div
+                                                class="bg-gray-900/80 backdrop-blur-lg shadow-xl rounded-2xl border-b-4 border-gray-700 overflow-hidden">
+                                                <div class="px-6 py-4 bg-gray-900 border-b border-cyan-500">
+                                                    <h2 class="text-xl font-semibold text-cyan-400">All Customer Orders
+                                                    </h2>
                                                 </div>
 
-                                                <% } %>
-                                        </section>
+                                                <% if(op.isEmpty()) { %>
+                                                    <div class="p-6 text-white text-center">No orders available.</div>
+                                                    <% } else { %>
 
+                                                        <div class="overflow-x-auto">
+                                                            <table
+                                                                class="min-w-full divide-y divide-cyan-400 border-gray-800 text-sm text-left">
+                                                                <thead
+                                                                    class="bg-gray-800 text-cyan-300 text-sm text-center uppercase">
+                                                                    <tr>
+                                                                        <th class="px-6 py-3">Image</th>
+                                                                        <th class="px-6 py-3">Product</th>
+                                                                        <th class="px-6 py-3">Details</th>
+                                                                        <th class="px-6 py-3">Customer</th>
+                                                                        <th class="px-6 py-3">Seller</th>
+                                                                        <th class="px-6 py-3">Total</th>
+                                                                        <th class="px-6 py-3">Date</th>
+                                                                        <th class="px-6 py-3">Status</th>
+                                                                        <th class="px-6 py-3">Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody
+                                                                    class="text-gray-200 divide-y divide-gray-600">
+                                                                    <% for(Orderhist x : op) { int oid=x.getId(); String
+                                                                        p_name=x.getProductname(); String
+                                                                        p_pd=x.getProductdesc(); Double
+                                                                        p_price=x.getProductprice(); int
+                                                                        p_id=x.getProdid(); int bqty=x.getBqty(); int
+                                                                        c_id=x.getCustid(); int s_id=x.getSelrid();
+                                                                        String c_name=x.getCustname(); String
+                                                                        s_name=x.getSellername(); Double cost=p_price *
+                                                                        bqty; String dt=x.getDatetime(); Double
+                                                                        taken=x.getTaken(); Double ref=x.getRefunded();
+                                                                        String statusw=x.getOrderstatus(); String
+                                                                        statusmessage="" ; if
+                                                                        (statusw.equals("completed")) {
+                                                                        statusmessage=ref> 0.0 ? "Refunded" :
+                                                                        "Transaction Done";
+                                                                        } else if (statusw.equals("cancelled")) {
+                                                                        statusmessage = "Cancelled";
+                                                                        } else if (statusw.equals("tfailed") && ref > 0)
+                                                                        {
+                                                                        statusmessage = "Transaction Failed";
+                                                                        } else if (statusw.equals("ongoing")) {
+                                                                        statusmessage = "Ongoing";
+                                                                        } else if (statusw.equals("appeal")) {
+                                                                        statusmessage = "Cancel Requested";
+                                                                        } else if (statusw.equals("cnc")) {
+                                                                        statusmessage = "Can't be Cancelled";
+                                                                        }
 
+                                                                        String badgeColor = "bg-cyan-800 border-2 text-cyan-100";
+                                                                        if (statusmessage.contains("Refunded"))
+                                                                        badgeColor = "bg-green-700 border-2 text-green-300";
+                                                                        if (statusmessage.contains("Ongoing"))
+                                                                        badgeColor = "bg-yellow-700 border-2 text-yellow-100";
+                                                                        else if (statusmessage.contains("Cancelled"))
+                                                                        badgeColor = "bg-red-500 border-2 text-red-100";
+                                                                        else if (statusmessage.contains("Failed"))
+                                                                        badgeColor = "bg-yellow-300 border-2 text-yellow-700";
+                                                                        else if (statusmessage.contains("Requested"))
+                                                                        badgeColor = "bg-red-300 border-2 text-red-700";
+                                                                        else if (statusmessage.contains("Can't be"))
+                                                                        badgeColor = "bg-yellow-800 border-2 text-yellow-200";
+                                                                        %>
 
+                                                                        <tr
+                                                                            class="hover:bg-gray-900/40 text-left rounded-2xl transition-all duration-200">
+                                                                            <!-- Image -->
+                                                                            <td class="px-6 py-4 align-top">
+                                                                                <img src="<%= x.getOimg() %>"
+                                                                                    alt="Order <%= oid %>"
+                                                                                    class="h-16 w-16 object-cover rounded border border-gray-700 shadow">
+                                                                            </td>
+
+                                                                            <!-- Product -->
+                                                                            <td class="px-6 py-4 align-top space-y-1">
+                                                                                <p class="font-semibold text-cyan-300">
+                                                                                    <%= p_name %>
+                                                                                </p>
+                                                                                <p class="text-gray-400 text-xs">
+                                                                                    <%= p_pd %>
+                                                                                </p>
+                                                                                <p class="text-gray-500 text-xs">PID:
+                                                                                    <%= p_id %>
+                                                                                </p>
+                                                                            </td>
+
+                                                                            <!-- Quantity & Pricing -->
+                                                                            <td class="px-6 py-4 align-top text-sm">
+                                                                                <p class="mb-2">Qty: <%= bqty %>
+                                                                                </p>
+                                                                                <p>Price: <span class="text-yellow-500">₹<%= p_price %></span>
+                                                                                </p>                                                                                
+                                                                            </td>
+
+                                                                            <!-- Customer -->
+                                                                            <td class="px-6 py-4 align-top text-sm">
+                                                                                <p>
+                                                                                    <%= c_name %>
+                                                                                </p>
+                                                                                <p class="text-xs text-gray-400">ID: <%=
+                                                                                        c_id %>
+                                                                                </p>
+                                                                            </td>
+
+                                                                            <!-- Seller -->
+                                                                            <td class="px-6 py-4 align-top text-sm">
+                                                                                <p>
+                                                                                    <%= s_name %>
+                                                                                </p>
+                                                                                <p class="text-xs text-gray-400">ID: <%=
+                                                                                        s_id %>
+                                                                                </p>
+                                                                            </td>
+
+                                                                            <!-- Total -->
+                                                                            <td
+                                                                                class="px-6 py-4 align-top text-green-400 font-medium">
+                                                                                ₹<%= cost %>
+                                                                            </td>
+
+                                                                            <!-- Date -->
+                                                                            <td class="px-6 py-4 align-top text-xs">
+                                                                                <%= dt %>
+                                                                            </td>
+
+                                                                            <!-- Status -->
+                                                                            <td class="px-6 py-4 align-top text-center">
+                                                                                <span
+                                                                                    class="inline-block px-2 py-1 text-center rounded-full text-sm <%= badgeColor %>">
+                                                                                    <%= statusmessage %>
+                                                                                </span>
+                                                                            </td>
+
+                                                                            <!-- Action -->
+                                                                            <td class="px-6 py-4 align-top space-y-2">
+                                                                                <% if (statusw.equals("appeal")) { %>
+                                                                                    <form action="acceptcancel"
+                                                                                        method="post" class="mb-1">
+                                                                                        <input type="hidden"
+                                                                                            name="orderhist_id"
+                                                                                            value="<%= oid %>">
+                                                                                        <button type="submit"
+                                                                                            class="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white text-xs rounded transition">
+                                                                                            Accept
+                                                                                        </button>
+                                                                                    </form>
+                                                                                    <form action="rejectcancel"
+                                                                                        method="post">
+                                                                                        <input type="hidden"
+                                                                                            name="orderhist_id"
+                                                                                            value="<%= oid %>">
+                                                                                        <button type="submit"
+                                                                                            class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs rounded transition">
+                                                                                            Reject
+                                                                                        </button>
+                                                                                    </form>
+                                                                                    <% } else if (statusw.equals("cnc"))
+                                                                                        { %>
+                                                                                        <p
+                                                                                            class="text-yellow-400 text-xs mb-1">
+                                                                                            Can't be cancelled</p>
+                                                                                        <form action="rejectcancel"
+                                                                                            method="post">
+                                                                                            <input type="hidden"
+                                                                                                name="orderhist_id"
+                                                                                                value="<%= oid %>">
+                                                                                            <button type="submit"
+                                                                                                class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs rounded transition">
+                                                                                                Reject
+                                                                                            </button>
+                                                                                        </form>
+                                                                                        <% } else { %>
+                                                                                            <p
+                                                                                                class="text-xs text-cyan-400 font-medium">
+                                                                                                No action needed</p>
+                                                                                            <% } %>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% } %>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <% } %>
+                                            </div>
+                                        </div>
                                         <% } %>
                         </div>
 
