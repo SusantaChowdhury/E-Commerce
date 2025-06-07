@@ -56,11 +56,12 @@
                                 </div>
                             </div>
                         </nav>
+                        <!-- Message -->
+                            <div class="text-center py-8 px-4">
+                                <h2 class="text-2xl font-semibold py-2 border-b">The Orders Placed by Customers</h2>
+                            </div>
 
-                        <div class="max-w-7xl mx-auto mt-8 px-4">
-                            <h2 class="text-2xl font-semibold text-white mb-6 text-center">Here are all the orders
-                                placed by customers
-                            </h2>
+                        <div class="max-w-7xl mx-auto px-4">                            
 
                             <% List<Orderhist> op = (List<Orderhist>)request.getAttribute("allordhist");
                                     if(op.isEmpty()){ %>

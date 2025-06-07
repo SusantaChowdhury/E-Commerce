@@ -21,7 +21,8 @@
                                     <span
                                         class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
-                                <div class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-12 text-base font-medium mt-4 md:mt-0">
+                                <div
+                                    class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-12 text-base font-medium mt-4 md:mt-0">
                                     <a href="adminhome" class="hover:text-cyan-500 transition">Active
                                         Sellers</a>
                                     <a href="passivesellers" class="hover:text-cyan-400 transition">Pending Sellers</a>
@@ -56,7 +57,7 @@
 
                         <!-- Message -->
                         <div class="text-center py-8 px-4">
-                            <h2 class="text-3xl font-semibold">Here are the Customers:</h2>
+                            <h2 class="text-2xl font-semibold py-2 border-b">The Customers</h2>
                         </div>
                         <!-- Customer List Section -->
                         <div class="px-6 pb-12">

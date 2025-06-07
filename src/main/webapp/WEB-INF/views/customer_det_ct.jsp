@@ -12,6 +12,7 @@
                                 <head>
                                     <meta charset="UTF-8">
                                     <title>Customer Details</title>
+                                    <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                                     <link rel="stylesheet" href="/css/output.css" />
                                 </head>
                                 <% Admin admi=(Admin)session.getAttribute("admin"); Customer
@@ -33,10 +34,7 @@
                                                     <div class="flex justify-around gap-[10vw] text-base font-medium">
                                                         <div class="flex flex-row justify-center items-center ">
                                                             <a href="customerlist"
-                                                                class="hover:text-cyan-400 transition">←
-                                                                Back to
-                                                                Customers
-                                                            </a>
+                                                                class="hover:text-cyan-400 transition">← Back</a>
                                                         </div>
                                                         <div class="flex flex-row justify-center items-center gap-4">
                                                             <a href="customer_det_oh"
@@ -48,31 +46,35 @@
                                                                 <button id="dropdownButton" onclick="toggleDropdown()"
                                                                     class="h-12 w-12 flex items-center gap-2 px-4 py-2">
                                                                     <% String[]
-                                                                        nameParts=admi.getUsername().trim().split("",2); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
-                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                                        nameParts=admi.getUsername().trim().split("",2);
+                                                                        String initials="" ; for (String part :
+                                                                        nameParts) { if (!part.isEmpty()) initials
+                                                                        +=part.charAt(0); }
+                                                                        initials=initials.toUpperCase(); %>
+                                                                        <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
                                                                         bg-cyan-400 text-gray-700 font-semibold
                                                                         text-2xl">
-                                                                        <%= initials %>
-                                                            </div>
-                                                            
-                                                            </button>
-                                                            <!-- Dropdown -->
-                                                            <div id="dropdownMenu"
-                                                                class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
-                                                                <form action="Logout" method="post"
-                                                                    class="py-1 text-gray-700">
-                                                                    <button type="submit"
-                                                                        class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
-                                                                </form>
+                                                                            <%= initials %>
+                                                                        </div>
+
+                                                                </button>
+                                                                <!-- Dropdown -->
+                                                                <div id="dropdownMenu"
+                                                                    class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                                                    <form action="Logout" method="post"
+                                                                        class="py-1 text-gray-700">
+                                                                        <button type="submit"
+                                                                            class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                             </nav>
 
                                             <!-- customer Details -->
                                             <div
-                                                class="bg-gray-900 rounded-2xl shadow-lg p-6 mt-6 text-gray-100 w-full max-w-3xl mx-auto">
+                                                class="w-[50vw] bg-black/60 backdrop-blur-lg border-gray-700 border-b-4 rounded-2xl shadow-lg p-6 mt-6 text-gray-100 mx-auto">
                                                 <h3
                                                     class="text-2xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
                                                     <img src="/images/user.svg" alt="Seller Icon"
@@ -103,102 +105,199 @@
                                                 </div>
                                             </div>
 
+                                            <section class="max-w-7xl mx-auto mt-10 px-4">
+                                                <div
+                                                    class="bg-gray-900 shadow-xl rounded-2xl overflow-hidden border border-gray-700">
 
-                                            <h2
-                                                class="text-2xl font-bold text-cyan-400 mb-6 border-b border-cyan-500 pb-2">
-                                                Cart of <%= s.getName()%>
-                                            </h2>
+                                                    <div
+                                                        class="px-6 py-4 border-b rounded-t-2xl bg-gray-900 border-cyan-500">
+                                                        <h2 class="text-xl font-semibold text-cyan-400"><%= s.getName() %>'s Cart
+                                                        </h2>
+                                                    </div>
+                                                    <% if(op.isEmpty()){ %>
+                                                        <p class="p-6 text-center text-lg text-gray-200">🛒 No items in
+                                                            the
+                                                            cart
+                                                        </p>
+                                                        <% } else { double total=0.0; int nobuy=0; %>
 
-                                            <div class="">
-                                                <div class="">
-                                                    <section class="">
-                                                        <% if(op.isEmpty()){ %>
-                                                            No objects present now
-                                                            <% }else{ double total=0.0; int nobuy=0; for(Orderprod x:
-                                                                op) { int oid=x.getId(); String
-                                                                p_name=x.getProduct().getName(); String
-                                                                p_pd=x.getProduct().getPd(); Double
-                                                                p_price=x.getProduct().getPrice(); int
-                                                                avlqty=x.getProduct().getQuantity(); int
-                                                                bqty=x.getQty(); String
-                                                                s_name=x.getProduct().getSeller().getName(); String
-                                                                s_mail=x.getProduct().getSeller().getEmail(); int
-                                                                s_id=x.getProduct().getSeller().getId(); Double
-                                                                cost=p_price*bqty; total+=cost; String
-                                                                path=x.getProduct().getImgp(); %>
-                                                                <div class="cart-item">
-                                                                    <img src="<%=path%>" alt="Order <%=oid%>" />
-
-                                                                    <div class="cart-name-price">
-                                                                        <h2>
-                                                                            <%=p_name%>
-                                                                        </h2>
-                                                                        <p class="price">Order Id<%=oid%>
-                                                                        </p>
-                                                                        <p class="price">₹<%=cost%>
-                                                                        </p>
-                                                                    </div>
-
-                                                                    <div class="cart-description">
-                                                                        <p>
-                                                                            <%=p_pd%>
-                                                                        </p>
-                                                                        <p class="seller-info">Seller: <%=s_name%>
-                                                                        </p>
-                                                                        <p class="seller-info">Seller Id: <%=s_id%>
-                                                                        </p>
-                                                                        <p class="seller-info">Seller mail: <%=s_mail%>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="cart-description">
-                                                                        <p class="seller-info">Customer:
-                                                                            <%=x.getCustomer().getName()%>
-                                                                        </p>
-                                                                        <p class="seller-info">Customer Id:
-                                                                            <%=x.getCustomer().getId()%>
-                                                                        </p>
-                                                                        <p class="seller-info">Customer mail:
-                                                                            <%=x.getCustomer().getEmail()%>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="cart-description">
-                                                                        <p class="stock-info">Available: <%=avlqty%>
-                                                                        </p>
-                                                                        <p class="stock-info">Price: ₹<%=p_price%>
-                                                                        </p>
-                                                                        <p class="stock-info">Buying Quantity: ₹
-                                                                            <%=bqty%>
-                                                                        </p>
-                                                                    </div>
-
-                                                                    <% if(avlqty==0){ String
-                                                                        prodmsg="Cannot buy this item" ; %>
-                                                                        <div class="cart-description">
-                                                                            <p class="stock-info">
-                                                                                <%=prodmsg%>
-                                                                            </p>
-                                                                        </div>
-
-                                                                        <% } else if(bqty>avlqty){
-                                                                            String prodmsg="Can't buy this quantity";
+                                                            <!-- Table Wrapper -->
+                                                            <div
+                                                                class="overflow-x-auto shadow-lg border border-gray-700">
+                                                                <table
+                                                                    class="min-w-full divide-y divide-gray-700 text-sm text-left">
+                                                                    <thead
+                                                                        class="bg-gray-800 text-cyan-300 text-sm uppercase">
+                                                                        <tr>
+                                                                            <th class="px-4 py-3">Image</th>
+                                                                            <th class="px-4 py-3">Product</th>
+                                                                            <th class="px-4 py-3">Seller</th>
+                                                                            <th class="px-4 py-3">Customer</th>
+                                                                            <th class="px-4 py-3">Quantity</th>
+                                                                            <th class="px-4 py-3">Price (₹)</th>
+                                                                            <th class="px-4 py-3">Total (₹)</th>
+                                                                            <th class="px-4 py-3">Status</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody
+                                                                        class="bg-gray-900 text-gray-200 divide-y divide-gray-700">
+                                                                        <% for(Orderprod x : op) { int oid=x.getId();
+                                                                            String p_name=x.getProduct().getName();
+                                                                            String p_pd=x.getProduct().getPd(); Double
+                                                                            p_price=x.getProduct().getPrice(); int
+                                                                            avlqty=x.getProduct().getQuantity(); int
+                                                                            bqty=x.getQty(); String
+                                                                            s_name=x.getProduct().getSeller().getName();
+                                                                            String
+                                                                            s_mail=x.getProduct().getSeller().getEmail();
+                                                                            int s_id=x.getProduct().getSeller().getId();
+                                                                            Double cost=p_price * bqty; total +=cost;
+                                                                            String path=x.getProduct().getImgp(); String
+                                                                            statusText="" ; String statusColor="" ; if
+                                                                            (avlqty==0) { statusText="Out of Stock" ;
+                                                                            statusColor="text-red-400" ; } else if
+                                                                            (bqty>
+                                                                            avlqty) {
+                                                                            statusText = "Qty Exceeds Stock";
+                                                                            statusColor = "text-yellow-400";
+                                                                            } else {
+                                                                            statusText = "Ready to Buy";
+                                                                            statusColor = "text-green-400";
+                                                                            }
                                                                             %>
-                                                                            <div class="cart-description">
-                                                                                <p class="stock-info">
-                                                                                    <%=prodmsg%>
-                                                                                </p>
-                                                                            </div>
+                                                                            <tr class="hover:bg-gray-800 transition">
+                                                                                <!-- Image -->
+                                                                                <td class="px-4 py-3">
+                                                                                    <img src="<%=path%>"
+                                                                                        alt="Prod <%=oid%>"
+                                                                                        class="w-16 h-16 rounded shadow-md object-cover">
+                                                                                </td>
 
-                                                                            <% } else{ %>
-                                                                                <div class="cart-description">
-                                                                                    <p class="stock-info"> </p>
-                                                                                </div>
-                                                                                <% } %>
+                                                                                <!-- Product Info -->
+                                                                                <td class="px-4 py-3">
+                                                                                    <p
+                                                                                        class="font-semibold text-cyan-200">
+                                                                                        <%=p_name%>
+                                                                                    </p>
+                                                                                    <p class="text-sm text-gray-400">
+                                                                                        <%=p_pd%>
+                                                                                    </p>
+                                                                                    <p
+                                                                                        class="text-xs text-gray-500 mt-1">
+                                                                                        OID: <%=oid%>
+                                                                                    </p>
+                                                                                </td>
 
-                                                                </div>
-                                                                <%} } %>
-                                                    </section>
+                                                                                <!-- Seller Info -->
+                                                                                <td class="px-4 py-3 text-sm">
+                                                                                    <p><span
+                                                                                            class="text-white">Name:</span>
+                                                                                        <%=s_name%>
+                                                                                    </p>
+                                                                                    <p><span
+                                                                                            class="text-white">ID:</span>
+                                                                                        <%=s_id%>
+                                                                                    </p>
+                                                                                    <p class="text-gray-400 text-xs">
+                                                                                        <%=s_mail%>
+                                                                                    </p>
+                                                                                </td>
+
+                                                                                <!-- Customer Info -->
+                                                                                <td class="px-4 py-3 text-sm">
+                                                                                    <p>
+                                                                                        <%=x.getCustomer().getName()%>
+                                                                                    </p>
+                                                                                    <p>ID: <%=x.getCustomer().getId()%>
+                                                                                    </p>
+                                                                                    <p class="text-gray-400 text-xs">
+                                                                                        <%=x.getCustomer().getEmail()%>
+                                                                                    </p>
+                                                                                </td>
+
+                                                                                <!-- Qty -->
+                                                                                <td class="px-4 py-3">
+                                                                                    <p>
+                                                                                        <%=bqty%>
+                                                                                    </p>
+                                                                                    <p class="text-xs text-gray-400">
+                                                                                        Available: <%=avlqty%>
+                                                                                    </p>
+                                                                                </td>
+
+                                                                                <!-- Price -->
+                                                                                <td class="px-4 py-3">
+                                                                                    ₹<%=p_price%>
+                                                                                </td>
+
+                                                                                <!-- Total -->
+                                                                                <td
+                                                                                    class="px-4 py-3 font-semibold text-cyan-300">
+                                                                                    ₹<%=cost%>
+                                                                                </td>
+
+                                                                                <!-- Status -->
+                                                                                <td class="px-4 py-3">
+                                                                                    <span
+                                                                                        class="text-sm font-medium <%=statusColor%>">
+                                                                                        <%=statusText%>
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <% } %>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <!-- Total Amount -->
+                                                            <div
+                                                                class="text-right mt-6 text-xl font-bold text-cyan-400">
+                                                                Total Cart Value: ₹ <%= total %>
+                                                            </div>
+                                                            <% } %>
                                                 </div>
-                                            </div>
+                                            </section>
+
+                                            <!-- footer -->
+                                            <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
+                                                <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                                                    <div class="sm:flex sm:items-center sm:justify-between">
+                                                        <a href="/sellerhome"
+                                                            class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                                                            <img src="images/SwiftMart.png" class="h-12 rounded-xl"
+                                                                alt="SwiftMart Logo" />
+                                                            <span
+                                                                class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                                        </a>
+                                                        <ul
+                                                            class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                                                            <li>
+                                                                <a href="#"
+                                                                    class="hover:underline me-4 md:me-6">About</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="hover:underline me-4 md:me-6">Privacy
+                                                                    Policy</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#"
+                                                                    class="hover:underline me-4 md:me-6">Licensing</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="hover:underline">Contact</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <hr
+                                                        class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                                                    <span
+                                                        class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
+                                                        2023
+                                                        <a href="https://flowbite.com/"
+                                                            class="hover:underline">SwiftMart™</a>. All
+                                                        Rights Reserved.</span>
+                                                </div>
+                                            </footer>
                                             <script>
                                                 function toggleDropdown() {
                                                     const menu = document.getElementById('dropdownMenu');

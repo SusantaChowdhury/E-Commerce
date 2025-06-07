@@ -62,7 +62,7 @@
 
                         <!-- For Unapproved Seller -->
                         <%if(sellrperm.equals("NO")){ %>
-                            <h1 class="text-2xl font-bold text-center m-4">Welcome to SwiftMart, <%=sellrname%>!
+                            <h1 class="text-2xl font-bold text-center m-4">Welcome to SwiftMart, <%=sellrname%>!👋
                             </h1>
                             <div
                                 class="flex flex-col m-10 items-center rounded-xl justify-center bg-gray-800/40 backdrop:blur-xl border-b-4 border-gray-800 shadow-xl p-6 text-gray-200 hover:shadow-2xl hover:-translate-y-1 transition">
@@ -84,7 +84,8 @@
                             <% }else{ %>
                                 <!-- Message -->
                                 <section class="py-6 px-4 text-center">
-                                    <h2 class="font-bold text-2xl text-white">Here you can view and manage your products.
+                                    <h2 class="font-bold text-2xl text-white">Here you can view and manage your
+                                        products.
                                     </h2>
                                 </section>
 
@@ -140,8 +141,9 @@
                                                     </div>
                                                     <% } %>
                                     </section>
+                                    <%}}%>
                                 </div>
-                                <%}}%>
+                                
 
                                     <!-- footer -->
                                     <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
@@ -152,7 +154,7 @@
                                                     <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                         alt="SwiftMart Logo" />
                                                     <span
-                                                        class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                                        class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-sans font-semibold whitespace-nowrap">SwiftMart™</span>
                                                 </a>
                                                 <ul
                                                     class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
@@ -174,31 +176,32 @@
                                             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                                             <span
                                                 class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-                                                2023
+                                                2025
                                                 <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>.
                                                 All
                                                 Rights Reserved.</span>
                                         </div>
                                     </footer>
-                                    <script>
-                                        function toggleDropdown() {
-                                            const menu = document.getElementById('dropdownMenu');
-                                            menu.classList.toggle('hidden');
-                                        }
-
-                                        // Close dropdown if clicked outside
-                                        window.addEventListener('click', function (e) {
-                                            const dropdownButton = document.getElementById('dropdownButton');
-                                            const dropdownMenu = document.getElementById('dropdownMenu');
-                                            if (!dropdownButton.contains(e.target)) {
-                                                dropdownMenu.classList.add('hidden');
+                                    <%%>
+                                        <script>
+                                            function toggleDropdown() {
+                                                const menu = document.getElementById('dropdownMenu');
+                                                menu.classList.toggle('hidden');
                                             }
-                                        });
 
-                                        setInterval(function () {
-                                            location.reload();
-                                        }, 3000);
-                                    </script>
+                                            // Close dropdown if clicked outside
+                                            window.addEventListener('click', function (e) {
+                                                const dropdownButton = document.getElementById('dropdownButton');
+                                                const dropdownMenu = document.getElementById('dropdownMenu');
+                                                if (!dropdownButton.contains(e.target)) {
+                                                    dropdownMenu.classList.add('hidden');
+                                                }
+                                            });
+
+                                            // setInterval(function () {
+                                            //     location.reload();
+                                            // }, 5000);
+                                        </script>
                     </body>
 
 

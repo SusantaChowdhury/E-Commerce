@@ -5,7 +5,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Register Customer</title>
-        <link rel="stylesheet" href="css/output.css" />
+        <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/css/output.css" />
     </head>
 
     <body class="bg-gray-900 min-h-screen flex items-center justify-center px-4">
@@ -72,7 +73,7 @@
                             <div>
                                 <button type="submit"
                                     class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-300">
-                                    Submit
+                                    Register
                                 </button>
                             </div>
             </form>

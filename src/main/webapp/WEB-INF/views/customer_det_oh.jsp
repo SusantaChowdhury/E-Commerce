@@ -11,6 +11,7 @@
                             <head>
                                 <meta charset="UTF-8">
                                 <title>Customer Details</title>
+                                <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                                 <link rel="stylesheet" href="/css/output.css" />
                             </head>
                             <% Admin admi=(Admin)session.getAttribute("admin"); Customer
@@ -32,8 +33,7 @@
                                                 <div class="flex justify-around gap-[10vw] text-base font-medium">
                                                     <div class="flex flex-row justify-center items-center ">
                                                         <a href="customerlist" class="hover:text-cyan-400 transition">←
-                                                            Back to
-                                                            Customers
+                                                            Back
                                                         </a>
                                                     </div>
                                                     <div class="flex flex-row justify-center items-center gap-4">
@@ -73,7 +73,7 @@
 
                                         <!-- customer Details -->
                                         <div
-                                            class="bg-gray-900 rounded-2xl shadow-lg p-6 mt-6 text-gray-100 w-full max-w-3xl mx-auto">
+                                            class="w-[50vw] bg-black/60 backdrop-blur-lg rounded-2xl border-gray-700 border-b-4 shadow-lg p-6 mt-6 text-gray-100 mx-auto">
                                             <h3 class="text-2xl font-bold text-cyan-400 mb-4 flex items-center gap-2">
                                                 <img src="/images/user.svg" alt="Seller Icon"
                                                     class="h-14 w-14 inline-block shadow-gray-500 rounded-full shadow-md m-2">
@@ -103,92 +103,188 @@
                                         </div>
 
 
-                                        <h2 class="text-2xl font-bold text-cyan-400 mb-6 border-b border-cyan-500 pb-2">
-                                            Oder History of <%= s.getName()%>
-                                        </h2>
+                                        <!-- Order History Table -->
+                                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+                                            <div
+                                                class="bg-gray-900 shadow-xl rounded-2xl overflow-hidden border border-gray-700">
+                                                <div class="px-6 py-4 border-b border-cyan-500">
+                                                    <h2 class="text-xl font-semibold text-cyan-400">Order History of <%=
+                                                            s.getName() %>
+                                                    </h2>
+                                                </div>
 
-                                        <div class="">
+                                                <% if(op.isEmpty()){ %>
+                                                    <div class="p-6 text-white text-center">🛒 No orders available.
+                                                    </div>
+                                                    <% } else { %>
 
-                                            <div class="">
-                                                <section>
-                                                    <% if(op.isEmpty()){ %>
-                                                        No objects present now
-                                                        <% }else{ for(Orderhist x: op) { int oid=x.getId(); String
-                                                            p_name=x.getProductname(); String p_pd=x.getProductdesc();
-                                                            Double p_price=x.getProductprice(); int bqty=x.getBqty();
-                                                            String s_name=x.getSellername(); Double cost=p_price*bqty;
-                                                            String dt=x.getDatetime(); Double taken=x.getTaken(); Double
-                                                            ref=x.getRefunded(); String statusw=x.getOrderstatus();
-                                                            String statusmessage="" ; if(statusw.equals("completed")){
-                                                            if(ref>0.0)
-                                                            statusmessage="Refunded";
-                                                            else
-                                                            statusmessage="Transaction done";
-                                                            }
-                                                            else if(statusw.equals("cancelled")){
-                                                            statusmessage="Cancelled";
-                                                            }
-                                                            else if(statusw.equals("tfailed") && ref>0){
-                                                            statusmessage="Transaction failed";
-                                                            }
-                                                            else if(statusw.equals("appeal")||statusw.equals("cnc")){
-                                                            statusmessage="Cancel Requested";
-                                                            }
-                                                            else if(statusw.equals("ongoing")){
-                                                            statusmessage="Ongoing Transaction";
-                                                            }
-                                                            else{
-                                                            statusmessage="";
-                                                            }
-                                                            %>
-                                                            <div class="">
-                                                                <img src="<%=x.getOimg()%>" alt="Order <%=oid%>" />
+                                                        <!-- Table Wrapper -->
+                                                        <div class="overflow-x-auto">
+                                                            <table
+                                                                class="min-w-full divide-y divide-gray-700 text-sm text-left">
+                                                                <thead
+                                                                    class="bg-gray-800 text-center text-cyan-300 text-sm uppercase">
+                                                                    <tr>
+                                                                        <th class="px-6 py-3">Image</th>
+                                                                        <th class="px-6 py-3">Product</th>
+                                                                        <th class="px-6 py-3">Details</th>
+                                                                        <th class="px-6 py-3">Total (₹)</th>
+                                                                        <th class="px-6 py-3">Customer</th>
+                                                                        <th class="px-6 py-3">Date</th>
+                                                                        <th class="px-6 py-3">Status</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody
+                                                                    class="bg-gray-950 text-gray-200 divide-y divide-gray-800">
+                                                                    <% for(Orderhist x : op) { int oid=x.getId(); String
+                                                                        p_name=x.getProductname(); String
+                                                                        p_pd=x.getProductdesc(); Double
+                                                                        p_price=x.getProductprice(); int
+                                                                        bqty=x.getBqty(); String
+                                                                        s_name=x.getSellername(); Double cost=p_price *
+                                                                        bqty; String dt=x.getDatetime(); Double
+                                                                        taken=x.getTaken(); Double ref=x.getRefunded();
+                                                                        String statusw=x.getOrderstatus(); String
+                                                                        statusmessage="" ;
+                                                                        if(statusw.equals("completed")) {
+                                                                        statusmessage=ref> 0.0 ? "Refunded" :
+                                                                        "Transaction Done";
+                                                                        } else if(statusw.equals("cancelled")) {
+                                                                        statusmessage = "Cancelled";
+                                                                        } else if(statusw.equals("tfailed") && ref > 0)
+                                                                        {
+                                                                        statusmessage = "Transaction Failed";
+                                                                        } else if(statusw.equals("appeal") ||
+                                                                        statusw.equals("cnc")) {
+                                                                        statusmessage = "Cancel Requested";
+                                                                        } else if(statusw.equals("ongoing")) {
+                                                                        statusmessage = "Ongoing Transaction";
+                                                                        }
 
-                                                                <div class="">
-                                                                    <h2>
-                                                                        <%=p_name%>
-                                                                    </h2>
-                                                                    <p class="">₹<%=cost%>
-                                                                    </p>
-                                                                </div>
+                                                                        String badgeColor = "bg-cyan-600 text-black";
+                                                                        if (statusmessage.contains("Refunded"))
+                                                                        badgeColor = "bg-green-700 text-green-300";
+                                                                        else if (statusmessage.contains("Cancelled"))
+                                                                        badgeColor = "bg-red-700 text-red-300";
+                                                                        else if (statusmessage.contains("Failed"))
+                                                                        badgeColor = "bg-yellow-700 text-yellow-300";
+                                                                        else if (statusmessage.contains("Requested"))
+                                                                        badgeColor = "bg-orange-700 text-orange-300";
+                                                                        %>
+                                                                        <tr
+                                                                            class="hover:bg-gray-800/50 text-left transition-all duration-200">
+                                                                            <!-- Image -->
+                                                                            <td class="px-6 py-4 align-middle">
+                                                                                <img src="<%= x.getOimg() %>"
+                                                                                    alt="Order <%= oid %>"
+                                                                                    class="h-16 w-16 object-cover rounded shadow border border-gray-700">
+                                                                            </td>
 
-                                                                <div class="">
-                                                                    <p>
-                                                                        <%=p_pd%>
-                                                                    </p>
-                                                                    <p class="">Seller: <%=s_name%>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="">
-                                                                    <p class="">Quantity: <%=bqty%>
-                                                                    </p>
-                                                                    <p class="">Price: ₹<%=p_price%>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="">
-                                                                    <p class="">Date and Time:<br>
-                                                                        <%=dt%>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="">
-                                                                    <p class="">Customer : <%=s.getName()%>
-                                                                    </p>
-                                                                    <p class="">Customer mail:
-                                                                        <%=s.getEmail()%>
-                                                                    </p>
-                                                                    <p class="">Customer Id: <%=s.getId()%>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="">
-                                                                    <p class=""><b>
-                                                                            <%=statusmessage%>
-                                                                        </b></p>
-                                                                </div>
-                                                            </div>
-                                                            <% }} %>
-                                                </section>
+                                                                            <!-- Product -->
+                                                                            <td class="px-6 py-4 align-top space-y-1">
+                                                                                <p class="font-semibold text-cyan-300">
+                                                                                    <%= p_name %>
+                                                                                </p>
+                                                                                <p class="text-gray-400 text-xs">
+                                                                                    <%= p_pd %>
+                                                                                </p>
+                                                                                <p class="text-xs text-gray-500">Seller:
+                                                                                    <%= s_name %>
+                                                                                </p>
+                                                                            </td>
+
+                                                                            <!-- Quantity & Total -->
+                                                                            <td
+                                                                                class="px-6 py-4 align-top text-sm text-left">
+                                                                                <p>Qty: <%= bqty %>
+                                                                                </p>
+                                                                                <p>Price: <span class="text-amber-500">
+                                                                                        ₹<%= p_price %>
+                                                                                    </span>
+                                                                                </p>
+
+                                                                            </td>
+
+                                                                            <!-- Final Price -->
+                                                                            <td
+                                                                                class="px-6 py-4 align-top text-cyan-300 font-medium">
+                                                                                ₹<%= cost %>
+                                                                            </td>
+
+                                                                            <!-- Customer Info -->
+                                                                            <td class="px-6 py-4 align-top text-sm">
+                                                                                <p>
+                                                                                    <%= s.getName() %>
+                                                                                </p>
+                                                                                <p class="text-gray-400 text-xs">
+                                                                                    <%= s.getEmail() %>
+                                                                                </p>
+                                                                                <p class="text-gray-500 text-xs">ID: #
+                                                                                    <%= s.getId() %>
+                                                                                </p>
+                                                                            </td>
+
+                                                                            <!-- Order Date -->
+                                                                            <td class="px-6 py-4 align-top text-xs">
+                                                                                <%= dt %>
+                                                                            </td>
+
+                                                                            <!-- Status -->
+                                                                            <td class="px-6 py-4 align-top">
+                                                                                <span
+                                                                                    class="inline-block px-2 py-1 rounded-full text-xs font-semibold <%= badgeColor %>">
+                                                                                    <%= statusmessage %>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% } %>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <% } %>
                                             </div>
                                         </div>
+
+                                        <!-- footer -->
+                                        <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
+                                            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                                                <div class="sm:flex sm:items-center sm:justify-between">
+                                                    <a href="/sellerhome"
+                                                        class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                                                        <img src="images/SwiftMart.png" class="h-12 rounded-xl"
+                                                            alt="SwiftMart Logo" />
+                                                        <span
+                                                            class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                                    </a>
+                                                    <ul
+                                                        class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                                                        <li>
+                                                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="hover:underline me-4 md:me-6">Privacy
+                                                                Policy</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"
+                                                                class="hover:underline me-4 md:me-6">Licensing</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="hover:underline">Contact</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <hr
+                                                    class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                                                <span
+                                                    class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
+                                                    2023
+                                                    <a href="https://flowbite.com/"
+                                                        class="hover:underline">SwiftMart™</a>. All
+                                                    Rights Reserved.</span>
+                                            </div>
+                                        </footer>
+
                                         <script>
                                             setInterval(function () {
                                                 location.reload();

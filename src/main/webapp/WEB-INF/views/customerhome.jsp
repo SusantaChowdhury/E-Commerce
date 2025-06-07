@@ -66,7 +66,7 @@
 
                             <!-- Greeting -->
                             <div class="text-3xl font-bold my-6 text-center text-gray-100">
-                                <h1>Welcome, <%= custname %>!</h1>
+                                <h1>Welcome, <%= custname %>! 👋</h1>
                                 <p class="text-lg text-gray-300">Explore our products and enjoy shopping!</p>
                             </div>
 

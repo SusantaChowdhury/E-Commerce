@@ -7,7 +7,8 @@
 
                 <head>
                     <meta charset="UTF-8">
-                    <title>ADMIN HOME</title>
+                    <title>Admin Home</title>
+                    <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                     <link rel="stylesheet" href="css/output.css" />
                 </head>
                 <% Admin admi=(Admin)session.getAttribute("admin"); %>
@@ -22,7 +23,8 @@
                                     <span
                                         class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
-                                <div class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-12 text-base font-medium mt-4 md:mt-0">
+                                <div
+                                    class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-12 text-base font-medium mt-4 md:mt-0">
                                     <a href="adminhome" class="text-cyan-400 border-b-2">Active
                                         Sellers</a>
                                     <a href="passivesellers" class="hover:text-cyan-400 transition">Pending Sellers</a>
@@ -58,8 +60,8 @@
 
                         <!-- Welcome Header -->
                         <header class="text-center py-8 px-4">
-                            <h2 class="text-3xl font-semibold">Welcome, Admin <%= admi.getUsername() %> 👋</h2>
-                            <p class="text-lg text-gray-200 mt-2">Here are your active sellers:</p>
+                            <h2 class="text-3xl font-semibold">Welcome to the Admin's panel👋</h2>
+                            <h2 class="text-2xl font-semibold text-gray-200 mt-2 py-2 border-b">The active sellers</h2>
                         </header>
 
                         <!-- Seller Grid -->

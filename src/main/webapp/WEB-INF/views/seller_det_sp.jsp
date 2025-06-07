@@ -30,16 +30,42 @@
                                                 class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                         </a>
                                         <div
-                                            class="flex flex-wrap justify-center gap-4 text-base font-medium mt-4 md:mt-0">
-                                            <a href="adminhome" class="hover:text-cyan-500 transition">Active
-                                                Sellers</a>
-                                            <a href="passivesellers" class="text-cyan-400 border-b-2">Pending
-                                                Sellers</a>
-                                            <a href="customerlist" class="hover:text-cyan-400 transition">Customers</a>
-                                            <a href="productlist" class="hover:text-cyan-400 transition">Products</a>
-                                            <a href="orderslist" class="hover:text-cyan-400 transition">Orders</a>
+                                            class="flex justify-around lg:gap-[10vw] sm:gap-[8vw] text-base font-medium">
+                                            <div class="flex flex-row justify-center items-center ">
+                                                <a href="<%= retpage %>" class="hover:text-cyan-400 transition">← Back
+                                                </a>
+                                            </div>
+                                            <div class="flex flex-row justify-center items-center gap-4">
+                                                <a href="seller_det_sp" class="text-cyan-400 border-b-2">Selling
+                                                    Products</a>
+                                                <a href="seller_det_pp" class="hover:text-cyan-400 transition">Pending
+                                                    Permission</a>
+                                                <!-- User Dropdown -->
+                                                <div class="relative inline-block text-left mr-2">
+                                                    <button id="dropdownButton" onclick="toggleDropdown()"
+                                                        class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                                        <% String[] nameParts=admi.getUsername().trim().split("",2);
+                                                            String initials="" ; for (String part : nameParts) { if
+                                                            (!part.isEmpty()) initials +=part.charAt(0); }
+                                                            initials=initials.toUpperCase(); %>
+                                                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
+                                                                        bg-cyan-400 text-gray-700 font-semibold
+                                                                        text-2xl">
+                                                                <%= initials %>
+                                                            </div>
+
+                                                    </button>
+                                                    <!-- Dropdown -->
+                                                    <div id="dropdownMenu"
+                                                        class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                                        <form action="Logout" method="post" class="py-1 text-gray-700">
+                                                            <button type="submit"
+                                                                class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
                                 </nav>
 
 
@@ -98,22 +124,11 @@
                                         </div>
                                     </div>
 
-                                    <!-- Seller Controls -->
-                                    <div
-                                        class="bg-gray-900/60 mt-6 rounded-lg px-5 py-4 flex flex-wrap justify-between items-center shadow-sm text-sm font-medium">
-                                        <a href="<%= retpage %>" class="text-cyan-300 hover:text-cyan-400">← Back</a>
-                                        <div class="flex gap-4 mt-4 md:mt-0">
-                                            <a href="seller_det_sp"
-                                                class="bg-slate-700 border-gray-400 border-1 px-2 py-2 rounded text-cyan-400">Selling
-                                                Products</a>
-                                            <a href="seller_det_pp"
-                                                class="bg-slate-700 px-2 py-2 rounded hover:text-cyan-400">Pending
-                                                Permission</a>
-                                        </div>
-                                    </div>
 
                                     <!-- Product Cards -->
                                     <div class="mt-10 flex flex-col items-center justify-center">
+                                        <h2 class="w-full text-2xl font-bold text-gray-200 mb-6 border-b border-gyar-100 pb-2 text-center">
+                                            Selling Products of <%= s.getName()%></h2>
                                         <% if (plist.isEmpty()) { %>
 
                                             <div

@@ -5,7 +5,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Seller Login</title>
-        <link rel="stylesheet" href="css/output.css" />
+        <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/css/output.css" />
     </head>
 
     <body class="bg-gray-900 min-h-screen flex items-center justify-center px-4">

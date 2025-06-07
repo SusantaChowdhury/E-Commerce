@@ -57,7 +57,7 @@
 
                         <!-- Message -->
                         <div class="text-center py-8 px-4">
-                            <h2 class="text-3xl font-semibold">Here are the pending sellers:</h2>
+                            <h2 class="text-2xl font-semibold py-2 border-b">The Pending Sellers</h2>
                         </div>
                         <!-- Seller Cards -->
                         <div class="max-w-7xl mx-auto px-4 pb-12">
