@@ -22,15 +22,15 @@
                                 class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
                                 <!-- Navbar -->
                                 <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
-                                    <div class="flex flex-wrap justify-between items-center py-4">
-                                        <a href="adminhome" class="flex items-center space-x-3">
-                                            <img src="/images/SwiftMart.png" class="h-14 rounded-2xl"
+                                    <div class="flex flex-wrap justify-between items-center py-2">
+                                        <a href="adminhome" class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
+                                            <img src="/images/SwiftMart.png" class="h-16 rounded-2xl"
                                                 alt="SwiftMart Logo" />
                                             <span
                                                 class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                         </a>
                                         <div
-                                            class="flex justify-around lg:gap-[10vw] sm:gap-[8vw] text-base font-medium">
+                                            class="flex items-center justify-around lg:gap-[12vw] sm:gap-[39vw] text-base font-medium">
                                             <div class="flex flex-row justify-center items-center ">
                                                 <a href="<%= retpage %>" class="hover:text-cyan-400 transition">← Back
                                                 </a>
@@ -41,7 +41,7 @@
                                                 <a href="seller_det_pp" class="hover:text-cyan-400 transition">Pending
                                                     Permission</a>
                                                 <!-- User Dropdown -->
-                                                <div class="relative inline-block text-left mr-2">
+                                                <div class="relative inline-block text-left mr-4">
                                                     <button id="dropdownButton" onclick="toggleDropdown()"
                                                         class="h-12 w-12 flex items-center gap-2 px-4 py-2">
                                                         <% String[] nameParts=admi.getUsername().trim().split("",2);
@@ -66,6 +66,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                 </nav>
 
 
@@ -127,8 +128,10 @@
 
                                     <!-- Product Cards -->
                                     <div class="mt-10 flex flex-col items-center justify-center">
-                                        <h2 class="w-full text-2xl font-bold text-gray-200 mb-6 border-b border-gyar-100 pb-2 text-center">
-                                            Selling Products of <%= s.getName()%></h2>
+                                        <h2
+                                            class="w-full text-2xl font-bold text-gray-200 mb-6 border-b border-gyar-100 pb-2 text-center">
+                                            Selling Products of <%= s.getName()%>
+                                        </h2>
                                         <% if (plist.isEmpty()) { %>
 
                                             <div

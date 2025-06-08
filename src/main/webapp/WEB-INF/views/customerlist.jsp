@@ -16,15 +16,15 @@
                     <body class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
                         <!-- Navbar -->
                         <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
-                            <div class="flex flex-wrap justify-between items-center py-4">
-                                <a href="adminhome" class="flex items-center space-x-3">
-                                    <img src="/images/SwiftMart.png" class="h-14 rounded-2xl" alt="SwiftMart Logo" />
+                            <div class="flex flex-wrap justify-between items-center py-2">
+                                <a href="adminhome" class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
+                                    <img src="/images/SwiftMart.png" class="h-16 rounded-2xl" alt="SwiftMart Logo" />
                                     <span
                                         class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
                                 <div
-                                    class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-12 text-base font-medium mt-4 md:mt-0">
-                                    <a href="adminhome" class="hover:text-cyan-500 transition">Active
+                                    class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-8 text-lg font-medium p-2">
+                                    <a href="adminhome" class="hover:text-cyan-400 transition">Active
                                         Sellers</a>
                                     <a href="passivesellers" class="hover:text-cyan-400 transition">Pending Sellers</a>
                                     <a href="customerlist" class="text-cyan-400 border-b-2">Customers</a>
@@ -33,7 +33,7 @@
                                     <!-- User Dropdown -->
                                     <div class="relative inline-block text-left mr-2">
                                         <button id="dropdownButton" onclick="toggleDropdown()"
-                                            class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                            class="h-12 w-12 flex items-center gap-2 px-4 mr-2 py-2">
                                             <% String[] nameParts=admi.getUsername().trim().split("",2); String
                                                 initials="" ; for (String part : nameParts) { if (!part.isEmpty())
                                                 initials +=part.charAt(0); } initials=initials.toUpperCase(); %>
@@ -54,6 +54,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </nav>
 
                         <!-- Message -->
@@ -96,28 +97,28 @@
                         </div>
 
                         <!-- footer -->
-                        <footer class="rounded-lg shadow-sm bg-gray-900/70 backdrop-blur-xl m-4">
+                        <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                 <div class="sm:flex sm:items-center sm:justify-between">
                                     <a href="/sellerhome"
                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
                                         <span
-                                            class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-semibold whitespace-nowrap">SwiftMart™</span>
                                     </a>
                                     <ul
                                         class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                                         <li>
-                                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                                            <a href="aboutus" class="hover:underline me-4 md:me-6">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="contactus" class="hover:underline me-4 md:me-6">Contact</a>
                                         </li>
                                         <li>
                                             <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="hover:underline">Contact</a>
+                                            <a href="#" class="hover:underline">Licensing</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -127,7 +128,22 @@
                                     Rights Reserved.</span>
                             </div>
                         </footer>
+
                         <script>
+                            function toggleDropdown() {
+                                const menu = document.getElementById('dropdownMenu');
+                                menu.classList.toggle('hidden');
+                            }
+
+                            // Close dropdown if clicked outside
+                            window.addEventListener('click', function (e) {
+                                const dropdownButton = document.getElementById('dropdownButton');
+                                const dropdownMenu = document.getElementById('dropdownMenu');
+                                if (!dropdownButton.contains(e.target)) {
+                                    dropdownMenu.classList.add('hidden');
+                                }
+                            });
+
                             setInterval(function () {
                                 location.reload();
                             }, 5000);

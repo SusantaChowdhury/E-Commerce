@@ -84,13 +84,14 @@
                             <% }else{ %>
                                 <!-- Message -->
                                 <section class="py-6 px-4 text-center">
+                                    <h2 class="font-bold text-2xl text-white">Hello there!👋 </h2>
                                     <h2 class="font-bold text-2xl text-white">Here you can view and manage your
                                         products.
                                     </h2>
                                 </section>
 
                                 <!-- Product Section -->
-                                <div class="p-6 rounded-lg">
+                                <div class=" p-6 rounded-lg">
                                     <section
                                         class="products grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                                         <% List<Product> perm_pd = (List<Product>)
@@ -105,7 +106,8 @@
                                                         enlisted any products yet! <a src="seller_add_product"
                                                             class="underline hover:text-white">Click here</a> to add
                                                         product.</p>
-                                                    <p class="text-center text-amber-300 m-2">If already enlisted, wait
+                                                    <p class="text-center text-amber-300 m-2">If already enlisted,
+                                                        wait
                                                         for them
                                                         to be verified!</p>
 
@@ -135,7 +137,7 @@
                                                             <input type="hidden" name="prod_id" value="<%=p_id%>">
                                                             <button type="submit"
                                                                 class="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200">
-                                                                Edit Quantity
+                                                                Add Quantity
                                                             </button>
                                                         </form>
                                                     </div>
@@ -143,65 +145,64 @@
                                     </section>
                                     <%}}%>
                                 </div>
-                                
 
-                                    <!-- footer -->
-                                    <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
-                                        <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-                                            <div class="sm:flex sm:items-center sm:justify-between">
-                                                <a href="/sellerhome"
-                                                    class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                                                    <img src="images/SwiftMart.png" class="h-12 rounded-xl"
-                                                        alt="SwiftMart Logo" />
-                                                    <span
-                                                        class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-sans font-semibold whitespace-nowrap">SwiftMart™</span>
-                                                </a>
-                                                <ul
-                                                    class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                                                    <li>
-                                                        <a href="#" class="hover:underline me-4 md:me-6">About</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="hover:underline me-4 md:me-6">Privacy
-                                                            Policy</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="hover:underline">Contact</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                                            <span
-                                                class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-                                                2025
-                                                <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>.
-                                                All
-                                                Rights Reserved.</span>
+
+                                <!-- footer -->
+                                <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
+                                    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                                        <div class="sm:flex sm:items-center sm:justify-between">
+                                            <a href="/sellerhome"
+                                                class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                                                <img src="images/SwiftMart.png" class="h-12 rounded-xl"
+                                                    alt="SwiftMart Logo" />
+                                                <span
+                                                    class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-sans font-semibold whitespace-nowrap">SwiftMart™</span>
+                                            </a>
+                                            <ul
+                                                class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                                                <li>
+                                                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="hover:underline me-4 md:me-6">Privacy
+                                                        Policy</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="hover:underline">Contact</a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </footer>
-                                    <%%>
-                                        <script>
-                                            function toggleDropdown() {
-                                                const menu = document.getElementById('dropdownMenu');
-                                                menu.classList.toggle('hidden');
+                                        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                                        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
+                                            2025
+                                            <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>.
+                                            All
+                                            Rights Reserved.</span>
+                                    </div>
+                                </footer>
+                                <%%>
+                                    <script>
+                                        function toggleDropdown() {
+                                            const menu = document.getElementById('dropdownMenu');
+                                            menu.classList.toggle('hidden');
+                                        }
+
+                                        // Close dropdown if clicked outside
+                                        window.addEventListener('click', function (e) {
+                                            const dropdownButton = document.getElementById('dropdownButton');
+                                            const dropdownMenu = document.getElementById('dropdownMenu');
+                                            if (!dropdownButton.contains(e.target)) {
+                                                dropdownMenu.classList.add('hidden');
                                             }
+                                        });
 
-                                            // Close dropdown if clicked outside
-                                            window.addEventListener('click', function (e) {
-                                                const dropdownButton = document.getElementById('dropdownButton');
-                                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                                if (!dropdownButton.contains(e.target)) {
-                                                    dropdownMenu.classList.add('hidden');
-                                                }
-                                            });
-
-                                            // setInterval(function () {
-                                            //     location.reload();
-                                            // }, 5000);
-                                        </script>
+                                        // setInterval(function () {
+                                        //     location.reload();
+                                        // }, 5000);
+                                    </script>
                     </body>
 
 

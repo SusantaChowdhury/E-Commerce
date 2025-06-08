@@ -111,7 +111,8 @@
 
                                                     <div
                                                         class="px-6 py-4 border-b rounded-t-2xl bg-gray-900 border-cyan-500">
-                                                        <h2 class="text-xl font-semibold text-cyan-400"><%= s.getName() %>'s Cart
+                                                        <h2 class="text-xl font-semibold text-cyan-400">
+                                                            <%= s.getName() %>'s Cart
                                                         </h2>
                                                     </div>
                                                     <% if(op.isEmpty()){ %>
@@ -159,10 +160,10 @@
                                                                             (bqty>
                                                                             avlqty) {
                                                                             statusText = "Qty Exceeds Stock";
-                                                                            statusColor = "text-yellow-400";
+                                                                            statusColor = "text-red-500";
                                                                             } else {
                                                                             statusText = "Ready to Buy";
-                                                                            statusColor = "text-green-400";
+                                                                            statusColor = "text-amber-600";
                                                                             }
                                                                             %>
                                                                             <tr class="hover:bg-gray-800 transition">
@@ -226,13 +227,13 @@
                                                                                 </td>
 
                                                                                 <!-- Price -->
-                                                                                <td class="px-4 py-3">
+                                                                                <td class="px-4 py-3 text-yellow-400">
                                                                                     ₹<%=p_price%>
                                                                                 </td>
 
                                                                                 <!-- Total -->
                                                                                 <td
-                                                                                    class="px-4 py-3 font-semibold text-cyan-300">
+                                                                                    class="px-4 py-3 font-semibold text-green-400">
                                                                                     ₹<%=cost%>
                                                                                 </td>
 
@@ -250,9 +251,10 @@
                                                             </div>
 
                                                             <!-- Total Amount -->
-                                                            <div
-                                                                class="text-right mt-6 text-xl font-bold text-cyan-400">
-                                                                Total Cart Value: ₹ <%= total %>
+                                                            <div class="m-2 items-center mx-auto p-4">
+                                                                <span
+                                                                    class="m-4 text-right text-xl font-bold text-cyan-400">Total
+                                                                    Cart Value: ₹ <%= total %></span>
                                                             </div>
                                                             <% } %>
                                                 </div>
@@ -267,24 +269,24 @@
                                                             <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                                 alt="SwiftMart Logo" />
                                                             <span
-                                                                class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                                                class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-semibold whitespace-nowrap">SwiftMart™</span>
                                                         </a>
                                                         <ul
                                                             class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                                                             <li>
-                                                                <a href="#"
+                                                                <a href="aboutus"
                                                                     class="hover:underline me-4 md:me-6">About</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="contactus"
+                                                                    class="hover:underline me-4 md:me-6">Contact</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#" class="hover:underline me-4 md:me-6">Privacy
                                                                     Policy</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#"
-                                                                    class="hover:underline me-4 md:me-6">Licensing</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="#" class="hover:underline">Contact</a>
+                                                                <a href="#" class="hover:underline">Licensing</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -292,7 +294,7 @@
                                                         class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                                                     <span
                                                         class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-                                                        2023
+                                                        2025
                                                         <a href="https://flowbite.com/"
                                                             class="hover:underline">SwiftMart™</a>. All
                                                         Rights Reserved.</span>

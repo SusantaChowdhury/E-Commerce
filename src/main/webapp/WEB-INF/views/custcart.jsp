@@ -157,7 +157,7 @@
                                                                                             name="order_id"
                                                                                             value="<%= oid %>">
                                                                                         <button
-                                                                                            class="bg-gray-500 hover:bg-gray-600 text-gray-100 px-2 py-1 rounded-l text-md">−</button>
+                                                                                            class="bg-gray-400 hover:bg-gray-500 text-gray-700 px-2 py-1 rounded-l text-xl font-bold">−</button>
                                                                                     </form>
                                                                                     <input type="text"
                                                                                         value="<%= bqty %>" readonly
@@ -169,7 +169,7 @@
                                                                                             name="order_id"
                                                                                             value="<%= oid %>">
                                                                                         <button
-                                                                                            class="bg-gray-500 hover:bg-gray-600 text-gray-100 px-2 py-1 rounded-r text-md">+</button>
+                                                                                            class="bg-gray-400 hover:bg-gray-500 text-gray-700 px-2 py-1 rounded-r text-xl font-bold">+</button>
                                                                                     </form>
                                                                                 </div>
                                                                             </td>

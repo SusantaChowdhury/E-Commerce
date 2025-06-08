@@ -64,22 +64,24 @@
                 <div class="sm:flex sm:items-center sm:justify-between">
                     <a href="/sellerhome" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                        <span
+                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-semibold whitespace-nowrap">SwiftMart™</span>
                     </a>
                     <ul
                         class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li>
-                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                            <a href="aboutus" class="hover:underline me-4 md:me-6">About</a>
+                        </li>
+                        <li>
+                            <a href="contactus" class="hover:underline me-4 md:me-6">Contact</a>
                         </li>
                         <li>
                             <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                            <a href="#" class="hover:underline">Licensing</a>
                         </li>
-                        <li>
-                            <a href="#" class="hover:underline">Contact</a>
-                        </li>
+
                     </ul>
                 </div>
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />

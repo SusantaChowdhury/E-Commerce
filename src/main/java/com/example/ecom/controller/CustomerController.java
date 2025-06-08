@@ -9,16 +9,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.example.ecom.model.Customer;
 import com.example.ecom.model.Orderhist;
 import com.example.ecom.model.Orderprod;
@@ -27,48 +25,93 @@ import com.example.ecom.service.CustomerRepo;
 import com.example.ecom.service.OrderhistRepo;
 import com.example.ecom.service.OrderprodRepo;
 import com.example.ecom.service.ProductRepo;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 
+/**
+ * Controller class for managing customer-facing operations such as
+ * registration,
+ * login, product browsing, cart management, and order processing in the
+ * e-commerce application.
+ *
+ * <p>
+ * This controller handles various HTTP endpoints for customer functionalities,
+ * such as viewing products, adding to cart, managing cart items, placing
+ * orders,
+ * viewing order history, and account actions like login and registration.
+ *
+ * @author Susanta Chowdhury, Rishabh Gon
+ * @version 2.0
+ * @since 2025-06-07
+ */
+
 @Controller
 public class CustomerController {
 
+	/** Injected repository for Customer-related database operations */
 	@Autowired
 	private CustomerRepo crepo;
 
+	/** Injected repository for Product-related database operations */
 	@Autowired
 	private ProductRepo prepo;
 
+	/**
+	 * Injected repository for Orderprod(i.e., Ordered Product)-related database
+	 * operations
+	 */
 	@Autowired
 	private OrderprodRepo orepo;
 
+	/**
+	 * Injected repository for Orderhist(i.e., Order History)-related database
+	 * operations
+	 */
 	@Autowired
 	private OrderhistRepo ordhist;
 
-	@RequestMapping("/customer_login")
+	/**
+	 * Displays the customer login page.
+	 * 
+	 * @return The login page view.
+	 */
+	@GetMapping("/customer_login")
 	public String customer_login() {
 		return "customer_login";
 	}
 
-	@RequestMapping("/register_customer")
+	/**
+	 * Displays the customer registration page.
+	 * 
+	 * @return The registration page view.
+	 */
+	@GetMapping("/register_customer")
 	public String register_customer() {
 		return "register_customer";
 	}
 
-	@RequestMapping("/logout_customer")
-	public String logout_customer() {
-		return "logout_customer";
-	}
-
-	@RequestMapping("/customerhome")
+	/**
+	 * Displays the customer home page with available products.
+	 * 
+	 * @param request The HTTP servlet request.
+	 * @param session The HTTP session.
+	 * @return The customer home page view.
+	 */
+	@GetMapping("/customerhome")
 	public String customerhome(HttpServletRequest request, HttpSession session) {
 		List<Product> prod_y_perm = prepo.findByPerm("YES");
 		request.setAttribute("prod_y_perm", prod_y_perm);
 		return "customerhome";
 	}
 
+	/**
+	 * Validates the email format and checks if it belongs to an allowed domain such
+	 * as, "gmail.com", "yahoomail.com" or "rediffmail.com".
+	 * 
+	 * @param mail Email string.
+	 * @return True if valid, false otherwise.
+	 */
 	public boolean validEmail(String mail) {
 		if (mail == null || mail.isEmpty()) {
 			return false;
@@ -102,6 +145,12 @@ public class CustomerController {
 		return localPart.matches("^[A-Za-z0-9._%+-]+$");
 	}
 
+	/**
+	 * Retrieves a map of product IDs to their available quantities
+	 * for all products that are marked as permitted for sale. *
+	 * 
+	 * @return A map of product quantities.
+	 */
 	@GetMapping("/product-qty")
 	@ResponseBody
 	public Map<Integer, Integer> getProductQuantities() {
@@ -113,7 +162,14 @@ public class CustomerController {
 		return qtyMap;
 	}
 
-	@RequestMapping("/custcart")
+	/**
+	 * Displays the customer's cart with selected products.
+	 * 
+	 * @param session The HTTP session.
+	 * @param request The HTTP servlet request.
+	 * @return The cart view.
+	 */
+	@GetMapping("/custcart")
 	public String custcart(HttpSession session, HttpServletRequest request) {
 		int cid = ((Customer) session.getAttribute("customer")).getId();
 		List<Orderprod> cartprods = orepo.findByCustomerIdAndProductPermYes(cid);
@@ -121,7 +177,15 @@ public class CustomerController {
 		return "custcart";
 	}
 
-	@RequestMapping("/Addcart")
+	/**
+	 * Adds a product to the customer's cart or increments its quantity if already
+	 * present.
+	 * 
+	 * @param pid     Product ID.
+	 * @param session HTTP session.
+	 * @return Redirect to customer home.
+	 */
+	@PostMapping("/Addcart")
 	public String Addcart(@RequestParam("product_id") int pid, HttpSession session) {
 		Customer c = (Customer) session.getAttribute("customer");
 		Orderprod check_o = orepo.findByProductIdAndCustomerId(pid, c.getId());
@@ -136,9 +200,15 @@ public class CustomerController {
 		return "redirect:/customerhome";
 	}
 
-	// Single buying on front page
+	/**
+	 * Processes a single product purchase directly.
+	 * 
+	 * @param pid     Product ID.
+	 * @param session HTTP session.
+	 * @return Redirect to order history.
+	 */
 	@Transactional
-	@RequestMapping("/Buynowsingle")
+	@PostMapping("/Buynowsingle")
 	public String Buynowsingle(@RequestParam("product_id") int pid, HttpSession session) {
 		Customer c = (Customer) session.getAttribute("customer");
 		Product p = (Product) prepo.findById(pid);
@@ -176,8 +246,15 @@ public class CustomerController {
 		return "redirect:/custordrhist";
 	}
 
+	/**
+	 * Processes all items in cart and places the order.
+	 * 
+	 * @param cid     Customer ID.
+	 * @param session HTTP session.
+	 * @return Redirect to order history.
+	 */
 	@Transactional
-	@RequestMapping("/Buynowset")
+	@PostMapping("/Buynowset")
 	public String Buynowset(@RequestParam("cust_id") int cid, HttpSession session) {
 		List<Orderprod> cl = orepo.findByCustomerId(cid);
 		Customer c = (Customer) session.getAttribute("customer");
@@ -222,7 +299,14 @@ public class CustomerController {
 		return "redirect:/custordrhist";
 	}
 
-	@RequestMapping("/custordrhist")
+	/**
+	 * Displays the customer's order history.
+	 * 
+	 * @param request HTTP request.
+	 * @param session HTTP session.
+	 * @return Order history view.
+	 */
+	@GetMapping("/custordrhist")
 	public String custordrhist(HttpServletRequest request, HttpSession session) {
 		Customer c = (Customer) session.getAttribute("customer");
 		List<Orderhist> p = (List<Orderhist>) ordhist.findByCustid(c.getId());
@@ -231,7 +315,13 @@ public class CustomerController {
 		return "custordrhist";
 	}
 
-	@RequestMapping("/cancelord")
+	/**
+	 * Marks an order as "appeal" to request cancellation.
+	 * 
+	 * @param ohid Order history ID.
+	 * @return Redirect to order history.
+	 */
+	@PostMapping("/cancelord")
 	public String cancelord(@RequestParam("orderhist_id") int ohid) {
 		Orderhist ordhstobj = ordhist.findById(ohid);
 		ordhstobj.setOrderstatus("appeal");
@@ -239,7 +329,13 @@ public class CustomerController {
 		return "redirect:/custordrhist";
 	}
 
-	@RequestMapping("/Addprodcartval")
+	/**
+	 * Increments quantity of a product in the cart.
+	 * 
+	 * @param oid Order ID.
+	 * @return Redirect to cart.
+	 */
+	@PostMapping("/Addprodcartval")
 	public String Addprodcartval(@RequestParam("order_id") int oid) {
 		Orderprod check_o = (Orderprod) orepo.findById(oid);
 		check_o.incQtybyOne();
@@ -247,7 +343,13 @@ public class CustomerController {
 		return "redirect:/custcart";
 	}
 
-	@RequestMapping("/Subprodcartval")
+	/**
+	 * Decrements quantity of a product in the cart.
+	 * 
+	 * @param oid Order ID.
+	 * @return Redirect to cart.
+	 */
+	@PostMapping("/Subprodcartval")
 	public String Subprodcartval(@RequestParam("order_id") int oid) {
 		Orderprod check_o = (Orderprod) orepo.findById(oid);
 		check_o.decQtybyOne();
@@ -255,13 +357,30 @@ public class CustomerController {
 		return "redirect:/custcart";
 	}
 
-	@RequestMapping("/Delcart")
+	/**
+	 * Deletes a product from the cart.
+	 * 
+	 * @param oid Order ID.
+	 * @return Redirect to cart.
+	 */
+	@PostMapping("/Delcart")
 	public String Delcart(@RequestParam("order_id") int oid) {
 		orepo.deleteById(oid);
 		return "redirect:/custcart";
 	}
 
-	@RequestMapping("/RegisterCustomer")
+	/**
+	 * Handles customer registration and validates input credentials.
+	 * Password is encoded and saved if validation succeeds.
+	 * 
+	 * @param cname    Customer name.
+	 * @param cmail    Customer email.
+	 * @param cpass    Customer password.
+	 * @param confpass Confirm password.
+	 * @param model    Model for passing attributes.
+	 * @return Registration page view.
+	 */
+	@PostMapping("/RegisterCustomer")
 	public String RegisterCustomer(@RequestParam("cust_name") String cname,
 			@RequestParam("cust_mail") String cmail, @RequestParam("cust_password") String cpass,
 			@RequestParam("cust_re_password") String confpass, ModelMap model) {
@@ -281,7 +400,17 @@ public class CustomerController {
 		return "register_customer";
 	}
 
-	@RequestMapping("/LoginCustomer")
+	/**
+	 * Handles customer login by verifying credentials and establishing a session.
+	 * 
+	 * @param cmail   Email.
+	 * @param cpass   Password.
+	 * @param model   Model.
+	 * @param session HTTP session.
+	 * @param request HTTP request.
+	 * @return Home page if success, login page with error otherwise.
+	 */
+	@PostMapping("/LoginCustomer")
 	public String LoginCustomer(@RequestParam("cust_mail") String cmail,
 			@RequestParam("cust_password") String cpass, ModelMap model,
 			HttpSession session, HttpServletRequest request) {

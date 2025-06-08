@@ -42,7 +42,8 @@
             <div
                 class="bg-gray-800/50 w-fit backdrop-blur-md border text-white py-10 px-4 m-12 rounded-lg text-center shadow-2xl">
                 <h2 class="text-3xl text-black font-semibold mb-6">About Us</h2>
-                <p class="text-lg mb-6">At <span class="font-semibold underline">SwiftMart</span>, we are dedicated to providing
+                <p class="text-lg mb-6">At <span class="font-semibold underline">SwiftMart</span>, we are dedicated to
+                    providing
                     you with the best
                     shopping experience. Our platform connects buyers and sellers seamlessly, offering a wide range of
                     products at competitive prices.</p>
@@ -58,23 +59,24 @@
         <footer class="rounded-lg shadow-sm bg-gray-900 m-4" style="width: 96vw;">
             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div class="sm:flex sm:items-center sm:justify-between">
-                    <a href="/sellerhome" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <a href="/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                        <span
+                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-semibold whitespace-nowrap">SwiftMart™</span>
                     </a>
                     <ul
                         class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li>
-                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                            <a href="aboutus" class="hover:underline me-4 md:me-6">About</a>
+                        </li>
+                        <li>
+                            <a href="contactus" class="hover:underline me-4 md:me-6">Contact</a>
                         </li>
                         <li>
                             <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
                         </li>
                         <li>
-                            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">Contact</a>
+                            <a href="#" class="hover:underline">Licensing</a>
                         </li>
                     </ul>
                 </div>
@@ -87,12 +89,3 @@
     </body>
 
     </html>
-
-    <!-- Welcome to SwiftMart. We are committed to creating a seamless,
-    user-friendly platform for buyers and sellers alike. Our goal is to connect customers
-    and sellers and provide a space
-    where customers can discover a wide variety of products, and sellers can showcase
-    their offerings efficiently. Whether you're a seller looking to grow your business
-    or a customer searching for the best products, our platform makes the process easy
-    and enjoyable for everyone. With secure login options for both sellers and buyers,
-    we ensure that each user has a smooth, hassle-free journey. -->
