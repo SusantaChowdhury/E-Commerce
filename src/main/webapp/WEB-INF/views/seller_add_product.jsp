@@ -16,17 +16,15 @@
                     justify-between">
 
                 <!-- Navbar -->
-                <nav class="bg-gray-900 text-gray-100 px-4 shadow">
+                <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
                     <div class="flex flex-wrap justify-between items-center py-2">
-                        <!-- Logo -->
-                        <a href="sellerhome" class="flex m-2 items-center space-x-3">
-                            <img src="/images/SwiftMart.png" class="h-14 rounded-xl shadow-lg" alt="SwiftMart Logo" />
+                        <a href="sellerhome" class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
+                            <img src="/images/SwiftMart.png" class="h-16 rounded-2xl" alt="SwiftMart Logo" />
                             <span
                                 class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                         </a>
-
-                        <!-- Navigation Links -->
-                        <div class="flex gap-4 items-center text-sm sm:text-base">
+                        <div
+                            class="flex flex-wrap justify-center items-center lg:gap-4 sm:gap-20 text-lg font-medium p-2">
                             <a href="sellerhome" class="hover:text-cyan-400 font-medium transition">My
                                 Products</a>
                             <a href="seller_permission_pending"
@@ -34,32 +32,32 @@
                                 Permissions</a>
                             <a href="seller_add_product" class="text-cyan-400 font-medium border-b-2">Add
                                 Product</a>
-
                             <!-- User Dropdown -->
                             <div class="relative inline-block text-left mr-2">
                                 <button id="dropdownButton" onclick="toggleDropdown()"
-                                    class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                    class="h-12 w-12 flex items-center gap-2 px-4 mr-2 py-2">
                                     <% String[] nameParts=sellrname.trim().split(" "); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
-                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
-                                        bg-cyan-400 text-gray-700 font-semibold text-2xl">
+                                                    <div class=" flex items-center justify-center rounded-full p-1
+                                        border-white border-3 bg-cyan-400 text-gray-700 font-semibold text-2xl">
                                         <%= initials %>
-                            </div>
 
-                            </button>
-                            <!-- Dropdown -->
-                            <div id="dropdownMenu"
-                                class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
-                                <form action="Logout" method="post" class="py-1 text-gray-700">
-                                    <button type="submit"
-                                        class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
-                                </form>
+
+                                </button>
+                                <!-- Dropdown -->
+                                <div id="dropdownMenu"
+                                    class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                    <form action="Logout" method="post" class="py-1 text-gray-700">
+                                        <button type="submit"
+                                            class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
+
                 </nav>
                 <!-- For Unapproved Seller -->
-                <%if(sellrperm.equals("NO")){ %>
+                <% if(sellrperm.equals("NO")){ %>
                     <h1 class="text-2xl font-bold text-center m-4">Welcome to SwiftMart, <%=sellrname%>!
                     </h1>
                     <div
@@ -105,7 +103,9 @@
                                                 <div>
                                                     <div class="bg-gray-700 rounded p-2 mb-1 border-amber-500 border">
                                                         <p class="text-md text-yellow-400"><span
-                                                                class="text-md font-semibold underline">Warning:</span> You can only add quantity once this product is enlisted. All other details can't be edited later!</p>
+                                                                class="text-md font-semibold underline">Warning:</span>
+                                                            You can only add quantity once this product is enlisted. All
+                                                            other details can't be edited later!</p>
                                                     </div>
                                                     <label class="block font-medium mb-1">Upload Product
                                                         Image</label>
@@ -155,7 +155,7 @@
                                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                             alt="SwiftMart Logo" />
                                                         <span
-                                                            class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-sans font-semibold whitespace-nowrap">SwiftMart™</span>
                                                     </a>
                                                     <ul
                                                         class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
@@ -181,25 +181,13 @@
                                                     class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
                                                     2025
                                                     <a href="https://flowbite.com/"
-                                                        class="hover:underline">SwiftMart™</a>. All
+                                                        class="hover:underline">SwiftMart™</a>.
+                                                    All
                                                     Rights Reserved.</span>
                                             </div>
                                         </footer>
-                                        <script>
-                                            function toggleDropdown() {
-                                                const menu = document.getElementById('dropdownMenu');
-                                                menu.classList.toggle('hidden');
-                                            }
+                                        <script src="/js/script.js"></script>
 
-                                            // Close dropdown if clicked outside
-                                            window.addEventListener('click', function (e) {
-                                                const dropdownButton = document.getElementById('dropdownButton');
-                                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                                if (!dropdownButton.contains(e.target)) {
-                                                    dropdownMenu.classList.add('hidden');
-                                                }
-                                            });
-                                        </script>
             </body>
 
         </html>

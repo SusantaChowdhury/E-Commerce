@@ -21,42 +21,34 @@
                                     class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
 
                                     <!-- Navbar -->
-                                    <nav class="bg-gray-900 text-gray-100 px-4 shadow">
+                                    <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
                                         <div class="flex flex-wrap justify-between items-center py-2">
-                                            <!-- Logo -->
-                                            <a href="customerhome" class="flex m-2 items-center space-x-3">
-                                                <img src="/images/SwiftMart.png" class="h-14 rounded-xl shadow-lg"
+                                            <a href="adminhome"
+                                                class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
+                                                <img src="/images/SwiftMart.png" class="h-16 rounded-2xl"
                                                     alt="SwiftMart Logo" />
                                                 <span
                                                     class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                             </a>
-
-                                            <!-- Navigation Links -->
-                                            <div class="flex gap-4 items-center text-sm sm:text-base">
+                                            <div
+                                                class="flex flex-wrap justify-center items-center lg:gap-6 sm:gap-8 text-lg font-medium p-2">
                                                 <a href="customerhome"
-                                                    class="hover:text-cyan-400 font-medium">Products</a>
+                                                    class="hover:text-cyan-400 font-medium transition">Products</a>
                                                 <a href="custcart" class="text-cyan-400 border-b-2">Cart</a>
                                                 <a href="custordrhist"
-                                                    class="py-1 hover:text-cyan-400 font-medium">Orders</a>
-
+                                                    class="hover:text-cyan-400 font-medium transition">Orders</a>
                                                 <!-- User Dropdown -->
                                                 <div class="relative inline-block text-left mr-2">
                                                     <button id="dropdownButton" onclick="toggleDropdown()"
-                                                        class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                                        class="h-12 w-12 flex items-center gap-2 px-4 mr-2 py-2">
                                                         <% String[]
                                                             nameParts=custname.trim().split(" "); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
-                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
-                                                            bg-cyan-400 text-gray-700 font-semibold text-2xl shadow">
+                                                    <div class=" flex items-center justify-center rounded-full p-1
+                                                            border-white border-3 bg-cyan-400 text-gray-700
+                                                            font-semibold text-2xl">
                                                             <%= initials %>
                                                 </div>
-                                                <!-- <span class="hidden text-white font-medium">
-                                            <%= custname %>
-                                        </span> -->
-                                                <!-- <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
-                                            stroke-width="2" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7">
-                                            </path>
-                                        </svg> -->
+
                                                 </button>
                                                 <!-- Dropdown -->
                                                 <div id="dropdownMenu"
@@ -230,29 +222,30 @@
                                                     <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                         alt="SwiftMart Logo" />
                                                     <span
-                                                        class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                                        class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-semibold whitespace-nowrap">SwiftMart™</span>
                                                 </a>
                                                 <ul
                                                     class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                                                     <li>
-                                                        <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                                                        <a href="aboutus" class="hover:underline me-4 md:me-6">About</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="contactus"
+                                                            class="hover:underline me-4 md:me-6">Contact</a>
                                                     </li>
                                                     <li>
                                                         <a href="#" class="hover:underline me-4 md:me-6">Privacy
                                                             Policy</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="hover:underline">Contact</a>
+                                                        <a href="#" class="hover:underline">Licensing</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                                             <span
                                                 class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-                                                2023
+                                                2025
                                                 <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>.
                                                 All
                                                 Rights Reserved.</span>

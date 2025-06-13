@@ -17,47 +17,45 @@
                     <body
                         class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans flex flex-col">
                         <!-- Navbar -->
-                        <nav class="bg-gray-900 text-gray-100 px-4 shadow">
+                        <nav class="bg-gray-900 w-full text-gray-100 px-4 shadow-md">
                             <div class="flex flex-wrap justify-between items-center py-2">
-                                <!-- Logo -->
-                                <a href="sellerhome" class="flex m-2 items-center space-x-3">
-                                    <img src="/images/SwiftMart.png" class="h-14 rounded-xl shadow-lg"
-                                        alt="SwiftMart Logo" />
+                                <a href="sellerhome" class="flex m-4 items-center space-x-3 rtl:space-x-reverse">
+                                    <img src="/images/SwiftMart.png" class="h-16 rounded-2xl" alt="SwiftMart Logo" />
                                     <span
                                         class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-3xl text-transparent font-sans font-semibold">SwiftMart™</span>
                                 </a>
-
-                                <!-- Navigation Links -->
-                                <div class="flex gap-4 items-center text-sm sm:text-base">
-                                    <a href="sellerhome" class="text-cyan-400 border-b-3 font-medium">My Products</a>
+                                <div
+                                    class="flex flex-wrap justify-center items-center lg:gap-4 sm:gap-20 text-lg font-medium p-2">
+                                    <a href="sellerhome" class="text-cyan-400 font-medium border-b-2">My
+                                        Products</a>
                                     <a href="seller_permission_pending"
                                         class="hover:text-cyan-400 font-medium transition">Pending
                                         Permissions</a>
                                     <a href="seller_add_product" class="hover:text-cyan-400 font-medium transition">Add
                                         Product</a>
-
                                     <!-- User Dropdown -->
-                                    <div class="relative inline-block text-center mr-2">
+                                    <div class="relative inline-block text-left mr-2">
                                         <button id="dropdownButton" onclick="toggleDropdown()"
-                                            class="h-12 w-12 flex items-center gap-2 px-4 py-2">
+                                            class="h-12 w-12 flex items-center gap-2 px-4 mr-2 py-2">
                                             <% String[] nameParts=sellrname.trim().split(" "); String initials = ""; for (String part : nameParts) { if (!part.isEmpty()) initials += part.charAt(0); } initials = initials.toUpperCase(); %>
-                            <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
-                                                bg-cyan-400 text-gray-700 font-semibold text-2xl">
+                                                    <div class=" flex items-center justify-center rounded-full p-1
+                                                border-white border-3 bg-cyan-400 text-gray-700 font-semibold text-2xl">
                                                 <%= initials %>
-                                    </div>
 
-                                    </button>
-                                    <!-- Dropdown -->
-                                    <div id="dropdownMenu"
-                                        class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
-                                        <form action="Logout" method="post" class="py-1 text-gray-700">
-                                            <button type="submit"
-                                                class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
-                                        </form>
+
+                                        </button>
+                                        <!-- Dropdown -->
+                                        <div id="dropdownMenu"
+                                            class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 hidden z-50">
+                                            <form action="Logout" method="post" class="py-1 text-gray-700">
+                                                <button type="submit"
+                                                    class="block px-4 py-2 text-sm hover:bg-gray-100 w-full text-left">Logout</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
+
                         </nav>
 
                         <!-- For Unapproved Seller -->
@@ -184,24 +182,11 @@
                                     </div>
                                 </footer>
                                 <%%>
+                                    <script src="/js/script.js"></script>
                                     <script>
-                                        function toggleDropdown() {
-                                            const menu = document.getElementById('dropdownMenu');
-                                            menu.classList.toggle('hidden');
-                                        }
-
-                                        // Close dropdown if clicked outside
-                                        window.addEventListener('click', function (e) {
-                                            const dropdownButton = document.getElementById('dropdownButton');
-                                            const dropdownMenu = document.getElementById('dropdownMenu');
-                                            if (!dropdownButton.contains(e.target)) {
-                                                dropdownMenu.classList.add('hidden');
-                                            }
-                                        });
-
-                                        // setInterval(function () {
-                                        //     location.reload();
-                                        // }, 5000);
+                                        setInterval(function () {
+                                            location.reload();
+                                        }, 5000);
                                     </script>
                     </body>
 
