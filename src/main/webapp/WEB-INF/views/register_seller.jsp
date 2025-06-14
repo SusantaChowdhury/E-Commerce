@@ -66,19 +66,22 @@
                 </div>
 
                 <!-- Server-Side Messages -->
-                <% String getm=String.valueOf(request.getAttribute("msg")); String showMessage="" ; if (getm !=null) {
-                    if (getm.equals("success")) { %>
+                <% String getm=String.valueOf(request.getAttribute("msg")); 
+                    String showMessage="" ; 
+                    if (getm !=null) {
+                        if (getm.equals("success")) { %>
                     <p class="text-green-600 font-medium text-center">
                         Registration successful. <a href="seller_login" class="text-blue-600 underline">Login</a>
                     </p>
-                    <% } else { if(getm.equals("pfail")) { showMessage="Passwords do not match." ; }
+                    <% } else { 
+                        if(getm.equals("pfail")) { showMessage="Passwords do not match." ; }
                         if(getm.equals("tfail")) { showMessage="File upload failed. Please try again." ; }
-                        if(getm.equals("emfail")) { showMessage="Invalid email address." ; } if(getm.equals("mxstfail"))
-                        { showMessage="Email already registered. Please login." ; } %>
+                        if(getm.equals("emfail")) { showMessage="Invalid email address." ; } 
+                        if(getm.equals("mxstfail")) { showMessage="Email already registered. Please login." ; } %>
                         <p class="text-red-600 font-medium text-center">
                             <%= showMessage %>
                         </p>
-                        <% } } %>
+                    <% } } %>
 
                             <!-- Submit Button -->
                             <button type="submit"
@@ -88,6 +91,4 @@
             </form>
         </div>
     </body>
-
-
-    </html>
+</html>

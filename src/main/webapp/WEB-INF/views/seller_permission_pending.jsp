@@ -60,7 +60,7 @@
 
                         </nav>
                         <!-- For Unapproved Seller -->
-                        <%if(sellrperm.equals("NO")){ %>
+                        <% if(sellrperm.equals("NO")){ %>
                             <h1 class="text-2xl font-bold text-center m-4">Welcome to SwiftMart, <%=sellrname%>!
                             </h1>
                             <div
@@ -87,17 +87,25 @@
 
                                 <main class="p-6">
                                     <section class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                        <% List<Product> perm_pd = (List<Product>)
-                                                request.getAttribute("prod_Wo_perm");
-                                                if (perm_pd.isEmpty()) {
-                                                %>
-                                                <div class="col-span-full text-center text-gray-500 text-lg">No
-                                                    products
-                                                    pending permission at the moment.</div>
-                                                <% } else { for (Product x : perm_pd) { int p_id=x.getId(); String
-                                                    p_name=x.getName(); String p_pd=x.getPd(); Double
-                                                    p_price=x.getPrice(); int p_quant=x.getQuantity(); String
-                                                    path=x.getImgp(); %>
+                                        <% List<Product> perm_pd = (List<Product>)request.getAttribute("prod_Wo_perm");
+                                            if (perm_pd.isEmpty()) {%>
+                                                <div
+                                                    class="col-span-full mx-10 py-4 bg-gray-800/40 backdrop-blur-lg rounded-lg justify-center items-center text-center text-lg">
+                                                    <img src="/images/empty-box.svg" alt="No Products"
+                                                        class="w-1/2 h-auto mx-auto">
+                                                    <p class="text-center text-lg text-amber-300 m-2">No products
+                                                    pending for permission at the moment. <a src="seller_add_product"
+                                                            class="underline hover:text-white">Click here</a> to add
+                                                        product.</p>
+                                                </div>
+                                            <% } else { 
+                                                    for (Product x : perm_pd) { 
+                                                    int p_id=x.getId(); 
+                                                    String p_name=x.getName(); 
+                                                    String p_pd=x.getPd(); 
+                                                    Double p_price=x.getPrice(); 
+                                                    int p_quant=x.getQuantity(); 
+                                                    String path=x.getImgp(); %>
                                                     <div
                                                         class="bg-gray-800/50 backdrop-blur-lg shadow-lg rounded-xl overflow-hidden p-4 flex flex-col items-center text-center hover:-translate-y-1 transition-all">
                                                         <img src="<%= path %>" alt="Product <%= p_name %>"
@@ -128,15 +136,15 @@
                                                             </button>
                                                         </form>
                                                     </div>
-                                                    <% } %>
+                                                    <% } }%>
                                     </section>
-                                    <% }} %>
-                                </main>
-                                <!-- footer -->
+                                <% } %>   
+                            </main>
+                            <!-- footer -->
                                 <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                         <div class="sm:flex sm:items-center sm:justify-between">
-                                            <a href="/sellerhome"
+                                            <a href="seller_permission_pending"
                                                 class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                                 <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                     alt="SwiftMart Logo" />
@@ -174,9 +182,5 @@
                                     location.reload();
                                 }, 5000);
                             </script>
-
                     </body>
-
-
-
                 </html>

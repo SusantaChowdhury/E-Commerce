@@ -69,12 +69,18 @@
                             <div
                                 class="w-full max-w-3xl bg-gray-800/40 backdrop-blur-xl border-b-4 border-gray-800 rounded-xl shadow-xl p-6 space-y-6">
 
-                                <% Product x=(Product) session.getAttribute("prod_edit"); if (x==null) { %>
+                                <% Product x=(Product) session.getAttribute("prod_edit"); 
+                                    if (x==null) { %>
                                     <div class="text-center text-red-400 text-lg">No product selected for editing.
                                     </div>
-                                    <% } else { int p_id=x.getId(); String p_name=x.getName(); String p_pd=x.getPd();
-                                        Double p_price=x.getPrice(); int p_quant=x.getQuantity(); String
-                                        pth=x.getImgp(); %>
+                                    <% } else { 
+                                        int p_id=x.getId(); 
+                                        String p_name=x.getName(); 
+                                        String p_pd=x.getPd();
+                                        Double p_price=x.getPrice(); 
+                                        int p_quant=x.getQuantity(); 
+                                        String pth=x.getImgp(); 
+                                    %>
                                         <form action="EdtProductSelr" enctype="multipart/form-data" method="post"
                                             class="space-y-6">
                                             <!-- Product Info Grid -->
@@ -151,8 +157,8 @@
                                         </form>
 
                                         <!-- Feedback Message -->
-                                        <% String getm=String.valueOf(request.getAttribute("msg")); if
-                                            (getm.equals("Success")) { %>
+                                        <% String getm=String.valueOf(request.getAttribute("msg")); 
+                                            if(getm.equals("Success")) { %>
                                             <div class="text-green-400 text-center font-medium mt-4">
                                                 ✅ Product updated successfully!
                                             </div>
@@ -160,9 +166,9 @@
                                                 <div class="text-red-500 text-center font-medium mt-4">
                                                     ⚠️ <%= getm %>
                                                 </div>
-                                                <% } %>
+                                            <% } %>
 
-                                                    <% } %>
+                                    <% } %>
                             </div>
                         </div>
                         <!-- footer -->
@@ -173,48 +179,30 @@
                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
                                         <span
-                                            class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
+                                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-semibold whitespace-nowrap">SwiftMart™</span>
                                     </a>
                                     <ul
                                         class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                                         <li>
-                                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                                            <a href="aboutus" class="hover:underline me-4 md:me-6">About</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="hover:underline me-4 md:me-6">Privacy
-                                                Policy</a>
+                                            <a href="contactus" class="hover:underline me-4 md:me-6">Contact</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                                            <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="hover:underline">Contact</a>
+                                            <a href="#" class="hover:underline">Licensing</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                                <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-                                    2025
+                                <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025
                                     <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>. All
                                     Rights Reserved.</span>
                             </div>
                         </footer>
-                        <script>
-                            function toggleDropdown() {
-                                const menu = document.getElementById('dropdownMenu');
-                                menu.classList.toggle('hidden');
-                            }
-
-                            // Close dropdown if clicked outside
-                            window.addEventListener('click', function (e) {
-                                const dropdownButton = document.getElementById('dropdownButton');
-                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                if (!dropdownButton.contains(e.target)) {
-                                    dropdownMenu.classList.add('hidden');
-                                }
-                            });
-                        </script>
+                        <script src="/js/script.js"></script>
                     </body>
-
-
-                </html>
+            </html>

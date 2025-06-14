@@ -69,8 +69,11 @@
                                     <% } else { %>
                                         <div
                                             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                            <% for (Seller x : perm_pd) { String p_name=x.getName(); String
-                                                p_id=String.valueOf(x.getId()); String p_mail=x.getEmail(); %>
+                                            <% for (Seller x : perm_pd) { 
+                                                String p_name=x.getName(); 
+                                                String p_id=String.valueOf(x.getId()); 
+                                                String p_mail=x.getEmail(); 
+                                            %>
                                                 <div
                                                     class="bg-gray-800/50 backdrop-blur-xl border-b-4 border-gray-800 rounded-xl shadow-lg p-5 text-gray-200 flex flex-col justify-between">
                                                     <div>
@@ -104,13 +107,13 @@
                                                 </div>
                                                 <% } %>
                                         </div>
-                                        <% } %>
+                                    <% } %>
                         </div>
                         <!-- footer -->
                         <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                 <div class="sm:flex sm:items-center sm:justify-between">
-                                    <a href="/sellerhome"
+                                    <a href="passivesellers"
                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
                                         <span
@@ -138,22 +141,8 @@
                                     Rights Reserved.</span>
                             </div>
                         </footer>
-
+                        <script src="/js/script.js"></script>
                         <script>
-                            function toggleDropdown() {
-                                const menu = document.getElementById('dropdownMenu');
-                                menu.classList.toggle('hidden');
-                            }
-
-                            // Close dropdown if clicked outside
-                            window.addEventListener('click', function (e) {
-                                const dropdownButton = document.getElementById('dropdownButton');
-                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                if (!dropdownButton.contains(e.target)) {
-                                    dropdownMenu.classList.add('hidden');
-                                }
-                            });
-
                             setInterval(function () {
                                 location.reload();
                             }, 5000);

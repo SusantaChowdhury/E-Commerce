@@ -15,10 +15,11 @@
                                     <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                                     <link rel="stylesheet" href="/css/output.css" />
                                 </head>
-                                <% Admin admi=(Admin)session.getAttribute("admin"); Customer
-                                    s=(Customer)session.getAttribute("custinfo"); List<Orderprod> op=(List<Orderprod>
-                                        )request.getAttribute("cartofcust");
-                                        %>
+                                <% 
+                                    Admin admi=(Admin)session.getAttribute("admin"); 
+                                    Customer s=(Customer)session.getAttribute("custinfo"); 
+                                    List<Orderprod> op=(List<Orderprod>)request.getAttribute("cartofcust");
+                                 %>
 
                                         <body
                                             class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
@@ -45,12 +46,14 @@
                                                             <div class="relative inline-block text-left mr-2">
                                                                 <button id="dropdownButton" onclick="toggleDropdown()"
                                                                     class="h-12 w-12 flex items-center gap-2 px-4 py-2">
-                                                                    <% String[]
-                                                                        nameParts=admi.getUsername().trim().split("",2);
-                                                                        String initials="" ; for (String part :
-                                                                        nameParts) { if (!part.isEmpty()) initials
-                                                                        +=part.charAt(0); }
-                                                                        initials=initials.toUpperCase(); %>
+                                                                    <% 
+                                                                        String[] nameParts=admi.getUsername().trim().split("",2);
+                                                                        String initials="" ; 
+                                                                        for (String part : nameParts) { 
+                                                                            if (!part.isEmpty()) initials +=part.charAt(0); 
+                                                                        }
+                                                                        initials=initials.toUpperCase(); 
+                                                                    %>
                                                                         <div class=" flex items-center justify-center rounded-full p-1 border-white border-3
                                                                         bg-cyan-400 text-gray-700 font-semibold
                                                                         text-2xl">
@@ -120,7 +123,10 @@
                                                             the
                                                             cart
                                                         </p>
-                                                        <% } else { double total=0.0; int nobuy=0; %>
+                                                        <% } else { 
+                                                            double total=0.0; 
+                                                            int nobuy=0; 
+                                                        %>
 
                                                             <!-- Table Wrapper -->
                                                             <div
@@ -142,28 +148,29 @@
                                                                     </thead>
                                                                     <tbody
                                                                         class="bg-gray-900 text-gray-200 divide-y divide-gray-700">
-                                                                        <% for(Orderprod x : op) { int oid=x.getId();
+                                                                        <% for(Orderprod x : op) { 
+                                                                            int oid=x.getId();
                                                                             String p_name=x.getProduct().getName();
-                                                                            String p_pd=x.getProduct().getPd(); Double
-                                                                            p_price=x.getProduct().getPrice(); int
-                                                                            avlqty=x.getProduct().getQuantity(); int
-                                                                            bqty=x.getQty(); String
-                                                                            s_name=x.getProduct().getSeller().getName();
-                                                                            String
-                                                                            s_mail=x.getProduct().getSeller().getEmail();
+                                                                            String p_pd=x.getProduct().getPd(); 
+                                                                            Double p_price=x.getProduct().getPrice(); 
+                                                                            int avlqty=x.getProduct().getQuantity(); 
+                                                                            int bqty=x.getQty(); 
+                                                                            String s_name=x.getProduct().getSeller().getName();
+                                                                            String s_mail=x.getProduct().getSeller().getEmail();
                                                                             int s_id=x.getProduct().getSeller().getId();
-                                                                            Double cost=p_price * bqty; total +=cost;
-                                                                            String path=x.getProduct().getImgp(); String
-                                                                            statusText="" ; String statusColor="" ; if
-                                                                            (avlqty==0) { statusText="Out of Stock" ;
-                                                                            statusColor="text-red-400" ; } else if
-                                                                            (bqty>
-                                                                            avlqty) {
-                                                                            statusText = "Qty Exceeds Stock";
-                                                                            statusColor = "text-red-500";
+                                                                            Double cost=p_price * bqty; 
+                                                                            total += cost;
+                                                                            String path=x.getProduct().getImgp(); 
+                                                                            String statusText="" ; String statusColor="" ; 
+                                                                            if(avlqty == 0) { 
+                                                                                statusText="Out of Stock" ;
+                                                                                statusColor="text-red-400" ; 
+                                                                            } else if(bqty > avlqty) {
+                                                                                statusText = "Qty Exceeds Stock";
+                                                                                statusColor = "text-red-500";
                                                                             } else {
-                                                                            statusText = "Ready to Buy";
-                                                                            statusColor = "text-amber-600";
+                                                                                statusText = "Ready to Buy";
+                                                                                statusColor = "text-amber-600";
                                                                             }
                                                                             %>
                                                                             <tr class="hover:bg-gray-800 transition">
@@ -264,7 +271,7 @@
                                             <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                                 <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                                     <div class="sm:flex sm:items-center sm:justify-between">
-                                                        <a href="/sellerhome"
+                                                        <a href="customer_det_ct"
                                                             class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                                             <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                                 alt="SwiftMart Logo" />
@@ -300,21 +307,8 @@
                                                         Rights Reserved.</span>
                                                 </div>
                                             </footer>
-                                            <script>
-                                                function toggleDropdown() {
-                                                    const menu = document.getElementById('dropdownMenu');
-                                                    menu.classList.toggle('hidden');
-                                                }
-
-                                                // Close dropdown if clicked outside
-                                                window.addEventListener('click', function (e) {
-                                                    const dropdownButton = document.getElementById('dropdownButton');
-                                                    const dropdownMenu = document.getElementById('dropdownMenu');
-                                                    if (!dropdownButton.contains(e.target)) {
-                                                        dropdownMenu.classList.add('hidden');
-                                                    }
-                                                });
-
+                                            <script src="/js/script.js"></script>
+                                            <script>                                               
                                                 setInterval(function () {
                                                     location.reload();
                                                 }, 5000);

@@ -54,31 +54,35 @@
                 </div>
 
                 <!-- Feedback Messages -->
-                <% String getm=String.valueOf(request.getAttribute("msg")); if (getm !=null) { if
-                    (getm.equals("success")) { %>
+                <% String getm=String.valueOf(request.getAttribute("msg")); 
+                    if (getm !=null) { 
+                        if(getm.equals("success")) { %>
                     <p class="text-green-600 text-sm text-center font-medium">
                         Registration Successful. Click here to
                         <a href="customer_login" class="text-blue-600 hover:underline">Login</a>
                     </p>
-                    <% } else { String showMessage="" ; if (getm.equals("pfail")) { showMessage="Passwords don't match."
-                        ; } else if (getm.equals("emfail")) { showMessage="Invalid email." ; } else if
-                        (getm.equals("mxstfail")) {
-                        showMessage="Email is already registered with a customer account. Please login." ; } %>
+                    <% } else { 
+                        String showMessage="" ; 
+                        if (getm.equals("pfail")) { 
+                            showMessage="Passwords don't match."; 
+                        } else if (getm.equals("emfail")) { 
+                            showMessage="Invalid email." ; 
+                        } else if (getm.equals("mxstfail")) {
+                            showMessage="Email is already registered with a customer account. Please login." ; } 
+                        %>
                         <p class="text-red-600 text-sm text-center font-medium">
                             <%= showMessage %>
                         </p>
-                        <% } } %>
+                    <% } } %>
 
-                            <!-- Submit Button -->
+                      <!-- Submit Button -->
                             <div>
                                 <button type="submit"
                                     class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-300">
                                     Register
                                 </button>
-                            </div>
+                            </div>      
             </form>
         </div>
     </body>
-
-
-    </html>
+</html>

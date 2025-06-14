@@ -70,11 +70,17 @@
                                         <% } else { %>
                                             <section
                                                 class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-                                                <% for (Product x : perm_p) { int pd=x.getId(); int
-                                                    sd=x.getSeller().getId(); String p_name=x.getName(); String
-                                                    p_pd=x.getPd(); Double p_price=x.getPrice(); int
-                                                    qty=x.getQuantity(); String s_name=x.getSeller().getName(); String
-                                                    path=x.getImgp(); %>
+                                                <% 
+                                                    for (Product x : perm_p) { 
+                                                        int pd=x.getId(); 
+                                                        int sd=x.getSeller().getId(); 
+                                                        String p_name=x.getName(); 
+                                                        String p_pd=x.getPd(); 
+                                                        Double p_price=x.getPrice(); 
+                                                        int qty=x.getQuantity(); 
+                                                        String s_name=x.getSeller().getName(); 
+                                                        String path=x.getImgp(); 
+                                                %>
 
                                                     <!-- Product Card -->
                                                     <div
@@ -115,7 +121,7 @@
                                                                             Buy Now
                                                                         </button>
                                                                     </form>
-                                                                    <% } %>
+                                                                <% } %>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -128,7 +134,7 @@
                             <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                 <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                     <div class="sm:flex sm:items-center sm:justify-between">
-                                        <a href="/sellerhome"
+                                        <a href="customerhome"
                                             class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                             <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                 alt="SwiftMart Logo" />

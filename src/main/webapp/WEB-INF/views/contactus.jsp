@@ -62,7 +62,7 @@
         <footer class="rounded-lg shadow-sm bg-gray-900 m-4" style="width: 96vw;">
             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div class="sm:flex sm:items-center sm:justify-between">
-                    <a href="/sellerhome" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                    <a href="contactus" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
                         <span
                             class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-semibold whitespace-nowrap">SwiftMart™</span>
@@ -86,7 +86,7 @@
                 </div>
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                 <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025
-                    <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>. All
+                    <a href="/" class="hover:underline">SwiftMart™</a>. All
                     Rights Reserved.</span>
             </div>
         </footer>

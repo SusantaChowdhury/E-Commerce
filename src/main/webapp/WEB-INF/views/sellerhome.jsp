@@ -11,8 +11,9 @@
                     <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                     <link rel="stylesheet" href="css/output.css" />
                 </head>
-                <%Seller c=(Seller)session.getAttribute("seller"); String sellrname=c.getName(); String
-                    sellrperm=c.getPerm(); %>
+                <% Seller c=(Seller)session.getAttribute("seller"); 
+                    String sellrname=c.getName(); 
+                    String sellrperm=c.getPerm(); %>
 
                     <body
                         class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans flex flex-col">
@@ -59,7 +60,7 @@
                         </nav>
 
                         <!-- For Unapproved Seller -->
-                        <%if(sellrperm.equals("NO")){ %>
+                        <% if(sellrperm.equals("NO")){ %>
                             <h1 class="text-2xl font-bold text-center m-4">Welcome to SwiftMart, <%=sellrname%>!👋
                             </h1>
                             <div
@@ -79,7 +80,7 @@
 
                             </div>
                             <!-- For Approved seler -->
-                            <% }else{ %>
+                            <% } else{ %>
                                 <!-- Message -->
                                 <section class="py-6 px-4 text-center">
                                     <h2 class="font-bold text-2xl text-white">Hello there!👋 </h2>
@@ -92,10 +93,8 @@
                                 <div class=" p-6 rounded-lg">
                                     <section
                                         class="products grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                        <% List<Product> perm_pd = (List<Product>)
-                                                request.getAttribute("prod_W_perm");
-                                                if (perm_pd.isEmpty()) {
-                                                %>
+                                        <% List<Product> perm_pd = (List<Product>)request.getAttribute("prod_W_perm");
+                                            if (perm_pd.isEmpty()) { %>
                                                 <div
                                                     class="col-span-full mx-10 py-4 bg-gray-800/40 backdrop-blur-lg rounded-lg justify-center items-center text-center text-lg">
                                                     <img src="/images/empty-box.svg" alt="No Products"
@@ -111,10 +110,14 @@
 
                                                 </div>
 
-                                                <% } else { for (Product x : perm_pd) { int p_id=x.getId(); String
-                                                    p_name=x.getName(); String p_pd=x.getPd(); Double
-                                                    p_price=x.getPrice(); int p_quant=x.getQuantity(); String
-                                                    path=x.getImgp(); %>
+                                            <% } else { 
+                                                    for (Product x : perm_pd) { 
+                                                    int p_id=x.getId(); 
+                                                    String p_name=x.getName(); 
+                                                    String p_pd=x.getPd(); 
+                                                    Double p_price=x.getPrice(); 
+                                                    int p_quant=x.getQuantity(); 
+                                                    String path=x.getImgp(); %>
                                                     <div
                                                         class="bg-gray-800/40 backdrop-blur-xl rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 p-4 flex flex-col items-center text-center">
                                                         <img src="<%=path%>" alt="Product <%=p_name%>"
@@ -139,11 +142,10 @@
                                                             </button>
                                                         </form>
                                                     </div>
-                                                    <% } %>
-                                    </section>
-                                    <%}}%>
+                                                <% } }%>
+                                    </section>                                   
                                 </div>
-
+                                <% } %> 
 
                                 <!-- footer -->
                                 <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
@@ -180,15 +182,12 @@
                                             All
                                             Rights Reserved.</span>
                                     </div>
-                                </footer>
-                                <%%>
-                                    <script src="/js/script.js"></script>
-                                    <script>
-                                        setInterval(function () {
-                                            location.reload();
-                                        }, 5000);
-                                    </script>
-                    </body>
-
-
+                                </footer>                    
+                                <script src="/js/script.js"></script>
+                                <script>
+                                   setInterval(function () {
+                                        location.reload();
+                                    }, 5000);
+                                </script>
+                        </body>
                 </html>

@@ -37,12 +37,17 @@
                 </div>
 
                 <!-- Error Message -->
-                <% String getm=(String) request.getAttribute("msg"); if (getm !=null) { String showMessage="" ; if
-                    (getm.equals("clfail")) { showMessage="Wrong E-mail or Password" ; %>
+                <% 
+                    String getm=(String) request.getAttribute("msg"); 
+                    if (getm !=null) { 
+                        String showMessage="" ; 
+                        if(getm.equals("clfail")) {
+                            showMessage="Wrong E-mail or Password" ; 
+                %>
                     <p class="text-center text-sm text-red-600 font-medium">
                         <%= showMessage %>
                     </p>
-                    <% } } %>
+                <% } } %>
 
                         <!-- Login Button -->
                         <div>
@@ -60,6 +65,4 @@
             </p>
         </div>
     </body>
-
-
-    </html>
+</html>

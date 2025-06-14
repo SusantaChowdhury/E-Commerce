@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="com.example.ecom.model.Seller"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.example.ecom.model.Seller"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,8 +12,8 @@
         String sellrname=c.getName();
         String sellrperm=c.getPerm();
         if(sellrperm.equals("NO")){
-        %>
-        <body>  
+    %>
+    <body>  
         <h1>Welcome to SwiftMart, <%=sellrname%></h1>
         <h2>Your request to do business is being evaluated. Contact with admin.</h2>
         </body>
@@ -69,8 +68,6 @@
                     </form>
             </div>
         </div>
-        </body>
-        <%
-        }
-        %>
+    </body>
+    <% } %>
 </html>

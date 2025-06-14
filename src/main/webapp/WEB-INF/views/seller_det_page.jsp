@@ -10,9 +10,10 @@
                         <meta charset="UTF-8">
                         <title>Seller Details</title>
                     </head>
-                    <% Admin admi=(Admin)session.getAttribute("admin"); String
-                        retpage=(String)session.getAttribute("page"); Seller
-                        s=(Seller)session.getAttribute("sellerinfo"); %>
+                    <% Admin admi=(Admin)session.getAttribute("admin"); 
+                        String retpage=(String)session.getAttribute("page"); 
+                        Seller s=(Seller)session.getAttribute("sellerinfo"); 
+                    %>
 
                         <body style="background-image: url(images/shop.jpg)">
                             <div style="display: inline-block; justify-content: center; text-align: center; 
@@ -64,5 +65,4 @@
                                 </div>
                             </div>
                         </body>
-
                     </html>

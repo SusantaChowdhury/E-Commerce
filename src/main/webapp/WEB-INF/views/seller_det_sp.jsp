@@ -12,11 +12,11 @@
                         <link rel="icon" href="/images/SwiftMart.ico" type="image/x-icon" />
                         <link rel="stylesheet" href="/css/output.css" />
                     </head>
-                    <% Admin admi=(Admin)session.getAttribute("admin"); String
-                        retpage=(String)session.getAttribute("page"); Seller
-                        s=(Seller)session.getAttribute("sellerinfo"); List<Product> plist=(List<Product>
-                            )request.getAttribute("permprodfsid");
-                            %>
+                    <% Admin admi=(Admin)session.getAttribute("admin"); 
+                        String retpage=(String)session.getAttribute("page"); 
+                        Seller s=(Seller)session.getAttribute("sellerinfo"); 
+                        List<Product> plist=(List<Product>)request.getAttribute("permprodfsid");
+                    %>
 
                             <body
                                 class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
@@ -102,15 +102,15 @@
                                             <div>
                                                 <p class="mb-1 text-gray-400">Permission Status:</p>
                                                 <p class="text-white font-medium">
-                                                    <%if(s.getPerm().equals("YES")){%>
+                                                    <% if(s.getPerm().equals("YES")){ %>
                                                         <span
                                                             class="text-green-700 bg-green-200 border-green-400 border-2 px-2 py-1 rounded-full">
                                                             Approved</span>
-                                                        <%}else{%>
+                                                        <% }else{ %>
                                                             <span
                                                                 class="text-red-700 bg-red-200 border-red-400 border-2 px-2 py-1 rounded-full">
                                                                 Unapproved</span>
-                                                            <%}%>
+                                                            <% } %>
                                                 </p>
                                             </div>
                                             <div class="md:col-span-2">
@@ -146,10 +146,14 @@
 
                                             <% } else { %>
                                                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                                    <% for (Product x : plist) { String p_name=x.getName(); int
-                                                        p_id=x.getId(); String p_price=String.valueOf(x.getPrice());
-                                                        String p_qty=String.valueOf(x.getQuantity()); String
-                                                        p_pd=x.getPd(); String path=x.getImgp(); %>
+                                                    <% for (Product x : plist) { 
+                                                        String p_name=x.getName(); 
+                                                        int p_id=x.getId(); 
+                                                        String p_price=String.valueOf(x.getPrice());
+                                                        String p_qty=String.valueOf(x.getQuantity()); 
+                                                        String p_pd=x.getPd(); 
+                                                        String path=x.getImgp(); 
+                                                    %>
                                                         <div
                                                             class="bg-gray-800/60 backdrop-blur-lg border-b-4 border-gray-800 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">
                                                             <img src="<%= path %>" alt="Product <%= p_id %>"
@@ -180,53 +184,56 @@
                                                                 </form>
                                                             </div>
                                                         </div>
-                                                        <% } %>
+                                                    <% } %>
                                                 </div>
-                                                <% } %>
+                                            <% } %>
                                     </div>
                                 </div>
-
                                 <!-- footer -->
-                                <footer class="rounded-lg shadow-sm bg-gray-900/70 backdrop-blur-xl m-4">
-                                    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-                                        <div class="sm:flex sm:items-center sm:justify-between">
-                                            <a href="/sellerhome"
-                                                class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                                                <img src="images/SwiftMart.png" class="h-12 rounded-xl"
-                                                    alt="SwiftMart Logo" />
+                                        <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
+                                            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+                                                <div class="sm:flex sm:items-center sm:justify-between">
+                                                    <a href="seller_det_sp"
+                                                        class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                                                        <img src="images/SwiftMart.png" class="h-12 rounded-xl"
+                                                            alt="SwiftMart Logo" />
+                                                        <span
+                                                            class="bg-gradient-to-r from-orange-600 via-yellow-400 to-red-600 bg-clip-text text-2xl text-transparent font-sans font-semibold whitespace-nowrap">SwiftMart™</span>
+                                                    </a>
+                                                    <ul
+                                                        class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                                                        <li>
+                                                            <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="hover:underline me-4 md:me-6">Privacy
+                                                                Policy</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"
+                                                                class="hover:underline me-4 md:me-6">Licensing</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" class="hover:underline">Contact</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <hr
+                                                    class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                                                 <span
-                                                    class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftMart™</span>
-                                            </a>
-                                            <ul
-                                                class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-                                                <li>
-                                                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="hover:underline me-4 md:me-6">Privacy
-                                                        Policy</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="hover:underline">Contact</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                                        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
-                                            2025
-                                            <a href="https://flowbite.com/" class="hover:underline">SwiftMart™</a>.
-                                            All
-                                            Rights Reserved.</span>
-                                    </div>
-                                </footer>
+                                                    class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">©
+                                                    2025
+                                                    <a href="https://flowbite.com/"
+                                                        class="hover:underline">SwiftMart™</a>.
+                                                    All
+                                                    Rights Reserved.</span>
+                                            </div>
+                                        </footer>                            
+                                <script src="/js/script.js"></script>
                                 <script>
                                     setInterval(function () {
                                         location.reload();
                                     }, 5000);
                                 </script>
                             </body>
-
                     </html>

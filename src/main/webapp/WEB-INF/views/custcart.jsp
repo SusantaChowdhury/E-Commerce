@@ -14,8 +14,11 @@
                                 <title>Your Cart</title>
                                 <link rel="stylesheet" href="css/output.css" />
                             </head>
-                            <% Customer c=(Customer)session.getAttribute("customer"); int custid=c.getId(); String
-                                custname=c.getName(); %>
+                            <% 
+                            Customer c=(Customer)session.getAttribute("customer"); 
+                            int custid=c.getId(); 
+                            String custname=c.getName(); 
+                            %>
 
                                 <body
                                     class="bg-gradient-to-b from-cyan-600 to-purple-950 min-h-screen text-white font-sans">
@@ -99,22 +102,30 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <% double total=0.0; int nobuy=0; for (Orderprod x :
-                                                                        op) { int oid=x.getId(); String
-                                                                        p_name=x.getProduct().getName(); String
-                                                                        p_pd=x.getProduct().getPd(); Double
-                                                                        p_price=x.getProduct().getPrice(); int
-                                                                        avlqty=x.getProduct().getQuantity(); int
-                                                                        bqty=x.getQty(); String
-                                                                        s_name=x.getProduct().getSeller().getName();
-                                                                        Double cost=p_price * bqty; total +=cost; String
-                                                                        path=x.getProduct().getImgp(); String message=""
-                                                                        ; boolean disableBuy=false; if (avlqty==0) {
-                                                                        message="Out of stock" ; nobuy++;
-                                                                        disableBuy=true; } else if (bqty> avlqty) {
-                                                                        message = "Insufficient stock"; nobuy++;
-                                                                        disableBuy = true; }
-                                                                        %>
+                                                                    <% 
+                                                                    double total=0.0; 
+                                                                    int nobuy=0; 
+                                                                    for (Orderprod x : op) { 
+                                                                        int oid=x.getId(); 
+                                                                        String p_name=x.getProduct().getName(); 
+                                                                        String p_pd=x.getProduct().getPd(); 
+                                                                        Double p_price=x.getProduct().getPrice(); 
+                                                                        int avlqty=x.getProduct().getQuantity(); 
+                                                                        int bqty=x.getQty(); 
+                                                                        String s_name=x.getProduct().getSeller().getName();
+                                                                        Double cost=p_price * bqty; 
+                                                                        total += cost; 
+                                                                        String  path=x.getProduct().getImgp(); String message="";
+                                                                        boolean disableBuy=false; 
+                                                                        if (avlqty==0) {
+                                                                            message = "Out of stock"; 
+                                                                            nobuy++;
+                                                                            disableBuy = true; 
+                                                                        } else if (bqty> avlqty) {
+                                                                            message = "Insufficient stock"; 
+                                                                            nobuy++;
+                                                                            disableBuy = true; 
+                                                                        }%>
                                                                         <tr
                                                                             class="bg-gray-800/50 backdrop-blur-xl border-gray-300 border-t text-gray-200 text-center hover:bg-gray-800/60 transition-all ">
                                                                             <td class="py-3 px-4">
@@ -217,7 +228,7 @@
                                     <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                             <div class="sm:flex sm:items-center sm:justify-between">
-                                                <a href="/sellerhome"
+                                                <a href="custcart"
                                                     class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                                     <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                         alt="SwiftMart Logo" />
@@ -252,21 +263,8 @@
                                         </div>
                                     </footer>
 
-                                    <script>
-                                        function toggleDropdown() {
-                                            const menu = document.getElementById('dropdownMenu');
-                                            menu.classList.toggle('hidden');
-                                        }
-
-                                        // Close dropdown if clicked outside
-                                        window.addEventListener('click', function (e) {
-                                            const dropdownButton = document.getElementById('dropdownButton');
-                                            const dropdownMenu = document.getElementById('dropdownMenu');
-                                            if (!dropdownButton.contains(e.target)) {
-                                                dropdownMenu.classList.add('hidden');
-                                            }
-                                        });
-
+                                    <script src="/js/script.js>"></script>
+                                    <script>                                        
                                         setInterval(function () {
                                             location.reload();
                                         }, 5000);

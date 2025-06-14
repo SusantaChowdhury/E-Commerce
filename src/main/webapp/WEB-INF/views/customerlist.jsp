@@ -64,14 +64,16 @@
                         <!-- Customer List Section -->
                         <div class="px-6 pb-12">
                             <% List<Customer> customers = (List<Customer>)request.getAttribute("allcust");
-                                    if(customers.isEmpty()) {
-                                    %>
-                                    <p class="text-center text-lg font-medium text-white">No customers found at the
-                                        moment.</p>
+                                if(customers.isEmpty()) {
+                                %>
+                                <p class="text-center text-lg font-medium text-white">No customers found at the moment.</p>
                                     <% } else { %>
                                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                            <% for(Customer x : customers) { String name=x.getName(); String
-                                                id=String.valueOf(x.getId()); String email=x.getEmail(); %>
+                                            <% for(Customer x : customers) { 
+                                                String name=x.getName(); 
+                                                String id=String.valueOf(x.getId()); 
+                                                String email=x.getEmail(); 
+                                            %>
                                                 <div
                                                     class="bg-gray-800/50 backdrop-blur-lg border-b-4 border-gray-800 rounded-xl p-6 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition duration-300">
                                                     <h3 class="text-xl font-semibold text-white mb-2">
@@ -91,16 +93,16 @@
                                                         </button>
                                                     </form>
                                                 </div>
-                                                <% } %>
+                                            <% } %>
                                         </div>
-                                        <% } %>
+                                    <% } %>
                         </div>
 
                         <!-- footer -->
                         <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                 <div class="sm:flex sm:items-center sm:justify-between">
-                                    <a href="/sellerhome"
+                                    <a href="customerlist"
                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
                                         <span
@@ -128,22 +130,8 @@
                                     Rights Reserved.</span>
                             </div>
                         </footer>
-
-                        <script>
-                            function toggleDropdown() {
-                                const menu = document.getElementById('dropdownMenu');
-                                menu.classList.toggle('hidden');
-                            }
-
-                            // Close dropdown if clicked outside
-                            window.addEventListener('click', function (e) {
-                                const dropdownButton = document.getElementById('dropdownButton');
-                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                if (!dropdownButton.contains(e.target)) {
-                                    dropdownMenu.classList.add('hidden');
-                                }
-                            });
-
+                        <script src="/js/script.js"></script>
+                        <script>                            
                             setInterval(function () {
                                 location.reload();
                             }, 5000);

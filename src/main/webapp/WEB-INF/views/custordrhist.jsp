@@ -107,48 +107,43 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <% for(Orderhist x : op) { int oid=x.getId(); String
-                                                                        p_name=x.getProductname(); String
-                                                                        p_pd=x.getProductdesc(); Double
-                                                                        p_price=x.getProductprice(); int
-                                                                        bqty=x.getBqty(); String
-                                                                        s_name=x.getSellername(); Double cost=p_price *
-                                                                        bqty; String dt=x.getDatetime(); Double
-                                                                        taken=x.getTaken(); Double ref=x.getRefunded();
-                                                                        String statusw=x.getOrderstatus(); String
-                                                                        statusmessage="" ; if
-                                                                        ("completed".equals(statusw)) {
-                                                                        statusmessage=(ref> 0.0) ? "Refunded" :
-                                                                        "Transaction Done";
-                                                                        } else if ("cancelled".equals(statusw))
-                                                                        {
-                                                                        statusmessage = "Cancelled";
-                                                                        } else if ("tfailed".equals(statusw) &&
-                                                                        ref > 0) {
-                                                                        statusmessage = "Transaction Failed";
-                                                                        } else if ("appeal".equals(statusw) ||
-                                                                        "cnc".equals(statusw)) {
-                                                                        statusmessage = "Cancel Requested";
+                                                                    <% for(Orderhist x : op) { 
+                                                                        int oid=x.getId(); 
+                                                                        String p_name=x.getProductname(); 
+                                                                        String p_pd=x.getProductdesc(); 
+                                                                        Double p_price=x.getProductprice(); 
+                                                                        int bqty=x.getBqty(); 
+                                                                        String s_name=x.getSellername(); 
+                                                                        Double cost = p_price * bqty; 
+                                                                        String dt = x.getDatetime(); 
+                                                                        Double taken=x.getTaken(); 
+                                                                        Double ref = x.getRefunded();
+                                                                        String statusw = x.getOrderstatus(); 
+                                                                        String statusmessage="" ; 
+                                                                        if("completed".equals(statusw)) {
+                                                                            statusmessage=(ref> 0.0) ? "Refunded" : "Transaction Done";
+                                                                        } else if ("cancelled".equals(statusw)){
+                                                                            statusmessage = "Cancelled";
+                                                                        } else if ("tfailed".equals(statusw) && ref > 0) {
+                                                                            statusmessage = "Transaction Failed";
+                                                                        } else if ("appeal".equals(statusw) || "cnc".equals(statusw)) {
+                                                                            statusmessage = "Cancel Requested";
                                                                         } else {
-                                                                        statusmessage = "Ongoing";
+                                                                            statusmessage = "Ongoing";
                                                                         }
 
                                                                         String statusColor = "text-yellow-500";
                                                                         if (statusmessage.contains("Done"))
-                                                                        statusColor = "bg-cyan-800 text-cyan-100";
-                                                                        else if
-                                                                        (statusmessage.contains("Refunded"))
-                                                                        statusColor = "bg-green-700 text-green-300";
-                                                                        else if
-                                                                        (statusmessage.contains("Cancelled"))
-                                                                        statusColor = "bg-red-500 border-2 text-red-200";
-                                                                        else if
-                                                                        (statusmessage.contains("Failed"))
-                                                                        statusColor = "bg-yellow-300 text-yellow-700";
-                                                                        else if
-                                                                        (statusmessage.contains("Requested"))
-                                                                        statusColor = "bg-orange-300 text-red-800";
-                                                                        %>
+                                                                            statusColor = "bg-cyan-800 text-cyan-100";
+                                                                        else if (statusmessage.contains("Refunded"))
+                                                                            statusColor = "bg-green-700 text-green-300";
+                                                                        else if (statusmessage.contains("Cancelled"))
+                                                                            statusColor = "bg-red-500 border-2 text-red-200";
+                                                                        else if (statusmessage.contains("Failed"))
+                                                                            statusColor = "bg-yellow-300 text-yellow-700";
+                                                                        else if (statusmessage.contains("Requested"))
+                                                                            statusColor = "bg-orange-300 text-red-800";
+                                                                    %>
                                                                         <tr
                                                                             class="hover:bg-gray-800/50 transition border-gray-600 border-t duration-200 text-gray-200 text-center">
                                                                             <!-- Image -->
@@ -217,26 +212,23 @@
                                                                                             Cancel
                                                                                         </button>
                                                                                     </form>
-                                                                                    <% } else { %>
-                                                                                        <span
-                                                                                            class="text-gray-300 text-sm">Non-cancellable</span>
-                                                                                        <% } %>
+                                                                                <% } else { %>
+                                                                                        <span class="text-gray-300 text-sm">Non-cancellable</span>
+                                                                                <% } %>
                                                                             </td>
                                                                         </tr>
-                                                                        <% } %>
+                                                                    <% } %>
                                                                 </tbody>
                                                             </table>
                                                         </div>
-
-
-                                                        <% } %>
+                                                    <% } %>
                                         </div>
 
                                         <!-- footer -->
                                         <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                                 <div class="sm:flex sm:items-center sm:justify-between">
-                                                    <a href="/sellerhome"
+                                                    <a href="custordrhist"
                                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                             alt="SwiftMart Logo" />
@@ -274,27 +266,11 @@
                                             </div>
                                         </footer>
                                         </div>
-
-
-                                        <script>
-                                            function toggleDropdown() {
-                                                const menu = document.getElementById('dropdownMenu');
-                                                menu.classList.toggle('hidden');
-                                            }
-
-                                            // Close dropdown if clicked outside
-                                            window.addEventListener('click', function (e) {
-                                                const dropdownButton = document.getElementById('dropdownButton');
-                                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                                if (!dropdownButton.contains(e.target)) {
-                                                    dropdownMenu.classList.add('hidden');
-                                                }
-                                            });
-
+                                        <script src="/js/script.js"></script>
+                                        <script>                                            
                                             setInterval(function () {
                                                 location.reload();
                                             }, 5000);
                                         </script>
                                     </body>
-
                                 </html>

@@ -38,7 +38,9 @@
                 </div>
 
                 <!-- Error Message -->
-                <% String getm=String.valueOf(request.getAttribute("msg")); if(getm!=null){ if(getm.equals("alfail")){
+                <% String getm=String.valueOf(request.getAttribute("msg")); 
+                if(getm!=null){ 
+                    if(getm.equals("alfail")){
                     %>
                     <p class="text-center text-sm text-red-600 font-medium">
                         Wrong username or password

@@ -67,9 +67,9 @@
                         <div class="max-w-7xl mx-auto px-4">
 
                             <% List<Orderhist> op = (List<Orderhist>)request.getAttribute("allordhist");
-                                    if(op.isEmpty()){ %>
-                                    <div class="text-white text-lg">No orders present now.</div>
-                                    <% } else { %>
+                                if(op.isEmpty()){ %>
+                                <div class="text-white text-lg">No orders present now.</div>
+                                <% } else { %>
 
                                         <!-- Admin View: All Customer Orders -->
                                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
@@ -83,7 +83,6 @@
                                                 <% if(op.isEmpty()) { %>
                                                     <div class="p-6 text-white text-center">No orders available.</div>
                                                     <% } else { %>
-
                                                         <div class="overflow-x-auto">
                                                             <table
                                                                 class="min-w-full divide-y divide-cyan-400 border-gray-800 text-sm text-left">
@@ -102,48 +101,52 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody class="text-gray-200 divide-y divide-gray-600">
-                                                                    <% for(Orderhist x : op) { int oid=x.getId(); String
-                                                                        p_name=x.getProductname(); String
-                                                                        p_pd=x.getProductdesc(); Double
-                                                                        p_price=x.getProductprice(); int
-                                                                        p_id=x.getProdid(); int bqty=x.getBqty(); int
-                                                                        c_id=x.getCustid(); int s_id=x.getSelrid();
-                                                                        String c_name=x.getCustname(); String
-                                                                        s_name=x.getSellername(); Double cost=p_price *
-                                                                        bqty; String dt=x.getDatetime(); Double
-                                                                        taken=x.getTaken(); Double ref=x.getRefunded();
-                                                                        String statusw=x.getOrderstatus(); String
-                                                                        statusmessage="" ; if
-                                                                        (statusw.equals("completed")) {
-                                                                        statusmessage=ref> 0.0 ? "Refunded" :
-                                                                        "Transaction Done";
+                                                                    <% for(Orderhist x : op) { 
+                                                                        int oid=x.getId(); 
+                                                                        String p_name=x.getProductname(); 
+                                                                        String p_pd=x.getProductdesc(); 
+                                                                        Double p_price=x.getProductprice(); 
+                                                                        int p_id=x.getProdid(); 
+                                                                        int bqty=x.getBqty(); 
+                                                                        int c_id=x.getCustid(); 
+                                                                        int s_id=x.getSelrid();
+                                                                        String c_name=x.getCustname(); 
+                                                                        String s_name=x.getSellername(); 
+                                                                        Double cost=p_price * bqty; 
+                                                                        String dt=x.getDatetime(); 
+                                                                        Double taken=x.getTaken(); 
+                                                                        Double ref=x.getRefunded();
+                                                                        String statusw=x.getOrderstatus(); 
+                                                                        String statusmessage="" ; 
+                                                                        if(statusw.equals("completed")) {
+                                                                            statusmessage=ref> 0.0 ? "Refunded" : "Transaction Done";
                                                                         } else if (statusw.equals("cancelled")) {
-                                                                        statusmessage = "Cancelled";
+                                                                            statusmessage = "Cancelled";
                                                                         } else if (statusw.equals("tfailed") && ref > 0)
                                                                         {
-                                                                        statusmessage = "Transaction Failed";
+                                                                            statusmessage = "Transaction Failed";
                                                                         } else if (statusw.equals("ongoing")) {
-                                                                        statusmessage = "Ongoing";
+                                                                            statusmessage = "Ongoing";
                                                                         } else if (statusw.equals("appeal")) {
-                                                                        statusmessage = "Cancel Requested";
+                                                                            statusmessage = "Cancel Requested";
                                                                         } else if (statusw.equals("cnc")) {
-                                                                        statusmessage = "Can't be Cancelled";
+                                                                            statusmessage = "Can't be Cancelled";
                                                                         }
 
                                                                         String badgeColor = "bg-cyan-700 border-2 text-gray-100";
                                                                         if (statusmessage.contains("Refunded"))
-                                                                        badgeColor = "bg-green-700 border-2 text-green-300";
+                                                                            badgeColor = "bg-green-700 border-2 text-green-300";
                                                                         if (statusmessage.contains("Ongoing"))
-                                                                        badgeColor = "bg-yellow-700 border-2 text-yellow-100";
+                                                                            badgeColor = "bg-yellow-700 border-2 text-yellow-100";
                                                                         else if (statusmessage.contains("Cancelled"))
-                                                                        badgeColor = "bg-red-500 border-2 text-red-100";
+                                                                            badgeColor = "bg-red-500 border-2 text-red-100";
                                                                         else if (statusmessage.contains("Failed"))
-                                                                        badgeColor = "bg-yellow-300 border-2 text-yellow-700";
+                                                                            badgeColor = "bg-yellow-300 border-2 text-yellow-700";
                                                                         else if (statusmessage.contains("Requested"))
-                                                                        badgeColor = "bg-red-300 border-2 text-red-700";
+                                                                            badgeColor = "bg-red-300 border-2 text-red-700";
                                                                         else if (statusmessage.contains("Can't be"))
-                                                                        badgeColor = "bg-yellow-800 border-2 text-yellow-200";
-                                                                        %>
+                                                                            badgeColor = "bg-yellow-800 border-2 text-yellow-200";
+                                                                    %>
 
                                                                         <tr
                                                                             class="hover:bg-gray-900/40 text-left rounded-2xl transition-all duration-200">
@@ -239,8 +242,7 @@
                                                                                             Reject
                                                                                         </button>
                                                                                     </form>
-                                                                                    <% } else if (statusw.equals("cnc"))
-                                                                                        { %>
+                                                                                    <% } else if (statusw.equals("cnc")){ %>
                                                                                         <p
                                                                                             class="text-yellow-400 text-xs mb-1">
                                                                                             Can't be cancelled</p>
@@ -258,24 +260,24 @@
                                                                                             <p
                                                                                                 class="text-xs text-cyan-400 font-medium">
                                                                                                 No action needed</p>
-                                                                                            <% } %>
+                                                                                        <% } %>
                                                                             </td>
                                                                         </tr>
-                                                                        <% } %>
+                                                                    <% } %>
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <% } %>
+                                                <% } %>
                                             </div>
                                         </div>
-                                        <% } %>
+                                <% } %>
                         </div>
 
                         <!-- footer -->
                         <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                 <div class="sm:flex sm:items-center sm:justify-between">
-                                    <a href="/sellerhome"
+                                    <a href="orderslist"
                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl" alt="SwiftMart Logo" />
                                         <span
@@ -303,25 +305,12 @@
                                     Rights Reserved.</span>
                             </div>
                         </footer>
+                        <script src="/js/script.js"></script>
                         <script>
-                                function toggleDropdown() {
-                                    const menu = document.getElementById('dropdownMenu');
-                                    menu.classList.toggle('hidden');
-                                }
-
-                                // Close dropdown if clicked outside
-                                window.addEventListener('click', function (e) {
-                                    const dropdownButton = document.getElementById('dropdownButton');
-                                    const dropdownMenu = document.getElementById('dropdownMenu');
-                                    if (!dropdownButton.contains(e.target)) {
-                                        dropdownMenu.classList.add('hidden');
-                                    }
-                                });
-
-                                setInterval(function () {
-                                    location.reload();
-                                }, 5000);
-                            </script>
+                            setInterval(function () {
+                                location.reload();
+                            }, 5000);
+                        </script>
                     </body>
 
                 </html>

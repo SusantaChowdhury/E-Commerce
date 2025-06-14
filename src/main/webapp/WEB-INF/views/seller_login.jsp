@@ -40,8 +40,10 @@
 
 
                 <!-- Error Message -->
-                <% String getm=String.valueOf(request.getAttribute("msg")); String showMessage="" ; if(getm!=null){
-                    if(getm.equals("slfail")){ showMessage="Wrong credentials. Please try again!" ; %>
+                <% String getm=String.valueOf(request.getAttribute("msg")); 
+                    String showMessage="" ; if(getm!=null){
+                        if(getm.equals("slfail")){ 
+                            showMessage="Wrong credentials. Please try again!" ; %>
                     <p class="text-center text-sm text-red-600 font-medium">
                         <%= showMessage %>
                     </p>
@@ -62,8 +64,5 @@
                 <a href="register_seller" class="text-blue-600 hover:underline font-medium">Register Here</a>
             </p>
         </div>
-
     </body>
-
-
-    </html>
+</html>

@@ -84,7 +84,8 @@
                             <h2 class="text-2xl font-bold">Add Your Product</h2>
                         </section>
 
-                        <% String getm=String.valueOf(request.getAttribute("addProdmsg")); if(getm.equals("Added")) { %>
+                        <% String getm=String.valueOf(request.getAttribute("addProdmsg")); 
+                            if(getm.equals("Added")) { %>
                             <p
                                 class="w-1/2 bg-green-100 mx-auto m-2 border-green-400 border-2 rounded text-lg text-green-500 font-bold text-center">
                                 Product added successfully!</p>
@@ -92,7 +93,7 @@
                                 <p class="text-red-600 font-medium">
                                     <%= getm %>
                                 </p>
-                                <% } %>
+                            <% } %>
 
                                     <!-- Product Registration Form -->
                                     <section class="px-4">
@@ -144,13 +145,13 @@
                                             </form>
                                         </div>
                                     </section>
-                                    <% } %>
+                        <% } %>
 
                                         <!-- footer -->
                                         <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                                 <div class="sm:flex sm:items-center sm:justify-between">
-                                                    <a href="/sellerhome"
+                                                    <a href="seller_add_product"
                                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                             alt="SwiftMart Logo" />
@@ -189,5 +190,4 @@
                                         <script src="/js/script.js"></script>
 
             </body>
-
-        </html>
+    </html>

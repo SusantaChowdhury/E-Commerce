@@ -251,7 +251,7 @@
                                         <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                             <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                                 <div class="sm:flex sm:items-center sm:justify-between">
-                                                    <a href="/sellerhome"
+                                                    <a href="customer_det_oh"
                                                         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                                         <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                             alt="SwiftMart Logo" />
@@ -287,21 +287,8 @@
                                                     Rights Reserved.</span>
                                             </div>
                                         </footer>
+                                        <script src="/js/script.js"></script>
                                         <script>
-                                            function toggleDropdown() {
-                                                const menu = document.getElementById('dropdownMenu');
-                                                menu.classList.toggle('hidden');
-                                            }
-
-                                            // Close dropdown if clicked outside
-                                            window.addEventListener('click', function (e) {
-                                                const dropdownButton = document.getElementById('dropdownButton');
-                                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                                if (!dropdownButton.contains(e.target)) {
-                                                    dropdownMenu.classList.add('hidden');
-                                                }
-                                            });
-
                                             setInterval(function () {
                                                 location.reload();
                                             }, 5000);

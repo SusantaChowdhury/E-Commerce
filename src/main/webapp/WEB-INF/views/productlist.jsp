@@ -69,18 +69,23 @@
                             <!-- Product Section -->
                             <div class="px-6 md:px-12">
                                 <% List<Product> perm_p = (List<Product>) request.getAttribute("prod_y_perm");
-                                        if (perm_p.isEmpty()) { %>
+                                    if (perm_p.isEmpty()) { %>
                                         <p class="text-center text-xl mt-10 text-gray-200">No products available
                                             currently.</p>
-                                        <% } else { %>
+                                    <% } else { %>
 
                                             <div
                                                 class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                                <% for (Product x : perm_p) { int pd=x.getId(); int
-                                                    sd=x.getSeller().getId(); String p_name=x.getName(); String
-                                                    p_pd=x.getPd(); Double p_price=x.getPrice(); int
-                                                    qty=x.getQuantity(); String s_name=x.getSeller().getName(); String
-                                                    path=x.getImgp(); %>
+                                                <% for (Product x : perm_p) { 
+                                                    int pd=x.getId(); 
+                                                    int sd=x.getSeller().getId();
+                                                    String p_name=x.getName(); 
+                                                    String p_pd=x.getPd(); 
+                                                    Double p_price=x.getPrice(); 
+                                                    int qty=x.getQuantity(); 
+                                                    String s_name=x.getSeller().getName(); 
+                                                    String path=x.getImgp(); 
+                                                %>
 
                                                     <div
                                                         class="bg-gray-800/50 backdrop:blur-xl border-b-4 border-gray-800 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 transition duration-300 p-4 flex flex-col">
@@ -110,18 +115,16 @@
                                                             </button>
                                                         </form>
                                                     </div>
-
-                                                    <% } %>
+                                                <% } %>
                                             </div>
-
-                                            <% } %>
+                                        <% } %>
                             </div>
 
                             <!-- footer -->
                             <footer class="rounded-lg shadow-sm bg-gray-900 m-4">
                                 <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                                     <div class="sm:flex sm:items-center sm:justify-between">
-                                        <a href="/sellerhome"
+                                        <a href="productlist"
                                             class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
                                             <img src="images/SwiftMart.png" class="h-12 rounded-xl"
                                                 alt="SwiftMart Logo" />
@@ -150,22 +153,8 @@
                                         Rights Reserved.</span>
                                 </div>
                             </footer>
-
+                            <script src="/js/script.js"></script>
                             <script>
-                                function toggleDropdown() {
-                                    const menu = document.getElementById('dropdownMenu');
-                                    menu.classList.toggle('hidden');
-                                }
-
-                                // Close dropdown if clicked outside
-                                window.addEventListener('click', function (e) {
-                                    const dropdownButton = document.getElementById('dropdownButton');
-                                    const dropdownMenu = document.getElementById('dropdownMenu');
-                                    if (!dropdownButton.contains(e.target)) {
-                                        dropdownMenu.classList.add('hidden');
-                                    }
-                                });
-
                                 setInterval(function () {
                                     location.reload();
                                 }, 5000);

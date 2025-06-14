@@ -67,7 +67,7 @@
                         <!-- Seller Grid -->
                         <main class="max-w-7xl mx-auto px-4 pb-16">
                             <% List<Seller> perm_pd = (List<Seller>) request.getAttribute("perm_seller");
-                                    if (perm_pd == null || perm_pd.isEmpty()) {
+                                if (perm_pd == null || perm_pd.isEmpty()) {
                                     %>
                                     <div class="text-center text-xl text-white font-medium mt-8">
                                         No active sellers found.
@@ -75,8 +75,10 @@
                                     <% } else { %>
                                         <div
                                             class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                                            <% for (Seller x : perm_pd) { String p_name=x.getName(); String
-                                                p_id=String.valueOf(x.getId()); String p_mail=x.getEmail(); %>
+                                            <% for (Seller x : perm_pd) { 
+                                                String p_name=x.getName(); 
+                                                String p_id=String.valueOf(x.getId()); 
+                                                String p_mail=x.getEmail(); %>
                                                 <div
                                                     class="bg-gray-800/50 backdrop:blur-xl border-b-4 border-gray-800 rounded-xl shadow-xl p-6 flex flex-col justify-between text-gray-200 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200">
                                                     <div>
@@ -109,9 +111,9 @@
                                                         </form>
                                                     </div>
                                                 </div>
-                                                <% } %>
+                                            <% } %>
                                         </div>
-                                        <% } %>
+                                    <% } %>
                         </main>
 
                         <!-- footer -->
@@ -146,22 +148,8 @@
                                     Rights Reserved.</span>
                             </div>
                         </footer>
-
+                        <script src="/js/script.js"></script>
                         <script>
-                            function toggleDropdown() {
-                                const menu = document.getElementById('dropdownMenu');
-                                menu.classList.toggle('hidden');
-                            }
-
-                            // Close dropdown if clicked outside
-                            window.addEventListener('click', function (e) {
-                                const dropdownButton = document.getElementById('dropdownButton');
-                                const dropdownMenu = document.getElementById('dropdownMenu');
-                                if (!dropdownButton.contains(e.target)) {
-                                    dropdownMenu.classList.add('hidden');
-                                }
-                            });
-                            
                             setInterval(function () {
                                 location.reload();
                             }, 5000);
